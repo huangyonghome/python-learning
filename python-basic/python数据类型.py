@@ -73,3 +73,33 @@
 # # a = b
 # # b =a
 # print(a,b)
+
+
+#bytes数据类型
+
+s1 = 'jesse'
+s2 = b'jesse'
+
+print(s1 , type(s1))
+print(s2, type(s2))
+
+s3 = '您好'
+s4 = '您好'.encode('utf-8')
+
+print(s3, type(s3))
+#\x表示一个字节.一个中文占用3个字节
+print(s4, type(s4))
+
+
+s3 = s1.encode('utf-8')
+
+print(s1, type(s1))
+print(s3, type(s3))
+
+
+#字符解码.decode方法
+
+b1 = b'\xe6\x82\xa8\xe5\xa5\xbd'
+
+b2 = b1.decode('utf-8')
+print(b2, type(b2))

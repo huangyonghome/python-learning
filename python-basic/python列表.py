@@ -86,10 +86,131 @@ name = ['jesse','Lyon','alex','jerry',[1,'tony']]
 
 
 #1.将jesse变成大写
-name[0] = name[0].upper()
-print(name)
+# name[0] = name[0].upper()
+# print(name)
 
 #2.将tony变成首字母大写
-str = name[-1][-1].capitalize()
-name[-1][-1] = str
-print(name)
+# str = name[-1][-1].capitalize()
+# name[-1][-1] = str
+# print(name)
+
+
+#练习
+
+# print(name)
+#
+# print(name.index('alex'))
+#
+# print(name[1:3])
+#
+# print(name[-1])
+#
+# name.append('alita')
+# print(name)
+#
+#
+# name.insert(1,'new')
+# print(name)
+#
+# name.insert(0,'end')
+# print(name)
+#
+# name[0] = 'starts'
+# print(name)
+#
+#
+# name[:3] = '123'
+#
+# print(name)
+#
+# name[:3] = "a","b","c"
+#
+# print(name)
+#
+# name[:3] = ("x","y","z")
+#
+# print(name)
+#
+# name.pop(0)
+#
+# print(name)
+#
+# name.pop()
+# print(name)
+#
+# name.remove('alex')
+#
+# print(name)
+#
+# del name[0]
+#
+# print(name)
+#
+# del (name[:2])
+#
+# print(name)
+#
+# name.clear()
+#
+# print(name)
+#
+#
+# name = ['jesse','Lyon','alex','jerry',[1,'tony']]
+#
+# name1 = ['new','second','two']
+#
+# print (name + name1)
+#
+# name.extend(name1)
+#
+# print(name)
+#
+# name2 = name.copy()
+# name3 = name
+# name4 = name[:]
+#
+# name.clear()
+#
+# print(name)
+# print(name2)
+# print(name3)
+# print(name4)
+
+# print(name)
+# name.pop()
+#
+# name.sort()
+# print(name)
+#
+# name.reverse()
+# print(name)
+'''
+练习题
+'''
+
+#1.将下列列表中奇数索引的元素删除
+
+l1 = [00,11,22,33,44,55,66]
+l2 = []
+
+#方法一.采取步长方式
+
+print(l1[::2])
+
+#方法二.判断是否能被2整除..因为列表是可变的,对列表的任何修改都会得到预期之外的结果.所以不能对列表进行直接操作
+
+for num in range(len(l1)):
+     if num % 2 == 0:
+         l2.append(l1[num])
+
+print(l2)
+
+#方法三..倒序循环列表,可以直接修改.因为修改列表(删除列表元素)对循环的索引没有影响.
+
+#注意,起始索引是列表长度-1,然后截止索引是-1,而不是0,步长是-1
+
+for num in range(len(l1)-1,-1,-1):
+    if num % 2 == 1:
+        del l1[num]
+
+print(l1)

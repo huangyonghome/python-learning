@@ -22,21 +22,24 @@
 
 # is 和 ==的区别
 
-print "#####下面这个情况,b和a指向同样的内存地址空间#########"
-a = [1,2,3]
-b = a
-print (a == b)
-print(a is b)
+# print "#####下面这个情况,b和a指向同样的内存地址空间#########"
+# a = [1,2,3]
+# b = a
+# print (a == b)
+# print(a is b)
+#
+# print "#########下面这2种情况,虽然b和a的值完全一样,但是不是同一个内存地址空间########"
+# a = [1,2,3]
+# b = [1,2,3]
+#
+# print (a == b)
+# print(a is b)
+#
+# print "#########下面这种情况也是一样########"
+# b=a[:]
+# print b
+# print(a == b)
+# print(a is b)
 
-print "#########下面这2种情况,虽然b和a的值完全一样,但是不是同一个内存地址空间########"
-a = [1,2,3]
-b = [1,2,3]
-
-print (a == b)
-print(a is b)
-
-print "#########下面这种情况也是一样########"
-b=a[:]
-print b
-print(a == b)
-print(a is b)
+import sys
+print(sys.getdefaultencoding())

@@ -78,25 +78,25 @@ print(info)
 
 ```python
 # 创建一个字典
-info = {"name":"Lyon","age":21,"school":"university"}
-# 标准删除姿势
-info.pop("school")
-# 打印info
-print(info)    
-# 换个姿势
-del info["age"]
-# 打印info
-print(info)   
-# 随机删除
-info.popitem()
-# 打印info
-print(info)    
-'''
-执行结果:
-{'name': 'Lyon', 'age': 21}
-{'name': 'Lyon'}
-{}
-'''
+dic = {"name":"jesse","age":33,"job":"it","sex":"male"}
+
+# 1.pop()删除法
+dic.pop('name')
+print(dic)
+# 注意pop方法有返回值
+print(dic.pop('name'))
+>>> jesse
+
+2.del删除方法
+del dic['name']
+print(dic)
+>>> {'age': 33, 'job': 'it', 'sex': 'male'}
+
+# popitem删除法.(默认只删除最后一个)
+dic.popitem()
+print(dic)
+
+>>> {'name': 'jesse', 'age': 33, 'job': 'it'}
 ```
 
 ## 查找  🍀
@@ -104,22 +104,28 @@ print(info)
 ```python
 # 创建一个字典
 info = {"name":"Lyon","age":21,"school":"university"}
-# 标准查找,判断name是否在字典info中
-print("name" in info)       #打印：True
-# 获取值
-print(info.get("name"))     #打印：Lyon
-# 换换姿势
-print(info["name"])         #打印：Lyon
-# 这种方式要注意如果key不存在就会报错,而get仅仅返回None
-print(info["home"])
-# 报错：KeyError: 'home'
-'''
-执行结果:
-True
-Lyon
-Lyon
-KeyError:'home'
-'''
+
+#1.查找键是否存在于字典中
+print('name' in dic)
+print('jesse' in dic)
+
+>>> True
+False
+
+#2.获取键的值
+print(dic['name'])
+>>> jesse
+#注意.如果字典中没有这个键,程序会报错
+print(dic['jesse'])
+>>> KeyError: 'jesse'
+
+# get方法优雅的获取字典中某个键的值
+print(dic.get('name'))
+>>> jesse
+
+#如果没有这个键,则返回none.但是程序不会报错
+print(dic.get('jesse'))
+>>> None
 ```
 
 ## 遍历  🍀
@@ -130,6 +136,7 @@ info = {"name":"Lyon","age":21,"school":"university"}
 # 方法1,推荐
 for key in info:
   print(key,info[key])
+  
 # 方法2
 for k,v in info.items():
   print(k,v)
@@ -148,37 +155,46 @@ age 21
 
 ```python
 # 创建一个多级嵌套字典
-datas ={
-    '湖北省':{
-        "武汉市":{
-               "武昌区":["Hello"],
-               "洪山区":["Sorry"],
-               "江夏区":["Welcome"],
-         },
-    },
-    '湖南省':{
-        "长沙市":{
-            "岳麓区":{},
-            "天心区":{},
-            "芙蓉区":{},
+dics = {
+    'name':{
+        'jesse':{
+            'age':22,
+            'job':'it',
+            'sex':'male'
         },
-    },
-    '广东省':{
-        "佛山市":{
-            "三水区":{},
-            "顺德区":{},
-            "男海区":{},
+        'jerry':{
+            'age':23,
+            'job':'it',
+            'sex':'female'
         },
+
     },
+    'home': {
+        'jesse':{
+            'live':'shanghai',
+            'hometown':'jiangxi'
+        },
+        'jerry':{
+            'live':'beijing',
+            'hometown':'wuhan'
+        }
+    },
+    'company':{
+        'jesse':{
+            'name':'dwd',
+            'industry': 'internet'
+        },
+        'jerry':{
+            'name': 'bat',
+            'industry': 'internet'
+        }
+    }
 }
 # 修改最里层的value
-datas["湖北省"]["武汉市"]["武昌区"].append("Lyon")
-# 打印结果
-print(datas["湖北省"]["武汉市"])    
-'''
-执行结果:
-{'洪山区': ['Sorry'], '武昌区': ['Hello', 'Lyon'], '江夏区': ['Welcome']}
-'''
+dics['name']['jesse']['age'] = 33
+print(dics['name']['jesse'])
+
+>>>{'age': 33, 'job': 'it', 'sex': 'male'}
 ```
 
 ## 更多  🍀
@@ -235,4 +251,37 @@ dict.update(dict2)                 # 把字典dict2的键/值对更新到dict里
  |  values(...)
  |      D.values() -> an object providing a view on D's values
 ```
+---
 
+### 作业
+
+##### 1.将下列字典中的key键含有'k'元素的所有键值对删除
+
+```
+#下面的方法报错..."RuntimeError: dictionary changed size during iteration"
+#注意,字典在循环或者迭代的时候,不能修改该字典的内容.
+
+dic = {'k1':'v1',"k2":'v2',"k3":'v3','name':'jesse'}
+
+for k in dic:
+    if 'k' in k:
+        del dic[k]
+
+print(dic)
+
+#但是可以在循环一个列表的时候修改该字典
+
+#新建一个空列表
+l1 = []
+
+#循环列表,将满足要求的key键添加进一个列表
+for k in dic:
+    if 'k' in k:
+        l1.append(k)
+
+#循环列表,这里就是循环字典的KEY..然后删除dic的键
+for keys in l1:
+    del dic[keys]
+
+print(dic)
+```

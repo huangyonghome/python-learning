@@ -105,3 +105,29 @@ b = 'jesse'
 #### 8.replace()
 # b = 'jesse'
 # print(b.replace('s','a'))
+
+
+#练习:
+
+b = 'jesse'
+
+print(b.find('s'))
+
+print(b.index('s'))
+
+print(b[3:9])
+
+print(b.startswith('e'))
+
+print(b.endswith('e'))
+
+print(b.swapcase().swapcase())
+
+print(b.lower())
+
+
+a = 'i am jesse'
+
+print(a.split())
+
+print(b.join(a))
