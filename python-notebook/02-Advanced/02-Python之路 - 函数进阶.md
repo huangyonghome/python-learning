@@ -42,9 +42,29 @@ print("最外层打印", name)
 
 当然我们有时需要的就是在嵌套函数中 , 使用上一层的变量 , 那么我们可以使用`nonlocal` 语句
 
-`nonlocal` 的作用就是改变变量的作用域 , 但是不会扩展到全局变量 , 即只能在函数内部改变 ; nonlocal声明之后 , 会从上层开始找并返回第一个变量 , 没找到则会报错
+`nonlocal` 的作用就是改变变量的作用域 , 但是不会扩展到全局变量 , 即只能在函数内部改变 ; nonlocal声明之后 , 会从上层开始找并返回第一个变量,如果有修改变量,则会影响到引用层以及子层的值.
 
-```python
+```
+#下面例子.表面nonlocal声明变量n后,对n的修改会影响到最外层的func函数声明的变量n的值
+def func(arg):
+    n = arg
+    def func1():
+        def func2():
+            nonlocal n      # n = 2
+            n += 1
+        func2()
+        print(n)        # n = 3
+    func1()
+    print(n)
+func(10)
+'''
+执行结果:
+11
+11
+'''
+
+#下面的例子,在func1中先声明n.然后func2函数中nonlocal声明变量.则影响func1中的引用层以及func1的子函数(func2)..但是并不影响最外层的变量n
+
 def func(arg):
     n = arg
     def func1():
@@ -57,11 +77,9 @@ def func(arg):
     func1()
     print(n)
 func(10)
-'''
-执行结果:
-3
+
+>>> 3
 10
-'''
 ```
 
 ## 高阶函数  🍀
