@@ -26,5 +26,6 @@
 # print(f.readable())
 # print(f.writable())
 
-with open('file.txt','r') as f:
-    print(f.read())
+# with open('file.txt','r') as f:
+#     print(f.read())
+

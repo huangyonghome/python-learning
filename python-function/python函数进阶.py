@@ -51,6 +51,21 @@
 #     print(n)
 # func(10)
 
+# def decorator():
+#     def inner():
+#         print(" i am inner")
+#     return(inner)
+#
+# func=decorator()
+#
+# func()
+
+
+
+
+
+
+
 
 # def decorator(func):
 #     """func变量在inner函数外部"""
@@ -193,26 +208,26 @@
 # func()
 
 
-def decorate(func):
-    print(" I am decorate")
-    def inner():
-        print("i am inner")
-        func()
-    return inner
-
-def decorate2(func):
-    print(" I am decorate2")
-    def inner():
-        print("i am inner2")
-        func()
-    return inner
-
-@decorate
-@decorate2
-def func():
-    print("I am func")
-
-func()
+# def decorate(func):
+#     print(" I am decorate")
+#     def inner():
+#         print("i am inner")
+#         func()
+#     return inner
+#
+# def decorate2(func):
+#     print(" I am decorate2")
+#     def inner():
+#         print("i am inner2")
+#         func()
+#     return inner
+#
+# @decorate
+# @decorate2
+# def func():
+#     print("I am func")
+#
+# func()
 
 
 

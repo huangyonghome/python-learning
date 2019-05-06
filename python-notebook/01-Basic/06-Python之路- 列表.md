@@ -277,7 +277,84 @@ print(names_copy)
 
 注意 : 在python2.7中列表的内置方法是没有copy这个方法的 , 这是在python3后加的 , 并且python3也只有有copy (浅copy) 这一个方法 , 用深copy需要我们导入copy模块 , 即 import copy 
 
-深浅copy会在后续文章中整理　
+
+## 深浅拷贝  🍀
+
+#### 以下情况为浅copy
+* 赋值法: l2 = l1
+
+```
+l1 = ['jesse','huang','alex',[ 'name','age',1,2],{"job":'IT',"company":'dwd'}]
+
+l2 = l1.copy()
+
+l1[-1]['industry'] = 'internet'
+l1.append('new')
+l1[0] = 'jessehuang'
+l1[-3].append('newlist')
+
+print(l1, id(l1),id(l1[-2]),id(l1[-3]))
+print(l2, id(l2),id(l2[-2]),id(l2[-3]))
+
+>>> ['jessehuang', 'huang', 'alex', ['name', 'age', 1, 2, 'newlist'], {'job': 'IT', 'company': 'dwd', 'industry': 'internet'}, 'new'] 4307202568 4307174384 4306493320
+['jessehuang', 'huang', 'alex', ['name', 'age', 1, 2, 'newlist'], {'job': 'IT', 'company': 'dwd', 'industry': 'internet'}, 'new'] 4307202568 4307174384 4306493320
+```
+#### 以下情况为中等copy
+1. copy()方法: l2 = l1.copy()
+2. 分片法: l2 = l1[:]
+
+```
+l1 = ['jesse','huang','alex',[ 'name','age',1,2],{"job":'IT',"company":'dwd'}]
+
+l2 = l1.copy()
+
+l1[-1]['industry'] = 'internet'
+l1.insert(0,'new')
+l1[1] = 'jessehuang'
+l1[-2].append('newlist')
+
+print(l1, id(l1),id(l1[-1]),id(l1[-2]))
+print(l2, id(l2),id(l2[-1]),id(l2[-2]))
+
+>>> ['new', 'jessehuang', 'huang', 'alex', ['name', 'age', 1, 2, 'newlist'], {'job': 'IT', 'company': 'dwd', 'industry': 'internet'}] 4399804936 4399776752 4399095688
+['jesse', 'huang', 'alex', ['name', 'age', 1, 2, 'newlist'], {'job': 'IT', 'company': 'dwd', 'industry': 'internet'}] 4399806792 4399776752 4399095688
+
+```
+#### 以下情况为深copy
+**用copy模块的deepcopy方法
+
+```
+import copy
+l1 = ['jesse','huang','alex',[ 'name','age',1,2],{"job":'IT',"company":'dwd'}]
+
+l2 = copy.deepcopy(l1)
+
+
+l1[-1]['industry'] = 'internet'
+l1.insert(0,'new')
+l1[1] = 'jessehuang'
+l1[-2].append('newlist')
+
+print(l1, id(l1),id(l1[-1]),id(l1[-2]))
+print(l2, id(l2),id(l2[-1]),id(l2[-2]))
+
+>>> ['new', 'jessehuang', 'huang', 'alex', ['name', 'age', 1, 2, 'newlist'], {'job': 'IT', 'company': 'dwd', 'industry': 'internet'}] 4552839240 4552418288 4552840456
+['jesse', 'huang', 'alex', ['name', 'age', 1, 2], {'job': 'IT', 'company': 'dwd'}] 4552951304 4552732888 4552951368
+```
+**从以上结果,总结这3种的区别:**
+
+* 对于浅copy:
+    - 1.修改原列表的任何元素,都会影响新列表.
+    - 2.源列表和新列表关联到同一个内存地址空间
+
+* 对于中等copy:
+     - 1.修改原列表内的可变元素(例如原列表本身,原列表的子列表,字典等可变元素)则会影响新列表.
+     - 2.修改原列表内的不可变元素(例如字符串),则不会影响到新列表
+     - 3.个列表本身拥有不同的内存地址空间,但是,列表内的可变子元素(子列表,字典等)还是会关联到同一个内存地址.
+
+* 对于深copy:
+     - 1.修改原列表内的任何元素,都不会影响到新列表
+     - 2.列表本身,以及列表内的所有子元素,都关联到不同的内存地址
 
 ## 排序&翻转  🍀
 

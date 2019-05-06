@@ -184,33 +184,98 @@ name = ['jesse','Lyon','alex','jerry',[1,'tony']]
 #
 # name.reverse()
 # print(name)
+
+'''深浅copy
+'''
+
+#以下情况为浅copy
+#1.赋值法: l2 = l1
+#
+# l1 = ['jesse','huang','alex',[ 'name','age',1,2],{"job":'IT',"company":'dwd'}]
+#
+# l2 = l1.copy()
+#
+# l1[-1]['industry'] = 'internet'
+# l1.insert(0,'new')
+# l1[1] = 'jessehuang'
+# l1[-2].append('newlist')
+#
+# print(l1, id(l1),id(l1[-1]),id(l1[-2]))
+# print(l2, id(l2),id(l2[-1]),id(l2[-2]))
+
+#以下情况为深copy
+#用copy模块的deepcopy方法
+
+import copy
+l1 = ['jesse','huang','alex',[ 'name','age',1,2],{"job":'IT',"company":'dwd'}]
+
+l2 = copy.deepcopy(l1)
+
+
+l1[-1]['industry'] = 'internet'
+l1.insert(0,'new')
+l1[1] = 'jessehuang'
+l1[-2].append('newlist')
+
+print(l1, id(l1),id(l1[-1]),id(l1[-2]))
+print(l2, id(l2),id(l2[-1]),id(l2[-2]))
+
+#以下为深浅中等法
+#1.copy法: l2 = l1.copy()
+#2.切片法:  l2 = l1[:]
+
+# l1 = ['jesse','huang','alex',[ 'name','age',1,2],{"job":'IT',"company":'dwd'}]
+#
+# l2 = l1[:]
+#
+# l1[-1]['industry'] = 'internet'
+# # l1.append('new')
+# # l1[0] = 'jessehuang'
+# l1[-2].append('newlist')
+#
+# print(l1, id(l1),id(l1[-1]))
+# print(l2, id(l2),id(l2[-1]))
+
+#总结这3种的区别:
+
+#对于浅copy: 1.修改原列表的任何元素,都会影响新列表.
+#           2.源列表和新列表关联到同一个内存地址空间
+
+#对于中等copy: 1.修改原列表内的可变元素(例如原列表本身,原列表的子列表,字典等可变元素)则会影响新列表.
+#             2.修改原列表内的不可变元素(例如字符串),则不会影响到新列表
+#             3.2个列表本身拥有不同的内存地址空间,但是,列表内的可变子元素(子列表,字典等)还是会关联到同一个内存地址.
+
+#对于深copy: 1.修改原列表内的任何元素,都不会影响到新列表
+#           2.列表本身,以及列表内的所有子元素,都关联到不同的内存地址
+
+
 '''
 练习题
 '''
 
 #1.将下列列表中奇数索引的元素删除
 
-l1 = [00,11,22,33,44,55,66]
-l2 = []
-
-#方法一.采取步长方式
-
-print(l1[::2])
-
-#方法二.判断是否能被2整除..因为列表是可变的,对列表的任何修改都会得到预期之外的结果.所以不能对列表进行直接操作
-
-for num in range(len(l1)):
-     if num % 2 == 0:
-         l2.append(l1[num])
-
-print(l2)
-
-#方法三..倒序循环列表,可以直接修改.因为修改列表(删除列表元素)对循环的索引没有影响.
-
-#注意,起始索引是列表长度-1,然后截止索引是-1,而不是0,步长是-1
-
-for num in range(len(l1)-1,-1,-1):
-    if num % 2 == 1:
-        del l1[num]
-
-print(l1)
+# l1 = [00,11,22,33,44,55,66]
+# l2 = []
+#
+# #方法一.采取步长方式
+#
+# print(l1[::2])
+#
+# #方法二.判断是否能被2整除..因为列表是可变的,对列表的任何修改都会得到预期之外的结果.所以不能对列表进行直接操作
+#
+# for num in range(len(l1)):
+#      if num % 2 == 0:
+#          l2.append(l1[num])
+#
+# print(l2)
+#
+# #方法三..倒序循环列表,可以直接修改.因为修改列表(删除列表元素)对循环的索引没有影响.
+#
+# #注意,起始索引是列表长度-1,然后截止索引是-1,而不是0,步长是-1
+#
+# for num in range(len(l1)-1,-1,-1):
+#     if num % 2 == 1:
+#         del l1[num]
+#
+# print(l1)
