@@ -157,26 +157,58 @@
 
 #需求4.精简代码.使用语法糖格式
 
+# import time
+#
+# def timer(f):
+#     def inner(): #使用函数闭包
+#         start_time = time.time()
+#         f()
+#         end_time = time.time()
+#         print("it costs time: %f" %(end_time-start_time))
+#     return inner
+#
+# @timer  #@函数名,这个就是语法糖.实际上这一行等同于 func1 = timer(func1)
+# def func1():
+#     time.sleep(0.5)
+#     print("i am func1")
+#
+# @timer #实际上这一行等同于 func2 = timer(func2)
+# def func2():
+#     time.sleep(0.5)
+#     print("i am func2")
+#
+#
+# func1()
+# func2()
+
+#需求5.多个装饰器,装饰一个函数
+
 import time
 
-def timer(f):
+def timer1(f):
+    print("i am timer1")
     def inner(): #使用函数闭包
         start_time = time.time()
         f()
         end_time = time.time()
-        print("it costs time: %f" %(end_time-start_time))
+        print("timer1 costs time: %f" %(end_time-start_time))
     return inner
 
-@timer  #@函数名,这个就是语法糖.实际上这一行等同于 func1 = timer(func1)
+def timer2(f):
+    print("i am timer2")
+    def inner(): #使用函数闭包
+        start_time = time.time()
+        f()
+        end_time = time.time()
+        print("timer2 costs time: %f" %(end_time-start_time))
+    return inner
+
+
+@timer1
+@timer2 #@函数名,这个就是语法糖.实际上这一行等同于 func1 = timer(func1)
 def func1():
     time.sleep(0.5)
     print("i am func1")
 
-@timer #实际上这一行等同于 func2 = timer(func2)
-def func2():
-    time.sleep(0.5)
-    print("i am func2")
-
 
 func1()
-func2()
