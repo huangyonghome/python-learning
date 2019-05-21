@@ -183,32 +183,108 @@
 
 #需求5.多个装饰器,装饰一个函数
 
-import time
+# import time
+#
+# def timer1(f):
+#     print("i am timer1")
+#     def inner(): #使用函数闭包
+#         start_time = time.time()
+#         f()
+#         end_time = time.time()
+#         print("timer1 costs time: %f" %(end_time-start_time))
+#     return inner
+#
+# def timer2(f):
+#     print("i am timer2")
+#     def inner(): #使用函数闭包
+#         start_time = time.time()
+#         f()
+#         end_time = time.time()
+#         print("timer2 costs time: %f" %(end_time-start_time))
+#     return inner
+#
+#
+# @timer1
+# @timer2 #@函数名,这个就是语法糖.实际上这一行等同于 func1 = timer(func1)
+# def func1():
+#     time.sleep(0.5)
+#     print("i am func1")
+#
+#
+# func1()
 
-def timer1(f):
-    print("i am timer1")
-    def inner(): #使用函数闭包
-        start_time = time.time()
-        f()
-        end_time = time.time()
-        print("timer1 costs time: %f" %(end_time-start_time))
-    return inner
+#需求5.装饰器函数带参数,而且func1()函数是一个参数,func2()函数是2个参数
 
-def timer2(f):
-    print("i am timer2")
-    def inner(): #使用函数闭包
-        start_time = time.time()
-        f()
-        end_time = time.time()
-        print("timer2 costs time: %f" %(end_time-start_time))
-    return inner
+# import time
+#
+#
+# def timer(f):
+#     print("i am timer")
+#     def inner(*args,**kwargs): #使用函数闭包
+#         start_time = time.time()
+#         f(*args,**kwargs)
+#         end_time = time.time()
+#         print("timer costs time: %f" %(end_time-start_time))
+#     return inner
+#
+#
+#
+# @timer #@函数名,这个就是语法糖.实际上这一行等同于 func1 = timer(func1)
+# def func1(a):
+#     time.sleep(0.5)
+#     print("i am %s" %a)
+#
+# @timer
+# def func2(x,y):
+#     time.sleep(0.5)
+#     print("i am %s,another name is %s" %(x,y))
+#
+#
+# func1('jesse')
+# func2('jessehuang','jerry')
+
+#带参数装饰器
+
+# def outer(a,b):
+#     print(a,b)
+#
+#     def wrapper(f):
+#         print("i am wrapper")
+#         def inner(*args,**kwargs):
+#             print("i am inner")
+#             f(*args,**kwargs)
+#         return inner
+#
+#     return wrapper
+#
+#
+# @outer(1,2)
+# def func1():
+#     print('i am func1')
+#
+# func1()
 
 
-@timer1
-@timer2 #@函数名,这个就是语法糖.实际上这一行等同于 func1 = timer(func1)
-def func1():
-    time.sleep(0.5)
-    print("i am func1")
+def wrapper1(f): #这里接收的参数是inner2
+    def inner1():
+        print(" i am wrapper1,before func")  #setp 1
+        f()  #这里是 inner2().调用inner2()
+        print(" i am wrapper1,after func") #setp 5
+    return inner1
 
 
-func1()
+def wrapper2(f):
+    def inner2():
+        print(" i am wrapper2,before func") #setp 2
+        f()  # 这里是func函数
+        print(" i am wrapper2,after func") #setp 4
+    return inner2
+
+
+@wrapper1   #然后再执行wrapper1的装饰器....此时func=wrapper1(func) 外面的func是wrapper1返回的inner1函数..里面的func是@wrapper2装饰器返回的inner2函数
+@wrapper2   #wrapper2的装饰器先执行...此时func=wrapper2(func)  外面的func是inner2函数.里面的func是func函数
+def func():
+    print("i am func")  #setp 3
+
+
+func() #这里的func实际上是@wrapper1装饰器的inner1函数. 也就是inner1(inner2).

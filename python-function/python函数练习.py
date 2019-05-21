@@ -120,76 +120,103 @@
 
 # 练习:
 
-#将下列数据传入函数args参数,并且最终打印出来的是一个元祖.效果如下(1,2,3,4,11,22,33,44......555)
-
-l1 = [1,2,3,4]
-l2 = [11,22,33,44]
-l3 = (111,222,333,444,555)
-
-
-# def func7(*args):
-#    t1 = ()
-#    for i in args:
-#        t1 = t1 + tuple(i)
-#    print(t1)
+# #将下列数据传入函数args参数,并且最终打印出来的是一个元祖.效果如下(1,2,3,4,11,22,33,44......555)
 #
-# func7(l1,l2,l3)
-
-#有个更简单的用法
-
-def func8(*args):
-    print(args)
-func8(*l1,*l2,*l3)
-
-## 形参中的*和** 表示聚合,将聚合后的值赋值给args和kwargs
-## 实参中的*和** 表示打散,其中*表示将多个可迭代的对象拆分(l1,l2,l3),然后依次传递个形参的args
-##                     其中**表示将多个可迭代的字典拆分,然后依次传递给形参的**kwargs
-
-# 例如:
-
-dic1 = {'name':'jesse',"age":22}
-dic2 = {'job':'it',"company":'dwd'}
-
-def func9(**kwargs):
-    print(kwargs) #kwargs并非将2个字典作为2个独立元素打印,而是将2个字典所有元素合并在一起打印
-
-func9(**dic1,**dic2)
-
-
-# def main(*args, **kwargs):  # 参数状态:(1,2,3,4,5){'n1':1,'n2':2,'n3'=3}
-#     # 进行解包
-#     return (*args), {**kwargs}  # 参数状态:1,2,3,4,5,n1=1,n2=2,n3=3
+# l1 = [1,2,3,4]
+# l2 = [11,22,33,44]
+# l3 = (111,222,333,444,555)
 #
 #
-# result = main(1, 2, 3, 4, 5, n1=1, n2=2, n3=3)
-# print(result)
+# # def func7(*args):
+# #    t1 = ()
+# #    for i in args:
+# #        t1 = t1 + tuple(i)
+# #    print(t1)
+# #
+# # func7(l1,l2,l3)
+#
+# #有个更简单的用法
+#
+# def func8(*args):
+#     print(args)
+# func8(*l1,*l2,*l3)
+#
+# ## 形参中的*和** 表示聚合,将聚合后的值赋值给args和kwargs
+# ## 实参中的*和** 表示打散,其中*表示将多个可迭代的对象拆分(l1,l2,l3),然后依次传递个形参的args
+# ##                     其中**表示将多个可迭代的字典拆分,然后依次传递给形参的**kwargs
+#
+# # 例如:
+#
+# dic1 = {'name':'jesse',"age":22}
+# dic2 = {'job':'it',"company":'dwd'}
+#
+# def func9(**kwargs):
+#     print(kwargs) #kwargs并非将2个字典作为2个独立元素打印,而是将2个字典所有元素合并在一起打印
+#
+# func9(**dic1,**dic2)
+#
+#
+# # def main(*args, **kwargs):  # 参数状态:(1,2,3,4,5){'n1':1,'n2':2,'n3'=3}
+# #     # 进行解包
+# #     return (*args), {**kwargs}  # 参数状态:1,2,3,4,5,n1=1,n2=2,n3=3
+# #
+# #
+# # result = main(1, 2, 3, 4, 5, n1=1, n2=2, n3=3)
+# # print(result)
+#
+#
+# mytuple = (1,2,3,4,5,6,7)
+#   # _为占位符,*c打包成列表
+#
+# mytuple = (1,2,3,4,5,6,7)
+#   # _为占位符,*c打包成列表
+# a,_,b,*c,d = mytuple
+# print(a)
+# print(b)
+# print(c)
+# print(d)
+# ##
+#
+# '''
+# 参数顺序
+# '''
+#
+# ## 顺序依次如下:位置参数,*args,关键字参数,**args
+#
+#
+# def func9(a,b,*args,sex='male',**kwargs):
+#     print(a,b)
+#     print(args)
+#     print(sex)
+#     print(kwargs)
+#
+# func9(1,2,3,4,5,6,sex='female',name='jesse',age=24)
+#
+# func9(1,2,3,4,5,6,name='jesse',age=24,sex='female')
 
+# def func(*args):
+#     print(args)
+#
+#
+# def func1(*args):
+#     func(*args)
+#
+# func1("hello,world","jesse")
+import time
+b = 1
+while True:
+    a = 'world'
+    l1 = [a,str(b)]
+    print(''.join(l1))
+    b+=1
+    time.sleep(1)
 
-mytuple = (1,2,3,4,5,6,7)
-  # _为占位符,*c打包成列表
-
-mytuple = (1,2,3,4,5,6,7)
-  # _为占位符,*c打包成列表
-a,_,b,*c,d = mytuple
-print(a)
-print(b)
-print(c)
-print(d)
-##
-
-'''
-参数顺序
-'''
-
-## 顺序依次如下:位置参数,*args,关键字参数,**args
-
-
-def func9(a,b,*args,sex='male',**kwargs):
-    print(a,b)
-    print(args)
-    print(sex)
-    print(kwargs)
-
-func9(1,2,3,4,5,6,sex='female',name='jesse',age=24)
-
-func9(1,2,3,4,5,6,name='jesse',age=24,sex='female')
+# a= 'hello'
+# b = 1
+#
+# print(a+str(b))
+a= 'hello'
+b = 1
+while True:
+    print($a$b)
+    b+=1

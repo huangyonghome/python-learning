@@ -465,6 +465,42 @@ def func():
     return None
 func()
 ```
+
+#### 多个装饰器,装饰一个函数
+
+```
+def wrapper1(f): #这里接收的参数是inner2
+    def inner1():
+        print(" i am wrapper1,before func")  #setp 1
+        f()  #这里是 inner2().调用inner2()
+        print(" i am wrapper1,after func") #setp 5
+    return inner1
+
+
+def wrapper2(f):
+    def inner2():
+        print(" i am wrapper2,before func") #setp 2
+        f()  # 这里是func函数
+        print(" i am wrapper2,after func") #setp 4
+    return inner2
+
+
+@wrapper1   #然后再执行wrapper1的装饰器....此时func=wrapper1(func) 外面的func是wrapper1返回的inner1函数..里面的func是@wrapper2装饰器返回的inner2函数
+@wrapper2   #wrapper2的装饰器先执行...此时func=wrapper2(func)  外面的func是inner2函数.里面的func是func函数
+def func():
+    print("i am func")  #setp 3
+
+
+func() #这里的func实际上是@wrapper1装饰器的inner1函数. 也就是inner1(inner2).
+
+>>>执行结果:
+ i am wrapper1,before func
+ i am wrapper2,before func
+i am func
+ i am wrapper2,after func
+ i am wrapper1,after func
+ 
+```
 ---
 
 此外,还可以通过以下这个例子还学习闭包和装饰器.
@@ -548,7 +584,7 @@ func2 = timer(func2)
 func1()
 func2()
 ```
-#需求4.精简代码.使用语法糖格式.这个语法糖格式就是装饰器.其中timer函数就是装饰函数
+需求4.精简代码.使用语法糖格式.这个语法糖格式就是装饰器.其中timer函数就是装饰函数
 
 ```
 import time
@@ -578,5 +614,37 @@ func2()
 it costs time: 0.504823
 i am func2
 it costs time: 0.505066
+```
+
+需求5.给装饰器传递参数
+
+```
+import time
+
+
+def timer(f):
+    print("i am timer")
+    def inner(*args,**kwargs): #使用函数闭包
+        start_time = time.time()
+        f(*args,**kwargs)
+        end_time = time.time()
+        print("timer costs time: %f" %(end_time-start_time))
+    return inner
+
+
+
+@timer #@函数名,这个就是语法糖.实际上这一行等同于 func1 = timer(func1)
+def func1(a):
+    time.sleep(0.5)
+    print("i am %s" %a)
+
+@timer
+def func2(x,y):
+    time.sleep(0.5)
+    print("i am %s,another name is %s" %(x,y))
+
+
+func1('jesse')
+func2('jessehuang','jerry')
 ```
 
