@@ -442,6 +442,7 @@ def outer(flag):
         return inner
     return decorator
 
+#下面这个装饰器执行了2个步骤: 1.先执行outer(F),把参数传递给outer()函数. 2.然后执行func = decorator(func)
 @outer(F)      # outer(F) = decorator(func)
 def func():
     print('I am func')
@@ -499,7 +500,7 @@ func() #这里的func实际上是@wrapper1装饰器的inner1函数. 也就是inn
 i am func
  i am wrapper2,after func
  i am wrapper1,after func
- 
+
 ```
 ---
 

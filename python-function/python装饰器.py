@@ -245,8 +245,43 @@
 
 #带参数装饰器
 
-# def outer(a,b):
-#     print(a,b)
+def outer(a,b):
+    print(a,b)
+
+    def wrapper(f):
+        print("i am wrapper")
+        def inner(*args,**kwargs):
+            print("i am inner")
+            f(*args,**kwargs)
+        return inner
+
+    return wrapper
+
+
+@outer(1,2)  #这个装饰器执行了2个步骤: 1.先执行outer(1,2),把参数传递给outer()函数. 2.然后执行func1 = wrapper(func1)
+def func1():
+    print('i am func1')
+
+func1()
+
+
+
+# def wrapper(f):
+#     print("i am wrapper")
+#     def inner(*args,**kwargs):
+#         print("i am inner")
+#         f(*args,**kwargs)
+#     return inner
+#
+#
+# @wrapper  #func = outer(func)
+# def func1():
+#     print('i am func1')
+#
+# func1()
+
+# def outer(f):
+#     # print(a,b)
 #
 #     def wrapper(f):
 #         print("i am wrapper")
@@ -258,33 +293,34 @@
 #     return wrapper
 #
 #
-# @outer(1,2)
+#
 # def func1():
 #     print('i am func1')
 #
+# func1 = outer(func1)
 # func1()
 
 
-def wrapper1(f): #这里接收的参数是inner2
-    def inner1():
-        print(" i am wrapper1,before func")  #setp 1
-        f()  #这里是 inner2().调用inner2()
-        print(" i am wrapper1,after func") #setp 5
-    return inner1
-
-
-def wrapper2(f):
-    def inner2():
-        print(" i am wrapper2,before func") #setp 2
-        f()  # 这里是func函数
-        print(" i am wrapper2,after func") #setp 4
-    return inner2
-
-
-@wrapper1   #然后再执行wrapper1的装饰器....此时func=wrapper1(func) 外面的func是wrapper1返回的inner1函数..里面的func是@wrapper2装饰器返回的inner2函数
-@wrapper2   #wrapper2的装饰器先执行...此时func=wrapper2(func)  外面的func是inner2函数.里面的func是func函数
-def func():
-    print("i am func")  #setp 3
-
-
-func() #这里的func实际上是@wrapper1装饰器的inner1函数. 也就是inner1(inner2).
+# def wrapper1(f): #这里接收的参数是inner2
+#     def inner1():
+#         print(" i am wrapper1,before func")  #setp 1
+#         f()  #这里是 inner2().调用inner2()
+#         print(" i am wrapper1,after func") #setp 5
+#     return inner1
+#
+#
+# def wrapper2(f):
+#     def inner2():
+#         print(" i am wrapper2,before func") #setp 2
+#         f()  # 这里是func函数
+#         print(" i am wrapper2,after func") #setp 4
+#     return inner2
+#
+#
+# @wrapper1   #然后再执行wrapper1的装饰器....此时func=wrapper1(func) 外面的func是wrapper1返回的inner1函数..里面的func是@wrapper2装饰器返回的inner2函数
+# @wrapper2   #wrapper2的装饰器先执行...此时func=wrapper2(func)  外面的func是inner2函数.里面的func是func函数
+# def func():
+#     print("i am func")  #setp 3
+#
+#
+# func() #这里的func实际上是@wrapper1装饰器的inner1函数. 也就是inner1(inner2).

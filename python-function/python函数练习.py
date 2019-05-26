@@ -202,21 +202,4 @@
 #     func(*args)
 #
 # func1("hello,world","jesse")
-import time
-b = 1
-while True:
-    a = 'world'
-    l1 = [a,str(b)]
-    print(''.join(l1))
-    b+=1
-    time.sleep(1)
 
-# a= 'hello'
-# b = 1
-#
-# print(a+str(b))
-a= 'hello'
-b = 1
-while True:
-    print($a$b)
-    b+=1

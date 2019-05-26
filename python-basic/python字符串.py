@@ -8,7 +8,7 @@
 
 ### 1.拼接
 
-#有两个方法,一是用+号,例如:
+#有三个方法,一是用+号,例如:
 
 a = 'hello'
 b = 'jesse'
@@ -21,6 +21,34 @@ b = 'jesse'
 # print("".join(b))
 #
 # print(",".join(b))
+
+#第三个方法是格式化输出..下面是这3个方法的例子..可以看出格式化输出是拼接的最简单方法
+
+a = 'world'
+b = 1
+while b < 10:
+    l1 = [a,str(b)]
+    print(''.join(l1))
+    b+=1
+
+
+
+
+a = 'hello'
+b = 1
+
+while b < 10:
+    print("%s%d" %(a,b))
+    b+=1
+
+
+a = 'hello'
+b = 1
+
+while b < 5:
+    print(a+str(b))
+    b+=1
+
 
 ###2.查找
 
