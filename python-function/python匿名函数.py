@@ -16,7 +16,7 @@ def func(x):
 
 print(func(5))
 
-#匿名函数写法
+#匿名函数写法.(函调调用的时候传参)
 
 func1 = lambda x : x*x
 print(func1(5))
@@ -37,3 +37,29 @@ print(func3)
 
 func4 = map(lambda i : i*i,[1,2,3,4,5])
 print(list(func4))
+
+#filter 筛选偶数
+
+func5 = filter(lambda x : x % 2 == 0,[1,2,3,4,5,6])
+print(list(func5))
+
+#max 筛选最大值(按照子元素的第二个值)
+
+dic1 = {'k1':10,'k2':200,'k3':30}
+func6 = max(dic1,key=lambda x : dic1[x])
+print(func6)
+
+
+#嵌套使用
+
+def func6(x):
+    return lambda y : x + y
+
+f = func6(2)
+print(f(6))
+
+
+func7 = lambda x: (lambda y : x + y)
+
+f = func7(6)
+print(f(6))

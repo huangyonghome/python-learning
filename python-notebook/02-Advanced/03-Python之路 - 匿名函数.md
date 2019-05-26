@@ -74,7 +74,7 @@ reduce , 求和
 
 ```python
 def func(x):
-    return lambda x : x + y
+    return lambda y : x + y
 f = func(2)
 print(f(2))
 # output: 4
