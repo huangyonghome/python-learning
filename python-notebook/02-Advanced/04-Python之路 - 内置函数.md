@@ -132,8 +132,8 @@ please input your name:'pythoner'
 转换为十六进制
 
 ```python
->>> oct(13)
-'0o15'
+>>> hex(10)
+'0xa'
 ```
 
 #### 数学运算  🍀
@@ -192,6 +192,11 @@ please input your name:'pythoner'
 ```python
 >>> sum((1,2,3,4))
 10
+
+#还可以针对列表迭代对象进行求和
+l1 = [i for i in range(1,11)]
+
+print(sum(l1))
 ```
 
 > `round`(*number[, ndigits]*)  👈
