@@ -279,3 +279,9 @@ print(l2, id(l2),id(l2[-1]),id(l2[-2]))
 #         del l1[num]
 #
 # print(l1)
+
+#判断是否是列表的元素
+
+l1 = ['jesse','jerry']
+
+print('jesse' not in l1)

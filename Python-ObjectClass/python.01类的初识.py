@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 # @Time    : 2019/5/27 上午11:45
 # @Author  : jesse
-# @File    : python类的初识.py
+# @File    : python.01类的初识.py
 
 
 #类的格式

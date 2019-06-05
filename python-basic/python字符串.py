@@ -163,3 +163,9 @@ b = 'jesse'
 # a = 'world'
 #
 # print('hello',a)
+
+
+if not b.startswith('j'):
+    print("yes")
+else:
+    print("yes")

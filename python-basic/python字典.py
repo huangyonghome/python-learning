@@ -218,3 +218,10 @@ print(dic.keys())
 #
 # print(dic)
 
+
+dic1 = {1:{'name':'jesse',"age":22},2:{"name":"jerry","age":23}}
+
+print(dic1[1])
+
+
+print(dic1.keys())

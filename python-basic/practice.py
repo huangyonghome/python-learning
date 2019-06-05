@@ -4,9 +4,6 @@
 # @Author  : jesse
 # @File    : practice.py
 
-a = 'world'
-b = 1
-while b < 10:
-    l1 = [a,b]
-    print(''.join(l1))
-    b+=1
+dic = {"name":"jesse","age":33,"job":"it","sex":"male"}
+
+print(list(dic.keys()))

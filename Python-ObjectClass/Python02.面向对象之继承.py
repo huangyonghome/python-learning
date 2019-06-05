@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # @Time    : 2019-06-01 23:35
 # @Author  : jesse
-# @File    : Python面向对象之继承.py
+# @File    : Python02.面向对象之继承.py
 
 #继承就是该类是基于父类(也称基类,超类)而来,继承的类通常称为子类或者派生类
 
@@ -268,59 +268,25 @@
 
 
 
-# class A(object):
-#     def __init__(self):
-#         print("This is from A")
-# class B(A):
-#     def __init__(self):
-#         print("This is from B")
-#         super().__init__()
-#         print("This is from B")
-# class C(A):
-#     def __init__(self):
-#         print("This is from C")
-#         super().__init__()
-#         print("This is from C")
-# class D(B,C):
-#     def __init__(self):
-#         print("This is from D")
-#         super().__init__()
-#         print("This is from D")
-# d = D()
-
-#类的限制访问, __双划线开头的变量表示这个变量是私有变量,不允许从外部访问.要想访问可以定义一个方法来获取
-
-# class Person():
-#     def __init__(self,name):
-#         self.__name = name
-#
-#     def get_name(self):
-#         self.__name = self.__name+'hello'
-#         return self.__name
-#
-# p1 = Person('jesse')
-# print(p1.get_name())
-# print(p1._Person__name)
-
-#使用私有方法,可以实现子类不会继承父类方法
-
-class A:
-    def __func(self):
-        print("From A")
-
-    def test1(self):
-        self.__func()
-
-
+class A(object):
+    def __init__(self):
+        print("This is from A")
 class B(A):
-    def __func(self):
-        print("From B")
+    def __init__(self):
+        print("This is from B")
+        super().__init__()
+        print("This is from B")
+class C(A):
+    def __init__(self):
+        print("This is from C")
+        super().__init__()
+        print("This is from C")
+class D(B,C):
+    def __init__(self):
+        print("This is from D")
+        super().__init__()
+        print("This is from D")
+d = D()
 
-    def test2(self):
-        self.__func()
 
 
-b = B()
-
-b.test1()
-b.test2()
