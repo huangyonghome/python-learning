@@ -147,41 +147,90 @@
 
 #实际应用
 
-class Goods:
-    def __init__(self):
-        #原价
-        self.original_price = 100
-        #折扣
-        self.discount = 0.8
+# class Goods:
+#     def __init__(self):
+#         #原价
+#         self.original_price = 100
+#         #折扣
+#         self.discount = 0.8
+#
+#     #静态属性.获取price价格
+#     @property
+#     def price(self):
+#         good_price = self.original_price * self.discount
+#         return good_price
+#
+#     #静态属性的修改方法,调整静态属性的值.注意方法名不变仍然为price
+#     @price.setter
+#     def price(self,value):
+#         self.original_price = value
+#
+#     # 静态属性的删除方法,删除某个静态属性.注意方法名不变仍然为price
+#     @price.deleter
+#     def price(self):
+#         del self.original_price
+#
+#
+# #实例化一个对象
+#
+# apple = Goods()
+#
+# #获取价格
+# print(apple.price)
+#
+# #修改原价后,再次获取价格
+# apple.price = 200
+# print(apple.price)
+#
+# #删除价格
+# # del apple.price
+# # print(apple.price) #再次获取价格会报错
+#
+# class C:
+#
+#     count = 0
+#
+#     def __init__(self):
+#         self.ou()
+#
+#
+#     def ou(self):
+#         C.count += 1
+#
+# a = C()
+# a.ou()
+# a.ou()
+# a.ou()
+# a.ou()
+# a.ou()
+# a.ou()
+# print(a.count)
 
-    #静态属性.获取price价格
+
+#属性方法.计算BMI指数
+
+
+class A:
+
+    def __init__(self,weight,high):
+        self.weight = weight
+        self.high = high
+
     @property
-    def price(self):
-        good_price = self.original_price * self.discount
-        return good_price
+    def bmi(self):
+        BMI = self.weight / (self.high ** 2)
+        print(BMI)
+        if  18.5 >= BMI:
+            return "体重过轻"
+        elif 18.5 < BMI <= 23.9:
+            return "体重正常"
+        elif 24 < BMI <= 27:
+            return "体重过重"
+        elif 28 <= BMI <= 32:
+            return "肥胖"
+        elif 32 <= BMI:
+            return "非常肥胖"
 
-    #静态属性的修改方法,调整静态属性的值.注意方法名不变仍然为price
-    @price.setter
-    def price(self,value):
-        self.original_price = value
 
-    # 静态属性的删除方法,删除某个静态属性.注意方法名不变仍然为price
-    @price.deleter
-    def price(self):
-        del self.original_price
-
-
-#实例化一个对象
-
-apple = Goods()
-
-#获取价格
-print(apple.price)
-
-#修改原价后,再次获取价格
-apple.price = 200
-print(apple.price)
-
-#删除价格
-del apple.price
-print(apple.price) #再次获取价格会报错
+a = A(72,1.70)
+print(a.bmi)

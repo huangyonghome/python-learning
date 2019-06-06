@@ -81,19 +81,64 @@
 # a = A()
 # print(str(a))
 # print(repr(a))
+#
+# class Person:
+#     def __init__(self, name, age):
+#         self.name = name
+#         self.age = age
+#     def __hash__(self):
+#         return hash(self.name)
+#     def __eq__(self, other):
+#         if self.name == other.name:
+#             return True
+#
+# p_lst = []
+# for i in range(84):
+#     p_lst.append(Person('Lyon', i))
+# print(p_lst)
+# print(set(p_lst))
 
-class Person:
-    def __init__(self, name, age):
-        self.name = name
-        self.age = age
-    # def __hash__(self):
-    #     return hash(self.name)
-    def __eq__(self, other):
-        if self.name == other.name:
-            return True
 
-p_lst = []
-for i in range(84):
-    p_lst.append(Person('Lyon', i))
-print(p_lst)
-print(set(p_lst))
+# __new__ __init__
+
+# __new__ 方法负责实例化一个对象. __init__方法负责初始化一个对象
+
+# 例子:
+
+# class A:
+#     def __init__(self):
+#         self.x = 1
+#         print("执行了init方法")
+#
+#     def __new__(cls, *args, **kwargs):
+#         print("执行了new方法")
+#
+#
+# 因为我们重写了__new__方法.所以并没有成功创建a对象
+# 虽然A实例化了一个对象a.但是实际上a并没有成功实例化,a的值为None.而且实例化对象的时候也没有执行init初始化方法
+# a = A()
+# print(a)
+# print(a.x) #打印报错,没有x属性
+#
+#
+# #重写__new__方法
+#
+# class A:
+#     def __init__(self):
+#         self.x = 1
+#         print("执行了init方法")
+#
+#     def __new__(cls, *args, **kwargs):
+#         #return super().__new__(cls)  #调用父类(object类)的__new__方法
+#         #也可以写成:
+#         return object.__new__(cls)
+#         print("执行了new方法")
+#
+#
+# a = A()
+# print(a)
+# print(a.x)
+
+## item  🍀
+
+# \_\_getitem\_\_ , \_\_setitem\_\_ , \_\_delitem\_\_  用于索引操作 , 如字典 , 以上分别表示获取 , 设置 , 删除数据

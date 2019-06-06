@@ -7,3 +7,7 @@
 dic = {"name":"jesse","age":33,"job":"it","sex":"male"}
 
 print(list(dic.keys()))
+
+
+a = 3 /2
+print(3**2)
