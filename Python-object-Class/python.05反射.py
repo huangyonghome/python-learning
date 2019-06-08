@@ -92,10 +92,8 @@ class B:
 
 b = B()
 
-#新增一个age属性jhfd  `z9685743ze#
+#新增一个age属性
 
-
-1`  ```
 setattr(b,'age',18)
 
 #打印age属性

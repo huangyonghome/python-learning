@@ -6,4 +6,4 @@
 
 class Foo:
     def __init__(self):
-        pass
+        print("执行Foo函数")

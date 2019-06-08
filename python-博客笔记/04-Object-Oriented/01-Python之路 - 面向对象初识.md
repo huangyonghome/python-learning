@@ -50,7 +50,7 @@ p.eat()
 * 类 (class)  
 
 类就是 `对现实生活中一类具有共同特征事物的抽象` 
-
+ban
 类起到一个模板的作用 , 当我们创建一个类时 , 就相当于创建了一个初始的'模型' , 我们可以通过这个'模型' 来创建出一个个具有相同特征或功能的事物 , 来帮助我们更好的处理问题
 
 在上述栗子中类名Person 后有一个` (object) ` , 这是新式类的写法 , 而在python3.x 以上的版本中 , 默认为新式类 , 所以也可直接 ` class Person: ` 
@@ -69,9 +69,9 @@ p.eat()
 
 属性是实体的描述性质或特征 , 比如人有名字 , 年龄 , 性别等 . 当然还有人所能做的事情也是一种属性 , 比如吃饭 , 睡觉 , 喝水等 . 对于这两种属性 , 一种是表示特征的 , 叫做静态属性 , 另一种则是表示功能的 , 叫做动态属性
 
-在Python中 , 我们将***静态属性*** 就称为` 属性 `  , 将***动态属性*** 就称为` 方法  `  , 并且以变量来表示属性 , 以函数表示方法 , 见下图:
+在Python中 , 我们将***静态属性*** 就称为` 属性 `  , 将***动态属性*** 就称为` 方法  `  , 并且以变量来表示属性 , 以函数表示方法
 
-![object_attr](http://oux34p43l.bkt.clouddn.com/object_attr.png?imageMogr2/blur/1x0/quality/75|watermark/2/text/bHlvbi55YW5nQHFxLmNvbQ==/font/YXBhcmFqaXRh/fontsize/560/fill/Izk0ODI4Mg==/dissolve/100/gravity/SouthEast/dx/10/dy/10)
+
 
 *PS:类中的函数已经不叫函数了 , 而叫做方法* 
 
@@ -269,9 +269,7 @@ print(hex(id(b)))
 
 我们通过类创建一个实例 , 就会在内存中新开辟一块内存空间来存放这个实例的所有属性 , 实例属性一旦创建 , 基本跟类就没有什么太大的关系了 . 如果要修改实例属性那么就只能通过实例来进行修改了 , 并且实例与实例之间也是互不干扰的
 
-如下图中 , 类与实例 , 实例与实例 都开辟了自己的内存空间
 
-![memory_space](http://oux34p43l.bkt.clouddn.com/memory_space?imageMogr2/blur/1x0/quality/75|watermark/2/text/bHlvbi55YW5nQHFxLmNvbQ==/font/YXBhcmFqaXRh/fontsize/560/fill/Izk0ODI4Mg==/dissolve/100/gravity/SouthEast/dx/10/dy/10)
 
 ## 对象交互与类的组合  🍀
 

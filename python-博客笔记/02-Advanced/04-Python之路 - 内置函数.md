@@ -132,8 +132,8 @@ please input your name:'pythoner'
 转换为十六进制
 
 ```python
->>> hex(10)
-'0xa'
+>>> oct(13)
+'0o15'
 ```
 
 #### 数学运算  🍀
@@ -192,11 +192,6 @@ please input your name:'pythoner'
 ```python
 >>> sum((1,2,3,4))
 10
-
-#还可以针对列表迭代对象进行求和
-l1 = [i for i in range(1,11)]
-
-print(sum(l1))
 ```
 
 > `round`(*number[, ndigits]*)  👈
@@ -270,6 +265,11 @@ print(sum(l1))
 
 ```python
 >>> repr(123)
+```
+repr还有另外一种用法就是格式化输出的时候,%r表示法 .
+
+```
+print("my name is %s,I am %r" %('alex','sb'))
 ```
 
 >`format`(*value*[, *format_spec*]) 👈
@@ -440,6 +440,24 @@ b'lyon'
 [1,2,3,4,5,6,7,8,9]
 >>> l
 
+```
+sorted排序还支持像函数传参,接收函数返回值,从而对返回值进行排序
+
+```
+l_sort = [('alex',2),('wusir',3),('jesse',4),('david',9)]
+
+l_sort1 = sorted(l_sort) #默认按照列表的每个元素的首字母进行排序
+print(l_sort1)
+```
+
+使用函数来返回列表中每个子元素的第二个元素,对第二个元素(也就是数字)来进行排序
+
+```
+def f_sort(x): #函数指定形参,接收sorted方法传递的参数
+    return x[1]
+
+l_sort2 = sorted(l_sort,key=f_sort) #key关键字指定一个函数名(只是函数名,不是函数调用)
+print(l_sort2)
 ```
 
 ## 迭代器/生成器相关(3个) 🍀

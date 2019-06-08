@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 # @Time    : 2019/6/5 下午6:09
 # @Author  : jesse
-# @File    : python.05特殊成员方法.py
+# @File    : python.06特殊成员方法.py
 
 # ########## __doc__方法查看描述信息
 #
@@ -75,12 +75,19 @@
 #改变对象的字符串显示 , 这两个方法都只能返回字符串
 
 # class A:
+#     def __init__(self,name):
+#         self.name = name
 #     def __str__(self):
-#         return "I am str"
+#         return ("I am str:%s" %self.name)
+#     def __repr__(self):
+#         return ("I am repr:%s" %self.name)
 #
-# a = A()
+# a = A('jesse')
 # print(str(a))
 # print(repr(a))
+
+
+
 #
 # class Person:
 #     def __init__(self, name, age):
@@ -142,3 +149,79 @@
 ## item  🍀
 
 # \_\_getitem\_\_ , \_\_setitem\_\_ , \_\_delitem\_\_  用于索引操作 , 如字典 , 以上分别表示获取 , 设置 , 删除数据
+
+# class A:
+#     def __init__(self,name):
+#         self.name = name
+#
+#     def __getitem__(self, item): #将'name'作为参数传递给item
+#         print("执行了getitem方法")
+#         # print(item)
+#         # print(self.__dict__[item]) #打印item的值
+#         print(getattr(self, item))  # 通过反射也可以获得name的值
+#
+#     def __setitem__(self, key, value):
+#         print("执行了setitem方法")
+#         print(key,value)
+#         # self.key = value
+#         self.__dict__[key] = value
+#         print(self[key])
+#
+#     def __delitem__(self, key):
+#         print("执行了delitem方法")
+#         self.__dict__.pop(key)
+#
+#
+#
+#
+# a = A('jesse')
+# a['name'] #执行getitem方法
+#
+# a['name'] = 'lyon' #执行setitem方法.修改name的值
+# print(a.name)
+#
+# a['age'] = 25  #执行setitem方法,添加个age属性
+# print(a.__dict__)
+#
+# del a['name']
+# print(a.__dict__) #执行delitem方法.删除name属性
+
+
+#__getattr__ 和 __getattribute__
+
+# class Foo:
+#     def __init__(self,name):
+#         self.name = name
+#
+#     def __getattr__(self, item):
+#         return "Attribute %s fetch failure" %item
+#
+#     def __getattribute__(self, item):
+#         if item == 'name':
+#             return 'jesse'
+#         else:
+#             return 'error'
+#
+# x = Foo('jesse')
+# print(x.name)
+# print(x.age)
+
+
+#__setattr__
+
+class Foo:
+    def __init__(self,name):
+        self.name = name
+
+    def __setattr__(self, key, value):
+        if key == 'name':
+            self.__dict__[key] = value
+        else:
+            raise AttributeError(key + ' not allowed')
+
+x = Foo('jesse')
+x.name = "Lyon"
+# x.age = 10
+print(x.__dict__)
+
+
