@@ -47,6 +47,9 @@ dic = {"name":"jesse","age":33,"job":"it","sex":"male"}
 # dic['name'] = 'jessehuang'
 # print(dic)
 
+#update方法也可以修改字典键值对.如果键已经存在,则修改值,如果不存在,则添加
+dic.update({"name":"Lyon","company":"internet"})
+
 '''
 4.删除一个字典的键值对'''
 
@@ -219,9 +222,19 @@ print(dic.keys())
 # print(dic)
 
 
-dic1 = {1:{'name':'jesse',"age":22},2:{"name":"jerry","age":23}}
+# dic1 = {1:{'name':'jesse',"age":22},2:{"name":"jerry","age":23}}
+#
+# print(dic1[1])
+#
+#
+# print(dic1.keys())
+#
+# dic = {"name":"jesse","age":33,"job":"it","sex":"male"}
+# print('name' in dic)
 
-print(dic1[1])
 
+for i,k in (enumerate(dic)):
+    print(i,"\t",k)
 
-print(dic1.keys())
+choise = int(input(">>>"))
+print(dic.index)

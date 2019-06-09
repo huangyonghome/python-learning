@@ -21,7 +21,7 @@ import sys
 
 #解决办法
 
-#1.讲module目录添加进sys.path环境变量
+#1.将module目录添加进sys.path环境变量
 
 sys.path.append(r"D:\python-learning\python-modules\module")
 

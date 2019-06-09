@@ -74,15 +74,30 @@
 
 #改变对象的字符串显示 , 这两个方法都只能返回字符串
 
-# class A:
-#     def __init__(self,name):
-#         self.name = name
-#     def __str__(self):
-#         return ("I am str:%s" %self.name)
-#     def __repr__(self):
-#         return ("I am repr:%s" %self.name)
-#
-# a = A('jesse')
+class A:
+    def __init__(self,name):
+        self.name = name
+    def __str__(self):
+        return self.name
+    # def __repr__(self):
+    #     return ("I am repr:%s" %self.name)
+
+
+class B:
+    def __init__(self,classA):
+        self.name = classA
+
+
+a = A('jesse')
+print(a)
+print(a.name)
+
+b = B(a)
+print(b.name)
+
+
+
+
 # print(str(a))
 # print(repr(a))
 
@@ -209,19 +224,19 @@
 
 #__setattr__
 
-class Foo:
-    def __init__(self,name):
-        self.name = name
-
-    def __setattr__(self, key, value):
-        if key == 'name':
-            self.__dict__[key] = value
-        else:
-            raise AttributeError(key + ' not allowed')
-
-x = Foo('jesse')
-x.name = "Lyon"
-# x.age = 10
-print(x.__dict__)
-
+# class Foo:
+#     def __init__(self,name):
+#         self.name = name
+#
+#     def __setattr__(self, key, value):
+#         if key == 'name':
+#             self.__dict__[key] = value
+#         else:
+#             raise AttributeError(key + ' not allowed')
+#
+# x = Foo('jesse')
+# x.name = "Lyon"
+# # x.age = 10
+# print(x.__dict__)
+#
 

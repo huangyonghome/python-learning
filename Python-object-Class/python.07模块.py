@@ -7,7 +7,7 @@
 
 import json
 
-# dic = {'name':'jesse','age':25,"sex":"male"}
+dic = {'name':'jesse','age':25,"sex":"male"}
 # print(dic)
 #
 # ret = json.dumps(dic)
@@ -104,4 +104,45 @@ import random
 #     return res
 #
 # print(auth_code())
+
+import json
+
+path = 'dic2.json'
+
+def dump(obj):
+    f = open(path,"w")
+    json.dump(obj,f)
+    f.close()
+
+def load():
+    f = open(path,"r")
+    info = json.load(f)
+    f.close()
+    return info
+
+def get_info():
+    info = load()
+    print(info)
+    for k,v in info.items():
+        print(k,v)
+
+def update(k,v):
+    # obj = load()
+    # obj.update(dct)
+    # dump(obj)
+    obj = load()
+    obj[k] = v
+    dump(obj)
+
+
+#写入文件
+res = dump(dic)
+
+#查询文件
+get_info()
+
+#更新值
+
+update('name','Lyon')
+get_info() #再次查询
 
