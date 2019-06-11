@@ -141,10 +141,7 @@ glance/
 ```python
 import glance
 glance.cmd.manage.main()
-'''
-执行结果:
-AttributeError: module 'glance' has no attribute 'cmd'
-'''
+module1
 ```
 
 上述导入会隐式执行`__init__.py` , 所以我们可以让这个文件来初始化 , 如下 : 

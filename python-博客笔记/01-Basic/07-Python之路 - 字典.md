@@ -57,6 +57,9 @@ dic.setdefault('school','primary')
 print(dic)
 
 >>>{'name': 'jesse', 'age': 33, 'job': 'it', 'sex': 'male', 'company': 'hsq', 'school': 'college'}
+
+#update方法也可以修改字典键值对.如果键已经存在,则修改值,如果不存在,则添加
+dic.update({"name":"Lyon","company":"internet"})
 ```
 
 ## 修改  🍀

@@ -115,16 +115,7 @@ x = Foo('Lyon')
 x.name = "Kenneth"
 x.age = 18
 print(x.__dict__)
-"""
-执行结果:
-{'name': 'Kenneth'}
-Traceback (most recent call last):
-  File "test.py", line 19, in <module>
-    x.age = 18
-  File "test.py", line 11, in __setattr__
-    raise AttributeError(key + ' not allowed')
-AttributeError: age not allowed
-"""
+module1
 ```
 
 ## 描述器行为  🍀

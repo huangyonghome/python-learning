@@ -44,7 +44,7 @@ def s2():
     pass
 this_modules = sys.modules[__name__]
 print(type(this_modules),hasattr(this_modules,'s1'))
-# 执行结果:<class 'module'> True
+module1
 ```
 
 ## getattr  🍀

@@ -13,7 +13,7 @@
 ---------------文件内容----------------
 |  print('from the my_module.py')    |
 |  def read():                       |
-|    print('in the module.py read')  | 
+|    print(module1)  | 
 --------------------------------------
 在当前文件test.py下
 ---------------文件内容----------------
@@ -21,12 +21,7 @@
 |  my_module.read()                  |
 --------------------------------------
 # 执行test.py文件,打印结果
-'''
-# 执行了my_module.py的print语句
-from the my_module.py
-# 成功调用my_module.py中的read函数
-in the module.py read
-'''
+module1
 ```
 
 import语句是可以在程序中的任意位置使用的 , 且针对同一个模块import多次时 , 为了防止你重复导入 , python进行了如下优化 : 第一次导入后就将模块名加载到内存了 , 后续的import语句仅是对已经加载大内存中的模块对象增加一次引用 , 不会重新执行模块内的语句 
@@ -38,7 +33,7 @@ import多次同以模块
 ---------------文件内容----------------
 |  print('from the my_module.py')    |
 |  def read():                       |
-|    print('in the module.py read')  | 
+|    print(module1)  | 
 --------------------------------------
 在当前test.py文件下
 ---------------文件内容----------------
@@ -48,12 +43,7 @@ import多次同以模块
 |  my_module.read()                  |
 --------------------------------------
 # 执行test.py文件,打印结果
-'''
-# 仅执行了一次my_module.py中的print语句
-from the my_module.py
-# 成功调用my_module.py中的read函数
-in the module.py read
-'''
+module1
 ```
 
 我们可以从sys.modules中找到当前已经加载的模块 , sys.modules是一个字典 , 内部包含模块名与模块对象的映射 ,该字典决定了导入模块时是否需要重新导入 
