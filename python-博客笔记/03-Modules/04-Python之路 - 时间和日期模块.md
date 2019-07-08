@@ -83,6 +83,44 @@ print(now_timestamp)
 print(now_timetuples)
 # time.struct_time(tm_year=2016, tm_mon=8, tm_mday=8, tm_hour=16, tm_min=1, tm_sec=18, tm_wday=0, tm_yday=221, tm_isdst=-1)
 ```
+---
+几种格式时间的转换
+
+![](https://images2015.cnblogs.com/blog/827651/201707/827651-20170724144151992-1508626640.png)
+
+```
+# 格式化时间 ---->  结构化时间
+ft = time.strftime('%Y/%m/%d %H:%M:%S')
+st = time.strptime(ft,'%Y/%m/%d %H:%M:%S')
+print(st)
+# 结构化时间 ---> 时间戳
+t = time.mktime(st)
+print(t)
+
+# 时间戳 ----> 结构化时间
+t = time.time()
+st = time.localtime(t)
+print(st)
+# 结构化时间 ---> 格式化时间
+ft = time.strftime('%Y/%m/%d %H:%M:%S',st)
+print(ft)
+```
+
+计算时间差
+
+```
+import time
+true_time=time.mktime(time.strptime('2017-09-11 08:30:00','%Y-%m-%d %H:%M:%S'))
+time_now=time.mktime(time.strptime('2017-09-12 11:00:00','%Y-%m-%d %H:%M:%S'))
+dif_time=time_now-true_time
+struct_time=time.gmtime(dif_time)
+print('过去了%d年%d月%d天%d小时%d分钟%d秒'%(struct_time.tm_year-1970,struct_time.tm_mon-1,
+                                       struct_time.tm_mday-1,struct_time.tm_hour,
+                                       struct_time.tm_min,struct_time.tm_sec))
+
+>>> 过去了0年0月1天2小时30分钟0秒
+```
+
 
 ##  calendar 🍀
 
