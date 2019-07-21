@@ -8,7 +8,7 @@
 
 迭代目录,替换文件中的内容
 '''
-import docx
+# import docx
 
 
 import os,sys
@@ -18,14 +18,17 @@ path = r"D:\等保测评管理制度"
 old_str = "上海证大喜马拉雅网络科技有限公司"
 new_str = "上海多维度网络科技股份有限公司"
 
+#,open("%s.bak" %file_path, "w",encoding="GB2312") as f2
+
 def modify_file(file_path,old_str,new_str):
-    with open(file_path,"r",encoding="ISO-8859-1") as f1,open("%s.bak" %file_path, "w",encoding="GB2312") as f2:
+    with open(file_path,"r",encoding="utf-8") as f1:
         for line in f1:
             if old_str in line:
-                line = line.replace(old_str,new_str)
-            f2.write(line)
-    os.remove(file_path)
-    os.rename("%s.bak" %file_path,file_path)
+                print(line)
+                # line = line.replace(old_str,new_str)
+    #         f2.write(line)
+    # os.remove(file_path)
+    # os.rename("%s.bak" %file_path,file_path)
 
 
 
