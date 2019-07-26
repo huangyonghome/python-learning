@@ -2,3 +2,7 @@
 [2019-06-15 17:14:24,817][MainThread:12244][task_id:购物车][python06.logging模块.py:271][INFO][程序正常]
 [2019-06-15 17:15:06,537][MainThread:9360][task_id:购物车][python06.logging模块.py:271][INFO][程序正常]
 [2019-06-15 17:15:25,916][MainThread:11988][task_id:__main__][python06.logging模块.py:271][INFO][程序正常]
+[2019-07-24 23:01:05,339][MainThread:140735637717888][task_id:__main__][python06.logging模块.py:271][INFO][程序正常]
+[2019-07-24 23:01:56,068][MainThread:140735637717888][task_id:__main__][python06.logging模块.py:271][INFO][程序正常]
+[2019-07-24 23:05:39,051][MainThread:140735637717888][task_id:__main__][python06.logging模块.py:83][INFO][程序正常]
+[2019-07-24 23:07:46,828][MainThread:140735637717888][task_id:__main__][python06.logging模块.py:271][INFO][程序正常]

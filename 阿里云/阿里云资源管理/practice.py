@@ -10,13 +10,26 @@ from aliyunsdkcore.acs_exception.exceptions import ServerException
 from aliyunsdkecs.request.v20140526 import DescribeInstancesRequest
 from aliyunsdkecs.request.v20140526 import StopInstanceRequest
 import json
+import configparser
+import uuid
 
+aliyun_conf = configparser.ConfigParser()
+aliyun_conf.read("aliyun.ini")
 
+access_key = aliyun_conf.get("access","access_key")
+key_secret =  aliyun_conf.get("access","key_secret")
+region_id =  aliyun_conf.get("access","region_id")
+
+# 创建 AcsClient 实例
 client = AcsClient(
-   "LTAIFl3FW7np6VQ3",
-   "PQHQp0Hcx99YCEmgp1WLLv8a0VTZJ5",
-   "cn-hangzhou"
+    access_key,
+    key_secret,
+    region_id
 )
+
+print(type(access_key),access_key)
+print(type(key_secret),key_secret)
+print(client.__dict__)
 
 request = DescribeInstancesRequest.DescribeInstancesRequest()
 request.set_PageSize(10)

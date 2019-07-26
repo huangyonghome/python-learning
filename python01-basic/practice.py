@@ -4,17 +4,22 @@
 # @Author  : jesse
 # @File    : practice.py
 
-dic = {"name":"jesse","age":33,"job":"it","sex":"male"}
+# dic = {"name":"jesse","age":33,"job":"it","sex":"male"}
+# #
+# # dic.update({"name":"lyon"})
+# #
+# # dic.update({"company":"internet"})
+# #
+# # print(dic)
+# #
+# # dic.get("name")
 #
-# dic.update({"name":"lyon"})
 #
-# dic.update({"company":"internet"})
 #
-# print(dic)
-#
-# dic.get("name")
+# for i,k in (enumerate(dic)):
+#     print(i,"\t",k)
 
 
+a = 1 if 1 > 0 else 0
 
-for i,k in (enumerate(dic)):
-    print(i,"\t",k)
+print(a)
