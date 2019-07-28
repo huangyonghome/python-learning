@@ -19,7 +19,34 @@
 # for i,k in (enumerate(dic)):
 #     print(i,"\t",k)
 
+#
+# a = 1 if 1 > 0 else 0
+#
+# print(a)
 
-a = 1 if 1 > 0 else 0
+# os_list = []
+# js_list = []
+#
+# for i in range(215,266):
+#     if i % 2 == 0:
+#         os_list.append(i)
+#     else:
+#         js_list.append(i)
+#
+#
+# print("1-100内偶数有: %s" %os_list)
+# print("1-100内奇数有: %s" %js_list)
+#
+# print("偶数一共有%s个" %len(os_list))
+# print("奇数一共有%s个" %len(js_list))
 
-print(a)
+
+for i in range(3,101):
+    if i%2 == 0:
+        continue
+
+    j = 63*i
+
+    if (j-1)%40 == 0:
+        # print(i)
+        print(j)

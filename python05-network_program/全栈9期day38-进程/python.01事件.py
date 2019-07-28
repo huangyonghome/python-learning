@@ -19,7 +19,7 @@ e.wait() #根据is_set的值来决定是否阻塞.如果是False,阻塞,True则�
 print(456)
 e.clear() #将事件状态修改为False
 print(e.is_set())
-e.wait()
+e.wait(1)
 print(789)
 
 
