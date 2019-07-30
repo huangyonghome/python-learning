@@ -35,8 +35,8 @@ import module1
 
 #3.还可以用from pacakge.module的方式导入
 
-# from module1.module2 import Foo
-#
+from module1.my_module1 import Foo
+
 # Foo()
 
 #4.还可以用相对路径的方式来导入

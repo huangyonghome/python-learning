@@ -206,19 +206,19 @@ name = ['jesse','Lyon','alex','jerry',[1,'tony']]
 #以下情况为深copy
 #用copy模块的deepcopy方法
 
-import copy
-l1 = ['jesse','huang','alex',[ 'name','age',1,2],{"job":'IT',"company":'dwd'}]
-
-l2 = copy.deepcopy(l1)
-
-
-l1[-1]['industry'] = 'internet'
-l1.insert(0,'new')
-l1[1] = 'jessehuang'
-l1[-2].append('newlist')
-
-print(l1, id(l1),id(l1[-1]),id(l1[-2]))
-print(l2, id(l2),id(l2[-1]),id(l2[-2]))
+# import copy
+# l1 = ['jesse','huang','alex',[ 'name','age',1,2],{"job":'IT',"company":'dwd'}]
+#
+# l2 = copy.deepcopy(l1)
+#
+#
+# l1[-1]['industry'] = 'internet'
+# l1.insert(0,'new')
+# l1[1] = 'jessehuang'
+# l1[-2].append('newlist')
+#
+# print(l1, id(l1),id(l1[-1]),id(l1[-2]))
+# print(l2, id(l2),id(l2[-1]),id(l2[-2]))
 
 #以下为深浅中等法
 #1.copy法: l2 = l1.copy()
@@ -247,6 +247,19 @@ print(l2, id(l2),id(l2[-1]),id(l2[-2]))
 
 #对于深copy: 1.修改原列表内的任何元素,都不会影响到新列表
 #           2.列表本身,以及列表内的所有子元素,都关联到不同的内存地址
+
+
+
+#列表的形参
+
+# def f(x,l=[]):
+#     for i in range(x):
+#         l.append(i*i)
+#     print(l)
+#
+# f(2)
+# f(3,[3,2,1])
+# f(3)
 
 
 '''
@@ -282,6 +295,6 @@ print(l2, id(l2),id(l2[-1]),id(l2[-2]))
 
 #判断是否是列表的元素
 
-l1 = ['jesse','jerry']
-
-print('jesse' not in l1)
+# l1 = ['jesse','jerry']
+#
+# print('jesse' not in l1)

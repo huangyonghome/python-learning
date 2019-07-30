@@ -31,7 +31,7 @@ id_simple_format = '[%(levelname)s][%(asctime)s] %(message)s'
 
 logfile_dir = os.path.dirname(os.path.abspath(__file__))  # log文件的目录
 
-logfile_name = 'aliyun_access.log'  # log文件名
+logfile_name = '../log/aliyun_access.log'  # log文件名
 
 # log文件的全路径
 logfile_path = os.path.join(logfile_dir, logfile_name)
@@ -85,7 +85,4 @@ def load_my_logging_cfg():
     return logger
 
 
-if __name__ == '__main__':
-
-    log = load_my_logging_cfg()
-    log.info("程序正常")
+log = load_my_logging_cfg()
