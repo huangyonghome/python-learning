@@ -24,5 +24,11 @@
 #     if i % 2 != 0:
 #         print(i)
 
-func5 = filter(lambda x : x % 2 == 0,[1,2,3,4,5,6])
-print(list(func5))
+def f(x,l=[]):
+    for i in range(x):
+        l.append(i*i)
+    print(l)
+
+f(2)
+f(3,[3,2,1])
+f(3)
