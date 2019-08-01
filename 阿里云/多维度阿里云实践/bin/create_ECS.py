@@ -76,8 +76,9 @@ class CreateInstance:
                 Amount = SlbDict.get('Amount') #获取要创建的SLB实例个数
                 LoadBalanceNameList = SlbDict.get("LoadBalanceName") #获取slb名字的个数
                 Listener = SlbDict.get("listener") #获取要配置的侦听器的类型
+                BackEndList = SlbDict.get("backends") #获取SLB要添加的后端服务器列表
 
-                if not Amount or not LoadBalanceNameList or not Listener: #如果获取配置失败,抛出异常
+                if not Amount or not LoadBalanceNameList or not Listener or not BackEndList: #如果获取配置失败,抛出异常
                     raise AttributeError
                 elif len(LoadBalanceNameList) < Amount:   #抛出异常
                     raise IndexError("SLB名称数量小于要创建的SLB个数")
@@ -99,6 +100,11 @@ class CreateInstance:
                         log.info("开始创建SLB的{}侦听,实例名:{}".format(listen,LoadBalanceName))
                         response = self.client.send_request(request) #创建侦听器
 
+                    #添加后端真实服务器
+                    for backend in BackEndList: #循环服务器列表
+                        RequestParams = {"InstanceName" : backend} #创建一个字典,key是request参数,值是要添加的服务器实例名
+                        self.add_slb_backend(LoadBalancerId,RequestParams) #传入负载均衡的ID,以及request参数
+
                     j += 1 #循环创建下一个SLB
                 i += 1 #循环下一个SLB字典
 
@@ -115,7 +121,7 @@ class CreateInstance:
         response = self.client.send_request(request)
 
 
-
+    def add_slb_backend(self,LoadBalancerId = None,RequestParams = None):
 
 
 

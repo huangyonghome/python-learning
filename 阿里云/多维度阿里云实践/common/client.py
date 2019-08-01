@@ -20,6 +20,7 @@ from aliyunsdkslb.request.v20140515.CreateLoadBalancerRequest import CreateLoadB
 from aliyunsdkslb.request.v20140515.CreateLoadBalancerHTTPSListenerRequest import CreateLoadBalancerHTTPSListenerRequest
 from aliyunsdkslb.request.v20140515.CreateLoadBalancerHTTPListenerRequest import CreateLoadBalancerHTTPListenerRequest
 from aliyunsdkslb.request.v20140515.AddTagsRequest import AddTagsRequest
+from aliyunsdkecs.request.v20140526.DescribeInstancesRequest import DescribeInstancesRequest
 
 BASE_PATH = os.path.dirname(os.path.dirname(__file__))
 sys.path.append(BASE_PATH)
@@ -72,6 +73,11 @@ class AliClient:
     @property
     def add_slb_tag_request(self):
         return AddTagsRequest()
+
+    @property
+    def describe_instance_request(self):
+        return DescribeInstancesRequest()
+
 
 
 
@@ -218,6 +224,28 @@ class AliClient:
 
 
         return req  # 返回request对象
+
+
+    def initiate_describe_instances(self,describe_obj = None):
+        '''
+        实例化describeInstances的类
+        :param describe_obj: 是一个字典,key是要查询的参数,值是要查询的内容.也可以不传.
+        :return: 返回request对象
+        '''
+        req = self.describe_instance_request
+        if describe_obj: #如果有传递参数进来
+            params = [x for x in dir(req) if x.startswith("set")]
+            for key in describe_obj.keys():
+                request_key = "set_" + key  # 拼接字符串
+                if request_key in params:
+                    getattr(req,request_key)(describe_obj[key]) #使用反射设置request对象
+                else: #如果参数设置错误,抛出异常
+                    raise AttributeError
+
+        return req
+
+
+
 
     def check_describe_status(self, object, page_size, page_num):
         '''

@@ -21,7 +21,7 @@ region_id = "cn-hangzhou"
 #ECS实例相关参数.以下参数定义了实例启动中的必要信息.
 
 #指定创建ECS实例的数量。取值范围：1~100 .默认值：1.
-set_Amount = 2
+set_Amount = 20
 
 #指定ECS实例最小购买数量。取值范围：1~100.可选参数
 #当ECS库存数量小于最小购买数量，会创建失败。
@@ -60,7 +60,13 @@ set_SecurityGroupId = "sg-bp11h64dz1tlkgla5344"
 set_Tags = [{ "Key":"hsq","Value":"hsq"}]
 
 #实例名称. 必选参数
-set_InstanceName = "hsq-apitest-temp"
+'''
+实例名称。长度为2~128个字符，必须以大小字母或中文开头，不能以http://和https://开头。可以包含中文、英文、数字、半角冒号（:）、下划线（_）、点号（.）或者连字符（-）。默认值为实例的InstanceId。
+
+说明 创建多台ECS实例时，您可以使用UniqueSuffix为这些实例设置不同的实例名称。您也可以使用name_prefix[begin_number,bits]name_suffix的命名格式设置有序的实例名称，例如，设置InstanceName取值为k8s-node-[1,4]-alibabacloud，则第一台ECS实例的实例名称为k8s-node-0001-alibabacloud 。详情请参见API FAQ。
+当实例名称或主机名称不设置命名后缀name_suffix，即命名格式为name_prefix[begin_number,bits]时，UniqueSuffix不生效。例如，当InstanceName取值为instance-[99,3]，UniqueSuffix取值为true时，生效的实例名称为instance099，而不是instance099001。
+'''
+set_InstanceName = "hsq-api-temp"
 
 
 
@@ -75,7 +81,7 @@ set_HostName = "hsq-apitest-temp"
 #是否为HostName和InstanceName添加有序后缀，有序后缀从001开始递增，最大不能超过999。
 #例如：LocalHost001，LocalHost002和MyInstance001，MyInstance002。默认值：false
 
-set_UniqueSuffix = True
+#set_UniqueSuffix = True
 
 #为实例创建个root密码
 #Password=
@@ -176,11 +182,6 @@ set_VSwitchId = "vsw-bp188m3tbdypjmsi4qhtt"
 
 #set_AutoRenewPeriod=1
 
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
-# @Time    : 2019/7/30 下午3:08
-# @Author  : jesse
-# @File    : slb_config.py
 
 '''
 ###############################################################################################################################################
@@ -207,11 +208,14 @@ set_VSwitchId = "vsw-bp188m3tbdypjmsi4qhtt"
         #LoadBalanceName:slb实例名称.必须是列表类型
         #set_LoadBalancerSpec表示SLB实例的规格.如果是要创建共享型的实例规格,则删掉"set_LoadBalancerSpec"项.
         #listener:侦听器类型,有三种可选,https,http,tcp
+        #backends: SLB的后端真实服务器,支持通配符正则.记住,要加入SLB的服务器必须在running状态
         #如果是通用配置,代码会自动读取文件,不需要配置,但是如果是自定义配置,需要写入到这个列表里.
 
 slb_list = [
-    #{"Amount": 1, "set_AddressType": "internet", "LoadBalanceName" : ["hsq-openapi-temp7","hsq-openapi-temp2","hsq-openapi-temp3"],"set_LoadBalancerSpec" : "slb.s1.small","listener" : ["https","http"]},
-    {"Amount": 1, "set_AddressType": "intranet", "LoadBalanceName" : ["hsq-user-temp7","hsq-message-temp","hsq-trade-temp"], "set_LoadBalancerSpec" : "slb.s1.small","listener" : ["http"],"set_HealthCheckDomain" : "user.center.haoshiqi.net"}
+    {"Amount": 1, "set_AddressType": "internet", "LoadBalanceName" : ["hsq-openapi-temp7","hsq-openapi-temp2","hsq-openapi-temp3"],"set_LoadBalancerSpec" : "slb.s1.small",
+     "listener" : ["https","http"],"backends":["hsq-openapi-temp","hsq-api5"]},
+    {"Amount": 1, "set_AddressType": "intranet", "LoadBalanceName" : ["hsq-user-temp7","hsq-message-temp","hsq-trade-temp"], "set_LoadBalancerSpec" : "slb.s1.small",
+     "listener" : ["http"],"set_HealthCheckDomain" : "user.center.haoshiqi.net","backends": [ "hsq-openapi-temp", "hsq-api5"]}
  ]
 
 
@@ -435,12 +439,7 @@ set_HealthyThreshold = 2
 '''
 set_UnhealthyThreshold = 2
 
-'''
-健康检查连续成功多少次后，将后端服务器的健康检查状态由fail判定为success。
 
-取值：2-10。默认4
-'''
-#set_HealthyThreshold
 
 
 '''
