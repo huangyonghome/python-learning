@@ -229,12 +229,16 @@ print(dic.keys())
 #
 # print(dic1.keys())
 #
-# dic = {"name":"jesse","age":33,"job":"it","sex":"male"}
+dic = {"name":"jesse","age":33,"job":"it","sex":"male"}
 # print('name' in dic)
 
 
 for i,k in (enumerate(dic)):
     print(i,"\t",k)
 
-choise = int(input(">>>"))
-print(dic.index)
+# choise = int(input(">>>"))
+# print(dic.index)
+
+# a = dic.get("name1") or "haha"
+#
+# print(a)
