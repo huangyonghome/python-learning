@@ -315,22 +315,51 @@ list4 = [{'name': 'alex', 'hobby_list': ['抽烟', '喝酒', '烫头', '按摩']
 {'name': 'egon', 'hobby_list': ['喊麦', '街舞']}]
 '''
 
-list3 = [{"name":"alex","hobby":"抽烟"},
-         {"name":"alex","hobby":"喝酒"},
-         {"name":"alex","hobby":"烫头"},
-         {"name":"alex","hobby":"按摩"},
-         {"name":"egon","hobby":"喊麦"},
-         {"name":"egon","hobby":"街舞"},
-         ]
+# list3 = [{"name":"alex","hobby":"抽烟"},
+#          {"name":"alex","hobby":"喝酒"},
+#          {"name":"alex","hobby":"烫头"},
+#          {"name":"alex","hobby":"按摩"},
+#          {"name":"egon","hobby":"喊麦"},
+#          {"name":"egon","hobby":"街舞"},
+#          ]
+#
+# list4 = []
+# for item in list3:
+#     for item4 in list4: #只要list3的name存在list4,就添加hobby到hobby_list列表,并且跳出for循环
+#         if item['name'] == item4['name']:
+#             item4['hobby_list'].append(item['hobby'])
+#             break
+#     else:#第一次添加进list4
+#         list4.append({"name":item['name'],"hobby_list":[item['hobby']]})
+#
+#
+# print(list4)
+#
+l1 = [x for x in range(10)]
+#
+# # print(l1)
+#
+# l2 = l1[:20]
+# print(l1)
+# print(l2)
+#
+# l2 = l1[20:40]
+#
+# print(l1)
+# print(l2)
+#
+# l2 = l1[40:60]
+#
+# print(l1,l2)
 
-list4 = []
-for item in list3:
-    for item4 in list4: #只要list3的name存在list4,就添加hobby到hobby_list列表,并且跳出for循环
-        if item['name'] == item4['name']:
-            item4['hobby_list'].append(item['hobby'])
-            break
-    else:#第一次添加进list4
-        list4.append({"name":item['name'],"hobby_list":[item['hobby']]})
+# l1 =[]
+# l2 =[]
+#
+# l2.extend(l1)
+#
+# print(l2)
 
+l1.remove(3)
+l1.remove(4)
 
-print(list4)
+print(l1)
