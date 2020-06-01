@@ -1,3 +1,14 @@
+---
+
+title:  02.Python之路 - python数据类型和变量
+date: 2020-05-26 22:59:58
+tags:  python
+categories: [python,basic]
+comments: true
+copyright: true
+
+---
+
 ### python数据类型和变量
 
 
@@ -38,6 +49,8 @@
 ```
 
 ----
+
+<!--more-->
 
 #### 字符串
 
@@ -186,15 +199,15 @@ print(b)
 
 执行`a = 'ABC'`，解释器创建了字符串`'ABC'`和变量`a`，并把`a`指向`'ABC'`：
 
-![py-var-code-1](https://cdn.liaoxuefeng.com/cdn/files/attachments/0013871830933164ebea9bff3e24a64a1d36c0a6c7d368f000/0)
+![py-var-code-1](https://www.liaoxuefeng.com/files/attachments/923791878255456/0)
 
 执行`b = a`，解释器创建了变量`b`，并把`b`指向`a`指向的字符串`'ABC'`：
 
-![](https://cdn.liaoxuefeng.com/cdn/files/attachments/0013871831797715367a9e297944ca88f362ea3b01efaf7000/0)
+![](https://www.liaoxuefeng.com/files/attachments/923792058613440/0)
 
 执行`a = 'XYZ'`，解释器创建了字符串'XYZ'，并把`a`的指向改为`'XYZ'`，但`b`并没有更改：
 
-![](https://cdn.liaoxuefeng.com/cdn/files/attachments/00138718324379052e7366c983442ac971699da163cacc7000/0)
+![](https://www.liaoxuefeng.com/files/attachments/923792191637760/0)
 
 所以，最后打印变量`b`的结果自然是`'ABC'`了。
 

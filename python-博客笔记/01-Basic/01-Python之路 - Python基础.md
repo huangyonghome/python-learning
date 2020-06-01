@@ -1,3 +1,14 @@
+---
+title:  01.Python之路 - Python基础
+date: 2020-05-26 22:59:58
+tags:  python
+categories: [python,basic]
+comments: true
+copyright: true
+---
+
+
+
 # Python之路 - Python基础
 
 ## Hello World  🍀
@@ -57,18 +68,18 @@ Python变量定义的规则 :
 3. 以下关键字不能声明为变量名 , 属于Python中的保留字and
 
 
-   | and      | exec    | not    |
-   | -------- | ------- | ------ |
-   | assert   | finally | or     |
-   | break    | for     | pass   |
-   | class    | from    | print  |
-   | continue | global  | raise  |
-   | def      | if      | return |
-   | del      | import  | try    |
-   | elif     | in      | while  |
-   | else     | is      | with   |
-   | except   | lambda  | yield  |
-   
+| and      | exec    | not    |
+| -------- | ------- | ------ |
+| assert   | finally | or     |
+| break    | for     | pass   |
+| class    | from    | print  |
+| continue | global  | raise  |
+| def      | if      | return |
+| del      | import  | try    |
+| elif     | in      | while  |
+| else     | is      | with   |
+| except   | lambda  | yield  |
+
 
 ## 行和缩进  🍀
 
