@@ -69,29 +69,29 @@
 
 ## getattr 从一个对象中获取属性名称
 
-class A:
-    def __init__(self,name,age):
-        self.name = name
-        self.age = age
-
-    def hello(self):
-        print('hello {}'.format(self.name))
-
-
-a = A('jesse',22)
-
-#获取静态属性age
-print(getattr(a,'age'))
-#获取动态属性,也就是方法
-print(getattr(a,'hello'))
-
-#如果不存在属性就报错
-# print(getattr(a,'sex'))
-
-#设置default参数,这样如果属性不存在就输出默认值
-
-sex = getattr(a,'sex','男')
-print(sex)
+# class A:
+#     def __init__(self,name,age):
+#         self.name = name
+#         self.age = age
+#
+#     def hello(self):
+#         print('hello {}'.format(self.name))
+#
+#
+# a = A('jesse',22)
+#
+# #获取静态属性age
+# print(getattr(a,'age'))
+# #获取动态属性,也就是方法
+# print(getattr(a,'hello'))
+#
+# #如果不存在属性就报错
+# # print(getattr(a,'sex'))
+#
+# #设置default参数,这样如果属性不存在就输出默认值
+#
+# sex = getattr(a,'sex','男')
+# print(sex)
 
 
 
@@ -124,22 +124,22 @@ print(sex)
 # #删除对象中的属性
 #
 #
-# class C:
-#     def __init__(self,name,age):
-#         self.name = name
-#         self.age = age
-#
-#     def add(self):
-#         self.age = self.age + 1
-#
-# c = C('jesse',22)
-#
-# #删除hjkl-c的name属性
-#
+class C:
+    def __init__(self,name,age):
+        self.name = name
+        self.age = age
+
+    def add(self):
+        self.age = self.age + 1
+
+c = C('jesse',22)
+
+#删除c的name属性
+
 # delattr(c,'name')
 #
 # print(c.name) #抛出异常
-#
+
 # delattr(c,'add')
 #
 # c.add() #抛出异常

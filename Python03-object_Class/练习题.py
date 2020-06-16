@@ -73,7 +73,7 @@
 # # 2
 # obj = site._registry[UserInfo](100)
 # obj.run()
-#
+# #
 # -------
 #
 #
@@ -94,6 +94,9 @@
 #
 #     def run(self):
 #         self.changelist(999)
+#
+#
+#
 #
 #
 # class RoleConfig(StarkConfig):
@@ -117,12 +120,12 @@
 # for k, row in site._registry.items():
 #     print(k,row)
 #     row.run()
-
+#
 
 
 #-------
 
-#
+# #
 # class A:
 #     list_display = []
 #
@@ -170,3 +173,11 @@
 # s2 = B()
 # print(s1.get_list())
 # print(s2.get_list())
+
+
+# class A:
+#     __list_display = [1,2]
+#
+#
+# a = A()
+# print(a.list_display)
