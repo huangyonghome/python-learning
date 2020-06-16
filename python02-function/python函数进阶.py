@@ -7,8 +7,8 @@
 #函数嵌套
 
 # 全局变量name
+
 # name = "Lyon_1"
-#
 #
 # def func():
 #     # 第一层局部变量name
@@ -38,6 +38,8 @@
 # func()
 # print("最外层打印", name)
 
+
+
 # def func(arg):
 #     n = arg
 #     def func1():
@@ -50,6 +52,7 @@
 #     func1()
 #     print(n)
 # func(10)
+
 
 # def decorator():
 #     def inner():
@@ -85,12 +88,13 @@
 #     print("I am decorator_arg")
 #     # 返回decorator_arg,函数名 → 内存地址
 #     return decorator_arg
+#
 # # result接收的是inner函数名
 # # result = decorator(decorator_arg)
 # decorator(decorator_arg)()
 # print('-------------------')
-# # 实际调用的是嵌套函数中内部的inner函数
-# #print(result)
+# 实际调用的是嵌套函数中内部的inner函数
+# print(result)
 
 # def decorator(func):
 #     def inner():
@@ -125,13 +129,15 @@
 #         # 此处将原始func参数进行拆包返还
 #         func(*args,**kwargs)
 #     return inner
+#
 # def func(*args,**kwargs):
 #     print("I am func")
 #     print(args,kwargs)
 #     return func
+#
 # func = decorator(func)
 # # inner(*args,**kwargs)
-# func( )
+# func('jesse')
 
 
 # def func():

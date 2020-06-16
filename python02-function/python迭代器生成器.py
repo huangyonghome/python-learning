@@ -22,6 +22,28 @@ str1='jesse'
 # print(iter1.__next__()) #遍历迭代器中的第5个元素
 # print(iter1.__next__()) #遍历迭代器中的第6个元素 #如果超过迭代器的元素个数,则会报出StopIteration异常
 
+
+# def func():
+#     for i in 'AB':
+#         yield i
+#     for j in range(3):
+#         yield j
+#
+#
+# # print(list(func()))
+# res = func()
+# print(res.__next__())
+# print(res.__next__())
+# print(res.__next__())
+# print(res.__next__())
+#
+# def func2():
+#     yield from 'AB'
+#     yield from range(3)
+#
+#
+# print(list(func2()))
+
 # dir_list = dir([1,2])
 # dir_iter = dir([1,2].__iter__())
 # print(dir_list)

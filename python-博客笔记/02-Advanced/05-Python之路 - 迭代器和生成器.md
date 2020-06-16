@@ -128,7 +128,7 @@ PS : 调用生成器函数时 , 仅仅会返回一个生成器 , 并不会执行
 ***yield from***
 
 ```python
-def func1():
+def func():
     for i in 'AB':
         yield i
     for j in range(3):
