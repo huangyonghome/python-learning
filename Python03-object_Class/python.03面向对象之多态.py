@@ -42,5 +42,7 @@ cat = Cat()
 # dog.run()
 # cat.run()
 
-run_twice(Tortoise())
-run_twice(Timer())
+
+
+run_twice(Tortoise)
+run_twice(Timer)

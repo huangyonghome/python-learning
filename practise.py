@@ -73,23 +73,72 @@
 # print(is_ipv4("192.168.1.20a"))
 
 
-ip = "192.168.1.20a"
-# if [1] * 4 == [x.isdigit() and 0 <= int(x) <= 255 for x in ip.split(".")]:
-#     print("ok")
-# else:
-#     print("no")
+# ip = "192.168.1.20a"
+# # if [1] * 4 == [x.isdigit() and 0 <= int(x) <= 255 for x in ip.split(".")]:
+# #     print("ok")
+# # else:
+# #     print("no")
+# #
+# #
+# print(ip.startswith("19"))
+# print(ip.split(".")[0])
+#
+# l1 = [1,2,3]
+# l2 = "sadf"
+#
+# print(isinstance(l2,list))
+# import json
+# ip = ["10.111.5.177","10.111.5.178","10.111.5.179"]
+#
+# ip.append({"name","jesse"})
+# ip.append({"name":"jerry"})
+# print(ip)
+
+#
+# class A:
+#     def __init__(self,name):
+#         self.name = name
+#         print(A.__name__)
 #
 #
-print(ip.startswith("19"))
-print(ip.split(".")[0])
+# a = A('name')
 
-l1 = [1,2,3]
-l2 = "sadf"
+#
+# dic = {}
+# l1 = []
+# for i in range(2):
+#     dic["name"] = 'jesse' + str(i)
+#     dic["age"] = i
+#     print("dic",":",dic)
+#     l1.append(dic)
+#     print(l1)
+#
+# # print
+#
+#
+# print(isinstance(0,int))
 
-print(isinstance(l2,list))
-import json
-ip = ["10.111.5.177","10.111.5.178","10.111.5.179"]
+# a=["千山鸟飞绝"]
+# b=["千山鸟飞绝"]
+# c=["千山鸟飞绝"]
+# d=["千山鸟飞绝"]
+#
+# e=[a,b,c,d]
+# print(e)
+#
+# f=[j for x in e for j in x[0]]
 
-ip.append({"name","jesse"})
-ip.append({"name":"jerry"})
-print(ip)
+# e=a+b+c+d
+# e.append(a,b,c,d)
+print(f)
+# print(a.split(","))
+
+# b = for x in str(a)
+# b=[]
+
+# print([x for x in a[0] b[0] c[0] d[0]])
+
+# for x in a[0]:
+#     b.append(x)
+
+# print(b)

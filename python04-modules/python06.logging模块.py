@@ -7,14 +7,14 @@ import logging
 '''
 logging模块简单用法
 '''
-#
+
 # #自定义日志输出格式
 #
 # #level:输出日志级别
 # #format:日志输出格式串
 # #datefmt:时间日期格式
 # #filename.保存文件路径.日志打开模式默认为a
-# logging.basicConfig(level=logging.DEBUG,
+# logging.basicConfig(level=logging.WARNING,
 #                     format="%(asctime)s %(name)s %(levelname)s %(message)s",
 #                     datefmt = '%Y-%m-%d  %H:%M:%S',
 #                     filename='sys.log'
@@ -76,7 +76,7 @@ logging模块进阶日志流处理
 
 
 '''logging模块重复打印日志'''
-#
+
 # import logging
 #
 # def log(msg):
@@ -109,7 +109,7 @@ logging模块进阶日志流处理
 # log("前方注意")
 # log("提示")
 # log("错误")
-#
+
 # '''
 # 原因：第二次调用log的时候，根据getLogger(name)里的name获取同一个logger，
 # 而这个logger里已经有了第一次你添加的handler，第二次调用又添加了一个handler，
@@ -155,7 +155,7 @@ logging模块进阶日志流处理
 # 完整调用方式:
 # '''
 #
-#
+
 # import logging
 #
 # def log():
@@ -188,7 +188,7 @@ logging模块进阶日志流处理
 # log_record.info('前方注意')
 # log_record.error('前方报错')
 # log_record.debug('前方正常')
-#
+
 
 
 '''

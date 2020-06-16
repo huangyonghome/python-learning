@@ -1,0 +1,8 @@
+2020-06-13  09:52:06 root DEBUG debug调试
+2020-06-13  09:52:06 root INFO 正常日志信息
+2020-06-13  09:52:06 root WARNING 警告信息
+2020-06-13  09:52:06 root ERROR 错误信息
+2020-06-13  09:52:06 root CRITICAL 严重错误
+2020-06-13  09:53:48 root WARNING 警告信息
+2020-06-13  09:53:48 root ERROR 错误信息
+2020-06-13  09:53:48 root CRITICAL 严重错误

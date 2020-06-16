@@ -17,7 +17,7 @@
 
 #计算10的斐波那契数列
 
-#1. 计算斐波那契数列中的第10个元素值
+# 1. 计算斐波那契数列中的第10个元素值
 # def fib(x):
 #      if (x == 1 or x == 2):
 #
@@ -27,7 +27,7 @@
 #
 # print(fib(10))
 
-#2.计算斐波那契10个元素的列表
+# 2.计算斐波那契10个元素的列表
 # l1 = []
 # def fib(x):
 #     if x == 0:
@@ -43,15 +43,15 @@
 
 #2.2 下面这个写法也能实现同样的效果,此外还能定义其实数字
 
-l1 = []
-
-def fib(n1,n2,nt):
-    if len(l1) == nt:
-        return "stop"
-
-    l1.append(n1)
-    n3 = n1 + n2
-    fib(n2,n3,nt)
-
-fib(21,22,10)
-print(l1)
+# l1 = []
+#
+# def fib(n1,n2,nt):
+#     if len(l1) == nt:
+#         return "stop"
+#
+#     l1.append(n1)
+#     n3 = n1 + n2
+#     fib(n2,n3,nt)
+#
+# fib(21,22,10)
+# print(l1)

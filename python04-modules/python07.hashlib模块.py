@@ -23,6 +23,14 @@ hashlib的主要用途有两个：
 m5加密算法
 '''
 
+# str = 'jesse'
+#
+# md5 = hashlib.md5()
+#
+# md5.update(str.encode('utf-8'))
+#
+# print(md5.hexdigest())
+
 # str1 = "jesse"
 #
 # #实例化一个对象
@@ -144,28 +152,28 @@ SHA加密算法
 hashlib模块除了可以用于密码加密之外，还有一个常用的功能，那就是文件的一致性校验。
 '''
 
-import os,hashlib
-
-def file_check(file_path):
-    file_md5 = hashlib.md5()
-
-    if os.path.isfile(file_path):
-        with open(file_path,'r') as f:
-            for line in f.readlines():
-                #循环文件,每次只update一行数据.避免一次加密整个文件造成系统崩溃
-                file_md5.update(line.encode('utf-8'))
-        return file_md5.hexdigest()
-    else:
-        print("文件不存在")
-
-
-
-#复制2个一模一样的文件,计算出来的MD5值完全相同
-
-print(file_check('文件校验1.log')) #cae4133f1d66a901a90cdafaf6172c07
-print(file_check('文件校验2.log')) #cae4133f1d66a901a90cdafaf6172c07
-
-#将文件校验2.log文件最后一行删除一个空格,再次计算.发现MD5值已经不一样
-
-print(file_check('文件校验1.log'))  #cae4133f1d66a901a90cdafaf6172c07
-print(file_check('文件校验2.log'))  #c48313c88156e33b7fc7ba21661dad59
+# import os,hashlib
+#
+# def file_check(file_path):
+#     file_md5 = hashlib.md5()
+#
+#     if os.path.isfile(file_path):
+#         with open(file_path,'r') as f:
+#             for line in f.readlines():
+#                 #循环文件,每次只update一行数据.避免一次加密整个文件造成系统崩溃
+#                 file_md5.update(line.encode('utf-8'))
+#         return file_md5.hexdigest()
+#     else:
+#         print("文件不存在")
+#
+#
+#
+# #复制2个一模一样的文件,计算出来的MD5值完全相同
+#
+# print(file_check('文件校验1.log')) #cae4133f1d66a901a90cdafaf6172c07
+# print(file_check('文件校验2.log')) #cae4133f1d66a901a90cdafaf6172c07
+#
+# #将文件校验2.log文件最后一行删除一个空格,再次计算.发现MD5值已经不一样
+#
+# print(file_check('文件校验1.log'))  #cae4133f1d66a901a90cdafaf6172c07
+# print(file_check('文件校验2.log'))  #c48313c88156e33b7fc7ba21661dad59

@@ -165,7 +165,17 @@ b = 'jesse'
 # print('hello',a)
 
 
-if not b.startswith('j'):
-    print("yes")
-else:
-    print("yes")
+# if not b.startswith('j'):
+#     print("yes")
+# else:
+#     print("yes")
+
+# a = 'ecs.sn1ne.8xlarge'
+#
+# b = a.split(" ")
+#
+# print(b,type(b))
+#
+# print(isinstance(a,str))
+
+print("hsq-*".endswith("*"))

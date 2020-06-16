@@ -18,6 +18,17 @@
 # print('jesse'.__len__)
 # print('jesse'.upper)
 #
+
+# import sys
+# def s1():
+#     pass
+# def s2():
+#     pass
+# this_modules = sys.modules[__name__]
+# print(this_modules)
+# print(type(this_modules),hasattr(this_modules,'s1'))
+
+
 # class A:
 #     pass
 #
@@ -58,77 +69,77 @@
 
 ## getattr 从一个对象中获取属性名称
 
-# class A:
-#     def __init__(self,name,age):
-#         self.name = name
-#         self.age = age
-#
-#     def hello(self):
-#         print('hello {}'.format(self.name))
-#
-#
-# a = A('jesse',22)
-#
-# #获取静态属性age
-# print(getattr(a,'age'))
-# #获取动态属性,也就是方法
-# print(getattr(a,'hello'))
-#
-# #如果不存在属性就报错
-# # print(getattr(a,'sex'))
-#
-# #设置default参数,这样如果属性不存在就输出默认值
-#
-# sex = getattr(a,'sex','男')
-# print(sex)
-#
-
-
-#setattr 修改一个属性的值
-
-class B:
-    def __init__(self):
-        pass
-
-b = B()
-
-#新增一个age属性
-
-setattr(b,'age',18)
-
-#打印age属性
-print(b.age)
-
-#新增add方法
-setattr(b,'add',lambda age: age + 1)
-
-#修改age属性,并且把b.age的值作为参数传递给lambda函数,接受lambda函数范围值
-b.age = b.add(b.age)
-
-#打印新增的add()方法返回值
-print(b.age)
-
-
-
-#删除对象中的属性
-
-
-class C:
+class A:
     def __init__(self,name,age):
         self.name = name
         self.age = age
 
-    def add(self):
-        self.age = self.age + 1
+    def hello(self):
+        print('hello {}'.format(self.name))
 
-c = C('jesse',22)
 
-#删除hjkl-c的name属性
+a = A('jesse',22)
 
-delattr(c,'name')
+#获取静态属性age
+print(getattr(a,'age'))
+#获取动态属性,也就是方法
+print(getattr(a,'hello'))
 
-print(c.name) #抛出异常
+#如果不存在属性就报错
+# print(getattr(a,'sex'))
 
-delattr(c,'add')
+#设置default参数,这样如果属性不存在就输出默认值
 
-c.add() #抛出异常
+sex = getattr(a,'sex','男')
+print(sex)
+
+
+
+#setattr 修改一个属性的值
+
+# class B:
+#     def __init__(self):
+#         pass
+#
+# b = B()
+#
+# #新增一个age属性
+#
+# setattr(b,'age',18)
+#
+# #打印age属性
+# print(b.age)
+#
+# #新增add方法
+# setattr(b,'add',lambda age: age + 1)
+#
+# #修改age属性,并且把b.age的值作为参数传递给lambda函数,接受lambda函数范围值
+# b.age = b.add(b.age)
+#
+# #打印新增的add()方法返回值
+# print(b.age)
+#
+#
+#
+# #删除对象中的属性
+#
+#
+# class C:
+#     def __init__(self,name,age):
+#         self.name = name
+#         self.age = age
+#
+#     def add(self):
+#         self.age = self.age + 1
+#
+# c = C('jesse',22)
+#
+# #删除hjkl-c的name属性
+#
+# delattr(c,'name')
+#
+# print(c.name) #抛出异常
+#
+# delattr(c,'add')
+#
+# c.add() #抛出异常

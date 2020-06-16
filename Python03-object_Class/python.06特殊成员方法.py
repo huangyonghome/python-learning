@@ -5,7 +5,7 @@
 # @File    : python.06特殊成员方法.py
 
 # ########## __doc__方法查看描述信息
-#
+# #
 # class Foo:
 #     '''
 #     这是一个类,里面什么都没有
@@ -24,7 +24,7 @@
 # print(Foo.__module__)
 #
 #
-#
+
 # #######查看对象的类:__class__
 #
 # class Foo:
@@ -48,7 +48,7 @@
 #         print('func')
 #
 # print("打印类成员".center(30,'-'))
-# # print(Person.__dict__)
+# print(Person.__dict__)
 # for i in Person.__dict__:
 #     print('{}:{}'.format(i,Person.__dict__[i]))
 #
@@ -74,30 +74,30 @@
 
 #改变对象的字符串显示 , 这两个方法都只能返回字符串
 
-class A:
-    def __init__(self,name):
-        self.name = name
-    def __str__(self):
-        return self.name
-    # def __repr__(self):
-    #     return ("I am repr:%s" %self.name)
-
-
-class B:
-    def __init__(self,classA):
-        self.name = classA
-
-
-a = A('jesse')
-print(a)
-print(a.name)
-
-b = B(a)
-print(b.name)
-
-
-
-
+# class A:
+#     def __init__(self,name):
+#         self.name = name
+#     def __str__(self):
+#         return self.name
+#     #def __repr__(self):
+#      #   return ("I am repr:%s" %self.name)
+#
+#
+# class B:
+#     def __init__(self,classA):
+#         self.name = classA
+#
+#
+# a = A('jesse')
+# # print(a)
+# # print(a.name)
+# #
+# # b = B(a)
+# # print(b.name)
+# #
+#
+#
+#
 # print(str(a))
 # print(repr(a))
 
@@ -126,7 +126,7 @@ print(b.name)
 # __new__ 方法负责实例化一个对象. __init__方法负责初始化一个对象
 
 # 例子:
-
+#
 # class A:
 #     def __init__(self):
 #         self.x = 1
@@ -135,14 +135,14 @@ print(b.name)
 #     def __new__(cls, *args, **kwargs):
 #         print("执行了new方法")
 #
-#
-# 因为我们重写了__new__方法.所以并没有成功创建a对象
-# 虽然A实例化了一个对象a.但是实际上a并没有成功实例化,a的值为None.而且实例化对象的时候也没有执行init初始化方法
+# #
+# # 因为我们重写了__new__方法.所以并没有成功创建a对象
+# # 虽然A实例化了一个对象a.但是实际上a并没有成功实例化,a的值为None.而且实例化对象的时候也没有执行init初始化方法
 # a = A()
 # print(a)
 # print(a.x) #打印报错,没有x属性
 #
-#
+# #
 # #重写__new__方法
 #
 # class A:
@@ -211,11 +211,11 @@ print(b.name)
 #     def __getattr__(self, item):
 #         return "Attribute %s fetch failure" %item
 #
-#     def __getattribute__(self, item):
-#         if item == 'name':
-#             return 'jesse'
-#         else:
-#             return 'error'
+#     # def __getattribute__(self, item):
+#     #     if item == 'name':
+#     #         return 'jesse'
+#     #     else:
+#     #         return 'error'
 #
 # x = Foo('jesse')
 # print(x.name)
@@ -236,7 +236,9 @@ print(b.name)
 #
 # x = Foo('jesse')
 # x.name = "Lyon"
-# # x.age = 10
+# x.age = 10
 # print(x.__dict__)
 #
+
+
 

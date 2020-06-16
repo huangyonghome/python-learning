@@ -40,13 +40,16 @@
 # print("偶数一共有%s个" %len(os_list))
 # print("奇数一共有%s个" %len(js_list))
 
+#
+# for i in range(3,101):
+#     if i%2 == 0:
+#         continue
+#
+#     j = 63*i
+#
+#     if (j-1)%40 == 0:
+#         # print(i)
+#         print(j)
 
-for i in range(3,101):
-    if i%2 == 0:
-        continue
 
-    j = 63*i
-
-    if (j-1)%40 == 0:
-        # print(i)
-        print(j)
+list = [{"id":"xxx","time":"1111"},{"id":"xxx","time":2222},{"id":"xxx","time":3333}]

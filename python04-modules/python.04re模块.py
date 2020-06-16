@@ -9,7 +9,7 @@ import re
 #
 # 匹配成功,则返回<class '_sre.SRE_Match'>类型.用group()方法可以取出结果.否则返回None
 
-# res = re.match('lyon','jesse')
+# res = re.match('\w+','jesse')
 #
 # print(type(res))
 #
@@ -37,7 +37,9 @@ import re
 
 # res = re.split("\d+","abc123xyz456-=79")
 # print(res)
-str1 = 'alex,jerry;jesse|lyon wusir'
+# str1 = 'alex,jerry;jesse|lyon wusir'
+# res = re.split(" |,|;|\|",str1)
+# print(res)
 
 #re可以将不规则的分隔符进行切分.而字符串的split方法做不到这点
 # print(re.split(" |,|;|\|",str1))
@@ -52,6 +54,15 @@ str1 = 'alex,jerry;jesse|lyon wusir'
 #
 # res1 = re.sub("abc","xyz","abc123abc456",count=1) #只匹配一次
 # print(res1)
+
+
+# res = re.sub("abc","xyz","abc123abc456")
+#
+# print(res)
+#
+# res = re.subn("abc","xyz","abc123abc456")
+#
+# print(res)
 
 
 '''
@@ -107,7 +118,7 @@ re.U	根据Unicode字符集解析字符，这个标志影响\w,\W,\b,\B
 
 #re.compile 生成一个匹配对象,以便多次调用
 
-r1 = re.compile("abc\d")
+# r1 = re.compile("abc\d")
 
 # res = re.search(r1,"abc123abc456")
 # print(res.group())
@@ -193,9 +204,32 @@ r1 = re.compile("abc\d")
 # str1 = "a1b atb aTb a3b a1b a-b a%b a!b a9b aYb a&b"
 #
 
+# print(re.search("abc|ABC","ABCBabcCD").group())
+
 '''
 练习题
 '''
+
+str1 = "a1b atb aTb a3b a1b a-b a%b a!b a9b aYb a&b"
+
+res = re.findall('[-%!&]',str1)
+
+res = re.findall('a\db',str1)
+
+res = re.findall('a[a-z]b',str1)
+
+res = re.findall('a[A-Z]b',str1)
+
+res = re.findall('a\wb',str1)
+
+res = re.findall('a[^0-9]b',str1)
+
+res1 = re.match('a[^0-9]b',str1)
+
+print(res1)
+print(res1.group())
+print(res)
+
 # #取出中间为特殊字符
 # print(re.findall('a[%!\-&]b',str1))
 #
@@ -221,7 +255,7 @@ str2 = "1-2*(60+(-40.35/5)-(-4*3))"
 #
 # # 1.1 匹配所有的整数
 #
-print(re.findall('[^\.?\d+](\d+)',str2))
+# print(re.findall('[^\.?\d+](\d+)',str2))
 # print(re.findall('\d+',str2))
 #
 # # 1.2 匹配所有的数字（包含小数）

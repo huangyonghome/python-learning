@@ -13,7 +13,7 @@ import pickle
 from conf import settings
 
 #存储数据
-def dump(obj):
+def  dump(obj):
     f = open(settings.path, "wb")
     pickle.dump(obj,f)
     # json.dump(obj,f)  #抛弃了json方法,是因为Json不能存储实例对象

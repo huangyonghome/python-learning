@@ -34,8 +34,6 @@ class C(B):
 
 
 
-
-
     def request(self):
         print("call request method of C class")
 

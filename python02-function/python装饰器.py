@@ -10,12 +10,14 @@
 #         start = time.time()
 #         re = func(*args,**kwargs)
 #         print(time.time() - start)
+#         print(re)
 #         return re
 #     return inner
 #
 # @timer   #==> func1 = timer(func1)
 # def func1(a,b):
 #     print('in func1')
+#     return 'func1'
 #
 # @timer   #==> func2 = timer(func2)
 # def func2(a):
@@ -25,6 +27,9 @@
 # func1('aaaaaa','bbbbbb')
 # print(func2('aaaaaa'))
 #
+
+
+
 # def decorator(func):
 #     def inner():
 #         func()
@@ -43,25 +48,25 @@
 # print(index.__name__)
 
 # def wrapper1(func):
-#     def inner():
+#     def inner(name):
 #         print('wrapper1 ,before func')
-#         func()
+#         func(1)
 #         print('wrapper1 ,after func')
 #     return inner
 #
 # def wrapper2(func):
-#     def inner():
+#     def inner(name):
 #         print('wrapper2 ,before func')
-#         func()
+#         func(2)
 #         print('wrapper2 ,after func')
 #     return inner
 #
 # @wrapper2
 # @wrapper1
-# def f():
-#     print('in f')
+# def f(name):
+#     print('my name is %s' % name)
 #
-# f()
+# f('jesse')
 
 
 # def decorator(func):
@@ -129,6 +134,30 @@
 # timer(func2)
 
 #需求3.不能修改func1,func2函数本身,也不能修改调用方式
+
+import time
+def func1():
+    time.sleep(0.5)
+    print("i am func1")
+
+
+def func2():
+    time.sleep(1)
+    print("i am func2")
+
+def timer(f):
+    def inner():
+        start_time = time.time()
+        f()
+        end_time = time.time()
+        print("it costs time: %f" % (end_time - start_time))
+    return inner
+
+
+
+func1()
+
+
 
 # import time
 # def func1():
@@ -245,24 +274,24 @@
 
 #带参数装饰器
 
-def outer(a,b):
-    print(a,b)
-
-    def wrapper(f):
-        print("i am wrapper")
-        def inner(*args,**kwargs):
-            print("i am inner")
-            f(*args,**kwargs)
-        return inner
-
-    return wrapper
-
-
-@outer(1,2)  #这个装饰器执行了2个步骤: 1.先执行outer(1,2),把参数传递给outer()函数. 2.然后执行func1 = wrapper(func1)
-def func1():
-    print('i am func1')
-
-func1()
+# def outer(a,b):
+#     print(a,b)
+#
+#     def wrapper(f):
+#         print("i am wrapper")
+#         def inner(*args,**kwargs):
+#             print("i am inner")
+#             f(*args,**kwargs)
+#         return inner
+#
+#     return wrapper
+#
+#
+# @outer(1,2)  #这个装饰器执行了2个步骤: 1.先执行outer(1,2),把参数传递给outer()函数. 2.然后执行func1 = wrapper(func1)
+# def func1():
+#     print('i am func1')
+#
+# func1()
 
 
 

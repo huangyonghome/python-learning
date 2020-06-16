@@ -16,6 +16,11 @@
 #创建字典
 dic = {"name":"jesse","age":33,"job":"it","sex":"male"}
 
+# dic.update({"name":"jerry"})
+#
+# print(dic)
+
+
 #### 2.增加键值对
 
 #给字典增加一个新的键值对.如果键不存在,则添加
@@ -48,7 +53,7 @@ dic = {"name":"jesse","age":33,"job":"it","sex":"male"}
 # print(dic)
 
 #update方法也可以修改字典键值对.如果键已经存在,则修改值,如果不存在,则添加
-dic.update({"name":"Lyon","company":"internet"})
+# dic.update({"name":"Lyon","company":"internet"})
 
 '''
 4.删除一个字典的键值对'''
@@ -104,89 +109,89 @@ dic.update({"name":"Lyon","company":"internet"})
 '''
 字典嵌套
 '''
-dics = {
-    'name':{
-        'jesse':{
-            'age':22,
-            'job':'it',
-            'sex':'male'
-        },
-        'jerry':{
-            'age':23,
-            'job':'it',
-            'sex':'female'
-        },
-
-    },
-    'home': {
-        'jesse':{
-            'live':'shanghai',
-            'hometown':'jiangxi'
-        },
-        'jerry':{
-            'live':'beijing',
-            'hometown':'wuhan'
-        }
-    },
-    'company':{
-        'jesse':{
-            'name':'dwd',
-            'industry': 'internet'
-        },
-        'jerry':{
-            'name': 'bat',
-            'industry': 'internet'
-        }
-    }
-}
-
-# dics['name']['jesse']['age'] = 33
-# print(dics['name']['jesse'])
+# dics = {
+#     'name':{
+#         'jesse':{
+#             'age':22,
+#             'job':'it',
+#             'sex':'male'
+#         },
+#         'jerry':{
+#             'age':23,
+#             'job':'it',
+#             'sex':'female'
+#         },
 #
-# dict
-
-#练习
-
-print(dic)
-
-dic['name'] = 'new'
-
-print(dic)
-
-dic.setdefault('name','jesse')
-
-print(dic)
-
-dic.setdefault('school','college')
-
-print(dic)
-
-dic.pop('school')
-
-print(dic)
-
-del dic['name']
-
-print(dic)
-
-print(dic.get('school'))
-
-print(dic)
-
-for k,v in dic.items():
-    print(k,v)
-
-print(dic.items())
-
-
-l1 = ['a','b','c','d']
-
-dic1 = dict.fromkeys(l1,'default')
-
-print(dic1)
-
-
-print(dic.keys())
+#     },
+#     'home': {
+#         'jesse':{
+#             'live':'shanghai',
+#             'hometown':'jiangxi'
+#         },
+#         'jerry':{
+#             'live':'beijing',
+#             'hometown':'wuhan'
+#         }
+#     },
+#     'company':{
+#         'jesse':{
+#             'name':'dwd',
+#             'industry': 'internet'
+#         },
+#         'jerry':{
+#             'name': 'bat',
+#             'industry': 'internet'
+#         }
+#     }
+# }
+#
+# # dics['name']['jesse']['age'] = 33
+# # print(dics['name']['jesse'])
+# #
+# # dict
+#
+# #练习
+#
+# print(dic)
+#
+# dic['name'] = 'new'
+#
+# print(dic)
+#
+# dic.setdefault('name','jesse')
+#
+# print(dic)
+#
+# dic.setdefault('school','college')
+#
+# print(dic)
+#
+# dic.pop('school')
+#
+# print(dic)
+#
+# del dic['name']
+#
+# print(dic)
+#
+# print(dic.get('school'))
+#
+# print(dic)
+#
+# for k,v in dic.items():
+#     print(k,v)
+#
+# print(dic.items())
+#
+#
+# l1 = ['a','b','c','d']
+#
+# dic1 = dict.fromkeys(l1,'default')
+#
+# print(dic1)
+#
+#
+# print(dic.keys())
 
 
 #作业
@@ -229,12 +234,12 @@ print(dic.keys())
 #
 # print(dic1.keys())
 #
-dic = {"name":"jesse","age":33,"job":"it","sex":"male"}
-# print('name' in dic)
-
-
-for i,k in (enumerate(dic)):
-    print(i,"\t",k)
+# dic = {"name":"jesse","age":33,"job":"it","sex":"male"}
+# # print('name' in dic)
+#
+#
+# for i,k in (enumerate(dic)):
+#     print(i,"\t",k)
 
 # choise = int(input(">>>"))
 # print(dic.index)
@@ -242,3 +247,16 @@ for i,k in (enumerate(dic)):
 # a = dic.get("name1") or "haha"
 #
 # print(a)
+
+# dic = {}
+# l1 = []
+# for i in range(2):
+#     dic["name"] = 'jesse' + str(i)
+#     dic["age"] = i
+#     print(dic)
+#     l1.append(dic)
+#     print(l1)
+#
+# print(l1)
+#
+

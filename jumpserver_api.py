@@ -16,6 +16,7 @@ class HTTP:
         data              = {'username': username, 'password': password}
         url               = "/api/v1/authentication/auth/"
         res               = requests.post(cls.server + url, data)
+
         res_data          = res.json()
         token             = res_data.get('token')
         print(token)
@@ -176,7 +177,7 @@ class Asset(object):
         self.id           = None
         self.ip           = None
         self.admin_user   = AdminUser()
-        self.node         = Node()
+        self.node         = Node()  #pressure_assets
 
     def input_preconditions(self):
         self.ip           = input("请输入资产IP (172.16.0.1): ")
@@ -347,20 +348,20 @@ class APICreateAssetPermission(object):
 if __name__ == '__main__':
 
     # jumpserver url 地址
-    jms_url                = 'http://192.168.100.244'
+    jms_url                = 'http://10.111.20.189'
 
     # 管理员账户
     users_username         = 'admin'
-    users_password         = 'admin'
+    users_password         = 'G3dECr2IB6FY0PVD'
 
     # 资产管理用户
-    assets_admin_name      = None
+    assets_admin_name      = 'root'
     assets_admin_username  = None
     assets_admin_password  = None
 
     # 资产系统用户
-    assets_system_name     = None
-    assets_system_username = None
+    assets_system_name     = 'work'
+    assets_system_username = 'work'
 
     api = APICreateAssetPermission()
     api.perform()

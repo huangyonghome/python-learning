@@ -7,6 +7,7 @@
 
 #类的格式
 
+
 #class 类名:
 #    pass
 
@@ -172,19 +173,89 @@
 # print (p.name)
 # print(p.birthdate.year)
 
-class Game_role:
-    def __init__(self,name,sex,attack,hp):
-        self.name = name
-        self.sex = sex
-        self.attack = attack
-        self.hp = hp
+# class Game_role:
+#     def __init__(self,name,sex,attack,hp):
+#         self.name = name
+#         self.sex = sex
+#         self.attack = attack
+#         self.hp = hp
+#
+#     def fight(self,role):
+#         rest = role.hp - self.attack
+#         print("{} attack {}, 伤害{},对方还剩余{}血量".format(self.name,role.name,self.attack,rest))
+#
+#
+# p1 = Game_role('jesse','male',20,500)
+# p2 = Game_role('jerry','male',10,500)
+#
+# p1.fight(p2)
 
-    def fight(self,role):
-        rest = role.hp - self.attack
-        print("{} attack {}, 伤害{},对方还剩余{}血量".format(self.name,role.name,self.attack,rest))
+
+# class Person():
+#     name = 'Lyon'
+#     def __init__(self,name1):
+#         self.name = name1
+#
+#     def eat(self):
+#         print("%s is eatting" %self.name)
+#
+#
+# p = Person('jesse')
+#
+# print(p.name)
+# print(Person.name)
+# print(Person.__dict__)
+# print(Person.__name__)
+# print(p.__dict__)
+#
+# class Foo():
+#     name = ['lyon']
+#
+# a = Foo()
+# b = Foo()
+#
+# print("实例a中的name属性:",a.name)
+# print("实例b中的name属性:",b.name)
+#
+# print(id(a.name))
+# print(id(b.name))
+# print(id(Foo.name))
+#
+# Foo.name = ['jesse']
+#
+# print("实例a中的name属性:",a.name)
+# print("实例b中的name属性:",b.name)
+#
+# print(id(a.name))
+# print(id(b.name))
+# print(id(Foo.name))
+#
+# a.name = ['jerry']
+#
+# print("实例a中的name属性:",a.name)
+# print("实例b中的name属性:",b.name)
+#
+# print(id(a.name))
+# print(id(b.name))
+# print(id(Foo.name))
+
+class Animal():
+    def eat(self):
+        print("eating")
 
 
-p1 = Game_role('jesse','male',20,500)
-p2 = Game_role('jerry','male',10,500)
+class cat():
+    def eat1(animal):
+        print("%s is eating" % animal)
 
-p1.fight(p2)
+    def eat(self):
+        print("cat is eating")
+
+
+def eat(obj):
+    obj.eat()
+
+Animal.eat(Animal)
+cat.eat1(Animal.__name__)
+eat(Animal())
+eat(cat())

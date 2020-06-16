@@ -5,6 +5,30 @@
 
 import time
 
+# now_time = time.strftime("%Y-%m-%d %H:%M:%S")
+#
+# print(now_time)
+#
+# now_timestamp = time.time()
+#
+# print(now_timestamp)
+#
+# print(time.localtime())
+
+# ft = time.strftime('%Y/%m/%d %H:%M:%S')
+#
+# print(ft)
+#
+# st = time.strptime(ft,'%Y/%m/%d %H:%M:%S')
+#
+# print(st)
+#
+# print(time.localtime())
+
+# print(time.time())
+#
+# print(time.time())
+
 #(tm_year=2019, tm_mon=6, tm_mday=11, tm_hour=0, tm_min=9, tm_sec=6, tm_wday=1, tm_yday=162, tm_isdst=0)
 # print(time.localtime())
 
@@ -55,8 +79,8 @@ python有3种时间形式:
 # t = time.time()
 # st = time.localtime(t)
 # print(st)
-#
-# #结构化时间---------->格式化时间
+# #
+# # #结构化时间---------->格式化时间
 # ft = time.strftime('%Y-%m-%d %H:%M:%S',st)
 # print(ft)
 
@@ -82,10 +106,10 @@ python有3种时间形式:
 # print(datetime.datetime.now() + datetime.timedelta(weeks=-3))
 
 
-t = time.time()
-
-st = time.localtime(t)
-
-rt = time.strftime('%Y-%m-%d %H:%M:%S',st)
-
-print(rt)
+# t = time.time()
+#
+# st = time.localtime(t)
+#
+# rt = time.strftime('%Y-%m-%d %H:%M:%S',st)
+#
+# print(rt)
