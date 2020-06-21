@@ -9,7 +9,7 @@
 from multiprocessing import Queue,Process
 
 def run(q):
-    for i in range(4):
+    for i in range(3):
         # block参数设置False.则队列满异常,因为队列最多只允许3个
         q.put("jesse"+str(i),block=False)
 

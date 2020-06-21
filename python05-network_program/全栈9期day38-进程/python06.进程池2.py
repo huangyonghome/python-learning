@@ -15,8 +15,8 @@ class forMap:
 
     def forPrinit(self, i):
         print(os.getpid())
-        sleep(i)
-        print(i)
+        # sleep(i)
+        # print(i)
         return i ** 2
 
 

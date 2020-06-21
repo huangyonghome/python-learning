@@ -40,28 +40,28 @@ Manager组件实现主进程和子进程数据共享
 '''
 
 
-
-from multiprocessing import Manager,Process,Lock
-
-
-
-def func(dic,mutex):
-
-    mutex.acquire()
-    dic['count'] -= 1
-    mutex.release()
-
-if __name__ == '__main__':
-    m = Manager()
-    mutex = Lock()
-
-    dic = m.dict({'count':100})
-    p_list=[]
-
-    for i in range(50):
-        p = Process(target=func,args=(dic,mutex))
-        p.start()
-        p_list.append(p)
-
-    for i in p_list:i.join()
-    print("主进程:",dic)
+#
+# from multiprocessing import Manager,Process,Lock
+#
+#
+#
+# def func(dic,mutex):
+#
+#     mutex.acquire()
+#     dic['count'] -= 1
+#     mutex.release()
+#
+# if __name__ == '__main__':
+#     m = Manager()
+#     mutex = Lock()
+#
+#     dic = m.dict({'count':100})
+#     p_list=[]
+#
+#     for i in range(50):
+#         p = Process(target=func,args=(dic,mutex))
+#         p.start()
+#         p_list.append(p)
+#
+#     for i in p_list:i.join()
+#     print("主进程:",dic)
