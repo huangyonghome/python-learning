@@ -181,3 +181,70 @@
 #
 # a = A()
 # print(a.list_display)
+
+#
+# class Foo:
+#
+#     def __init__(self, name):
+#         self.name = name
+#
+#     # def __getattr__(self, item):
+#     #     return 'Attribute <%s> fetch failure' % item
+#
+#     def __getattribute__(self, item):
+#         # return object.__getattribute__(self, item)
+#         if item == "name":
+#             return 'Lyon'
+#         else:
+#             return 'Attribute <%s> fetch failure' % item
+#             # raise AttributeError(item)
+#
+# x = Foo('Lyon')
+# print(x.name)
+# print(x.age)
+
+
+# __setattr__
+# 与__getattr__一样,在定义__setattr__时,不要出现 self. 因为这样会导致递归调用
+# 正确的方式是,使用object的__setattr__,或者使用self.__dict__[key]
+# class Foo:
+#
+#     def __init__(self, name):
+#         self.name = name
+#
+#     def __setattr__(self, key, value):
+#         # object.__setattr__(self, key, value)
+#         if key == "name":
+#             self.__dict__[key] = value
+#         else:
+#             raise AttributeError(key + ' not allowed')
+#
+#
+# x = Foo('Lyon')
+# x.name = "Kenneth"
+# # x.age = 18
+# print(x.__dict__)
+
+
+class Dependency:
+    """ 附属类 """
+
+    def __get__(self, instance, owner):
+        print('%s.%s is called...' % ('Dependency', '__get__'))
+
+    def __set__(self, instance, value):
+        print('%s.%s is called...' % ('Dependency', '__set__'))
+
+    def __delete__(self, instance):
+        print('%s.%s is called...' % ('Dependency', '__delete__'))
+
+class Owner:
+    """ 所有者类 """
+    dependency = Dependency()
+#
+d = Dependency()
+print(d)
+d = 'Lyon'
+del d
+
+
