@@ -11,37 +11,37 @@
 下面的例子是线程池的方法.如果是进程池.只需要将ThreadPoolExecutor替换成ProcessPoolExecutor
 '''
 
-from concurrent.futures import ThreadPoolExecutor
-import time
-
-def func(n):
-    time.sleep(2)
-    print(n)
-    return n*n
-
-
-tpool = ThreadPoolExecutor(max_workers=5) #max_workers参数定义了线程池的大小,一般建议不超过CPU cores的5倍
-
-t_list = []
-
-for i in range(20):
-
-    ##submit(fn, *args, **kwargs) #submit方法异步提交任务
-    t = tpool.submit(func,i)
-    t_list.append(t)
-
-'''
-shutdown方法相当于进程池的pool.close()+pool.join()操作
-wait=True，等待池内所有任务执行完毕回收完资源后才继续
-wait=False，立即返回，并不会等待池内的任务执行完毕
-但不管wait参数为何值，整个程序都会等到所有任务执行完毕
-submit和map必须在shutdown之前
-'''
-tpool.shutdown()  #如果注释,则主线程不会等待所有子线程执行完毕..而是一旦接收到任意子线程返回值就马上执行下面的代码
-
-#result方法接收函数的返回值
-for t in t_list:
-    print("***",t.result())
+# from concurrent.futures import ThreadPoolExecutor
+# import time
+#
+# def func(n):
+#     time.sleep(2)
+#     print(n)
+#     return n*n
+#
+#
+# tpool = ThreadPoolExecutor(max_workers=5) #max_workers参数定义了线程池的大小,一般建议不超过CPU cores的5倍
+#
+# t_list = []
+#
+# for i in range(20):
+#
+#     ##submit(fn, *args, **kwargs) #submit方法异步提交任务
+#     t = tpool.submit(func,i)
+#     t_list.append(t)
+#
+# '''
+# shutdown方法相当于进程池的pool.close()+pool.join()操作
+# wait=True，等待池内所有任务执行完毕回收完资源后才继续
+# wait=False，立即返回，并不会等待池内的任务执行完毕
+# 但不管wait参数为何值，整个程序都会等到所有任务执行完毕
+# submit和map必须在shutdown之前
+# '''
+# tpool.shutdown()  #如果注释,则主线程不会等待所有子线程执行完毕..而是一旦接收到任意子线程返回值就马上执行下面的代码
+#
+# #result方法接收函数的返回值
+# for t in t_list:
+#     print("***",t.result())
 
 
 '''
