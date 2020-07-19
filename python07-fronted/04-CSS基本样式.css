@@ -1,0 +1,88 @@
+/* 这里是CSS的基本样式 */
+
+/* 全局样式 */
+
+/* body标签,在body全范围生效 */
+
+ /*字体,可以指定多个,浏览器会依次寻找字体 */
+
+body { font-family: PingFangSC-Regular, Verdana, Arial, 微软雅黑,宋体; /*字体,可以指定多个,浏览器会依次寻找字体 */
+       font-weight: 200; /* 字体粗细 */
+       font-size: 30px; /* 字体大小 */
+
+
+}
+
+/* 表格样式 */
+
+/* 下面的例子中将表格设置为边框,并且为蓝色 */
+table
+{ border-collapse:collapse; /* border-collapse 属性设置是否将表格边框折叠为单一边框 */
+  width: 100%; /*表格的宽度   */
+
+}
+
+th {
+
+    height: 100px; /* 表格标题单元格的高度 */
+}
+
+/* text-align 文本水平对齐方式.left左对齐,right右对齐,center居中*/
+
+td {
+
+       text-align: center;
+}
+
+/* vertical-align 文本垂直对齐方式,bottom底部对齐,top,顶部对齐,center居中对齐  */
+
+td {
+       height: 50px;
+       vertical-align: center;
+}
+
+/* 表格内边距. padding */
+td,th {
+       padding: 15px;
+}
+
+/* 表格边框颜色,以及th元素的文本和背景颜色 */
+
+table,th,td { border: 1px solid green;}
+
+th {
+       background-color: green;
+       color: blue;
+}
+
+
+/* 高度,宽度,背景颜色,背景图片 */
+.c2 {
+    width: 500px; /* 宽度 */
+    height: 500px; /* 高度 */
+    background-color: green; /*背景颜色 */
+    background-image: url("https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=231923533,1272780950&fm=11&gp=0.jpg"); /*背景图片,可以是本地文件或者URL */
+    background-position: center; /*背景图片位置,可以是百分比,也可以是文字 */
+    background-repeat: no-repeat; /*背景图片是否重复,默认背景图片会塞满整个背景,no-repeat表示只显示一张 */
+}
+
+/* 背景图片固定演示 */
+
+
+.c3 {
+    height: 1000px;
+    background: red;
+}
+
+.c4 {
+    height: 1000px;
+    width:100%;
+    background-image: url("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1595130580033&di=67d67dcfbec4f5713913faacc0ee9ff4&imgtype=0&src=http%3A%2F%2Fimg.redocn.com%2Fsheji%2F20150105%2Fhuwaimeishiguanggaopaishangchuan_3809197.jpg");
+    background-attachment: fixed; /* 背景图片固定在屏幕上, */
+}
+
+.c5 {
+    height:1000px;
+    background: green;
+}
+

@@ -1,0 +1,45 @@
+<!--
+@Time    : 2020-07-18 10:44
+@Author  : jesse
+@File    : 01-CSS引用方法.html
+-->
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="outer.css" >
+</head>
+
+<!-- 在html文件中使用style标签写样式 -->
+<style>
+    h1 {color: red; font-size: 30px}
+
+</style>
+
+<body>
+
+<!-- CSS样式引用的三种途径 -->
+
+
+<!-- 1.外部样式表
+单独写一个css文件,在html中使用link标签引入.link标签要写在head中
+相当于python的import语句.
+当CSS样式被不同的多个页面引用的时候,使用外部样式表非常方便
+ -->
+
+
+<!--下面使用的是outer.css中的样式 -->
+<p>海燕</p>
+
+<!-- 2.在html文件中使用style标签写样式 ..style不能写在<body>标签内-->
+
+<h1>这是style影响下的海燕</h1>
+
+<!-- 3.在标签内部使用style样式 -->
+
+<h2 style="color: black; font-size: 50px">这是标签内部style影响下的海燕</h2>
+
+</body>
+</html>
