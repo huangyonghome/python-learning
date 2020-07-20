@@ -4,6 +4,8 @@
 # @File    : python.03时间模块.py
 
 import time
+import os
+import datetime
 
 # now_time = time.strftime("%Y-%m-%d %H:%M:%S")
 #
@@ -15,10 +17,34 @@ import time
 #
 # print(time.localtime())
 
-# ft = time.strftime('%Y/%m/%d %H:%M:%S')
+# current_time = time.strftime('%Y%m%d')
+# filename = 'access'+'-'+current_time+'.log'
+# file_dir = '/data/logs/mendian_pv/'
+# oss_dir = '/pv_log/'
 #
-# print(ft)
 #
+# oss = os.path.join(file_dir,filename)
+# oss_dir = os.path.join(oss_dir,filename)
+#
+# print(oss_dir)
+
+print(datetime.timedelta(days=1))
+#
+# day = datetime.datetime.strptime(self.date,'%Y-%m-%d')
+#
+# print(datetime.date.today())
+# today = datetime.date.today()
+# print(str(today - datetime.timedelta(days=1)))
+
+# print((date.today() + timedelta(days = -1)).strftime("%Y%m%d"))
+#
+today = datetime.datetime.today()
+
+yesterday = today - datetime.timedelta(days=1)
+
+print(yesterday.strftime("%Y%m%d"))
+
+
 # st = time.strptime(ft,'%Y/%m/%d %H:%M:%S')
 #
 # print(st)
