@@ -3,12 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style>
+        .c1 {background-color: grey;color: red}
+    </style>
 </head>
 <body>
     <!--演示DOM基本查找-->
 
         <div class="c1">
-            我和i1的父级标签是同级关系
+            我和i1的父级标签是同级关系.我有c1的Class
         </div>
         <div>我是i1标签的兄级别标签</div>
         <div>
@@ -28,7 +31,7 @@
         document.getElementById('i1');
 
         // 2.使用Class查找,可能存在多个结果 document.getElementsByClassName('ClassName')
-            // 例如.查找class为c1的标签
+            // 例如.查找class为c1的标签.结果又多个,所以需要使用索引定位具体的元素
         document.getElementsByClassName('c1');
 
         // 3.直接查找标签,可能存在多个结果 document.getElementsByTagName("标签名")
@@ -58,6 +61,32 @@
         // 1.innerHTML        #获取或者修改某标签下的所有子标签的元素,
         // 1.1  .innerHtml    #获取标签元素
         // 1.2  .innerHtml='' #设置标签元素
+        // 例如,获取标签,并且将标签设置为p标签,内容为'ABC'
+        var p = document.getElementById('p-id');
+        p.innerHTML = '<p>ABC</p>';
+
+        // 2 innerText        #某标签下的所有子标签文本(和上面的区别)
+        // 2.1  .innerText    #获取标签的文本(和上面区别是只是文本,不带标签)
+        // 2.2  .innerText='' #设置标签文本
+        // 例如,获取标签,并且将标签内容为'ABC'
+        var p = document.getElementById('p-id');
+        p.innerText = 'ABC'
+
+
+        // 四.修改属性
+
+        // 1.attribute                  获取所有标签属性
+        // 2.setAttribute(key,value)    设置标签属性
+        // 3.getAttribute(key)          获取指定标签属性
+
+        // 五.修改类
+
+        // 1.className  // 获取所有类名
+        // 2.classList.remove(cls)  // 删除指定类
+        // 3.classList.add(cls)  // 添加类
+
+
+
 
         
 

@@ -24,15 +24,29 @@
              text-align:center;
         }
 
-        .c4 {
+        /* 演示横向列表左浮动 */
+
+     .c4 {
             float:left;
             width:100%;
             padding:0;
             margin:0;
-            list-style-type:none
+            /*list-style-type:none*/
         }
 
-        .c5
+        .c5 {
+            float: left;
+            width: 7em;
+            text-decoration: none;
+            color: white;
+            background-color: purple;
+            padding:0.2em 0.6em;
+            border-right:1px solid white;
+        }
+        li {
+            display: inline;
+        }
+        a:hover {background-color: #ff3300}
     </style>
 </head>
 <body>
@@ -78,5 +92,19 @@
         This is some text. This is some text. This is some text.
     </p>
 
+        <!--演示横向列表左浮动 -->
+    <p>
+        <ul class="c4">
+        <li><a class="c5" href="#">Link one</a></li>
+        <li><a class="c5" href="#">Link two</a></li>
+        <li><a class="c5" href="#">Link three</a></li>
+        <li><a class="c5" href="#">Link four</a></li>
+    </ul>
+    </p>
+    <!--演示横向列表左浮动 -->
+
+<p>
+在上面的例子中，我们把 ul 元素和 a 元素浮向左浮动。 li 元素显示为行内元素（元素前后没有换行）。 这样就可以使列表排列成一行。ul 元素的宽度是 100%， 列表中的每个超链接的宽度是 7em（当前字体尺寸的 7 倍）。 我们添加了颜色和边框，以使其更漂亮。
+</p>
 </body>
 </html>
