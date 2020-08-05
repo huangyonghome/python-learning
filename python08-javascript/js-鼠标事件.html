@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Python & Jesse">
+    <meta name="keywords" content="HTML, CSS, XML, XHTML, JavaScript">
+    <title>Title</title>
+</head>
+    <style>
+        .dark {
+            background-color: black;
+            border-radius: 50%;
+            width: 200px;
+	        height: 200px;
+
+
+        }
+
+        .lighter {
+
+            background-color: green;
+            border-radius: 50%;
+            width: 200px;
+	        height: 200px;
+
+
+        }
+
+    </style>
+<body>
+    <!-- onclick 事件 -->
+     <p id='i1' class="dark"></p>
+     <input type="button" value="开关" Onclick="lighter()">
+
+
+<script>
+    var light = "False";
+    console.log(light);
+
+    function lighter() {
+        var tag = document.getElementById('i1');
+
+        if ( light = "False" ) {
+            tag.classList.remove('dark');
+            tag.classList.add('lighter');
+            var light = "True"
+            console.log(light);
+
+        }
+        else {
+
+            tag.classList.remove('lighter');
+            tag.classList.add('dark');
+        }
+    }
+</script>
+</body>
+</html>

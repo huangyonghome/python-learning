@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Python & Jesse">
+    <meta name="keywords" content="HTML, CSS, XML, XHTML, JavaScript">
+    <title>Title</title>
+    <style>
+        .c1 {background-color: grey;color: red}
+    </style>
+</head>
+
+<body>
+    <!--演示DOM标签增删改查-->
+
+        <div class="c1">
+            我和i1的父级标签是同级关系.我有c1的Class
+        </div>
+        <div>我是i1标签的兄级别标签</div>
+        <div>
+            <p>我是Id为i1标签的前一个兄弟标签</p>
+            <div id="i1">我的id是i1
+            <div>我是i1的子标签</div>
+            </div>
+            <p>我是Id为i1标签的下一个兄弟标签</p>
+        我是i1标签的父级标签</div>
+
+</body>
+
+<script>
+    // 定义一个标签
+    // 方法1.先创建一个空标签,然后定义文本内容和属性
+    var tag = document.createElement('a'); //创建一个空的a标签
+    tag.innerText='baidu';                 //定义文本内容
+    tag.className='c1';                    //定义CSS样式类
+
+    // 方法2. 完整定义
+    var tag = "<a class='c1' href='http://www.baidu.com/'>baidu</a>"
+
+    // 定义好标签后,指定插入某个位置
+    // 方式一
+    var obj = "<input type='text' />";
+    xxx.insertAdjacentHTML("beforeEnd",obj);
+    xxx.insertAdjacentElement('afterBegin',document.createElement('p'))
+    //注意：第一个参数只能是'beforeBegin'、 'afterBegin'、 'beforeEnd'、 'afterEnd'
+    // 方式二
+    var tag = document.createElement('a')
+    xxx.appendChild(tag)
+    xxx.insertBefore(tag,xxx[1])
+
+    //
+
+</script>
+</html>

@@ -109,44 +109,44 @@ dic = {"name":"jesse","age":33,"job":"it","sex":"male"}
 '''
 字典嵌套
 '''
-# dics = {
-#     'name':{
-#         'jesse':{
-#             'age':22,
-#             'job':'it',
-#             'sex':'male'
-#         },
-#         'jerry':{
-#             'age':23,
-#             'job':'it',
-#             'sex':'female'
-#         },
+dics = {
+    'name':{
+        'jesse':{
+            'age':22,
+            'job':'it',
+            'sex':'male'
+        },
+        'jerry':{
+            'age':23,
+            'job':'it',
+            'sex':'female'
+        },
+
+    },
+    'home': {
+        'jesse':{
+            'live':'shanghai',
+            'hometown':'jiangxi'
+        },
+        'jerry':{
+            'live':'beijing',
+            'hometown':'wuhan'
+        }
+    },
+    'company':{
+        'jesse':{
+            'name':'dwd',
+            'industry': 'internet'
+        },
+        'jerry':{
+            'name': 'bat',
+            'industry': 'internet'
+        }
+    }
+}
 #
-#     },
-#     'home': {
-#         'jesse':{
-#             'live':'shanghai',
-#             'hometown':'jiangxi'
-#         },
-#         'jerry':{
-#             'live':'beijing',
-#             'hometown':'wuhan'
-#         }
-#     },
-#     'company':{
-#         'jesse':{
-#             'name':'dwd',
-#             'industry': 'internet'
-#         },
-#         'jerry':{
-#             'name': 'bat',
-#             'industry': 'internet'
-#         }
-#     }
-# }
-#
-# # dics['name']['jesse']['age'] = 33
-# # print(dics['name']['jesse'])
+dics['name']['jesse']['age'] = 33
+print(dics['name']['jesse'])
 # #
 # # dict
 #
