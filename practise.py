@@ -130,7 +130,7 @@
 
 # e=a+b+c+d
 # e.append(a,b,c,d)
-print(f)
+# print(f)
 # print(a.split(","))
 
 # b = for x in str(a)
@@ -142,3 +142,73 @@ print(f)
 #     b.append(x)
 
 # print(b)
+
+
+import re
+
+a = """
+    domain: trade.doweidu.com
+    主机: hsq-api2
+    IP地址: ['10.111.5.248']
+    业务线: hsq
+    调用方式: GET
+    请求链接: /common/sysconfigbyname?name=order_tag_list
+    状 态 码: 200
+    后端服务器: 127.0.0.1:9000
+    数      量: 123067
+"""
+
+b=re.findall(r"domain: (.*)\.doweidu\.com",a)[0]
+
+print(b)
+
+
+
+
+if project == "hsq":
+    at_list = ['15601606633']
+elif porject == "iqg":
+    at_list = ["13722981841"]
+elif project == "bbh":
+    at_list = ["17621707088"]
+elif project == "msf":
+    at_list = ["18015130020"]
+elif project == "mg":
+    if "nginx" in Type:
+        mg_project = re.findall("domain: (.*)\.doweidu\.com", body)[0]
+        if mg_project == "trade":
+            at_list = ["17721019171"]
+        elif mg_project == "message.center":
+            at_list = ["17091314591"]
+        elif mg_project == "goods.center":
+            at_list = ["18616309723"]
+        else:
+            at_list = ["18616990553"]
+    else:
+        at_list = ["18616990553"]
+
+if (not "at_list" in locals().keys()):at_list = ["17749739691"]
+
+print(at_list)
+
+# locals()
+# print( not 'b' in locals().keys())
+
+
+
+#
+#
+#
+#
+#
+# if Type == "fpm":
+#    if project == "hsq":
+#         at_list = ['15601606633']
+#    elif porject == "iqg":
+#         at_list = ["13722981841"]
+#    elif project == "bbh":
+#         at_list = ["17621707088"]
+#    elif project == "msf":
+#         at_list = ["18015130020"]
+#    elif project == "mg":
+#         at_list = ["18616990553"]
