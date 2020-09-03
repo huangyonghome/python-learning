@@ -14,7 +14,7 @@ Socket又叫做套接字 , Python中socket为我们封装好了TCP/UDP协议 , �
 
 创建socket对象就是一个建立TCP的过程 , 即三次握手 , 断开当然就是四次挥手了
 
-![TCP communication](http://oux34p43l.bkt.clouddn.com/TCP%20communication.png)
+![TCP communication](https://img-blog.csdn.net/20180830152422831?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM3ODg0Mjcz/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70)
 
 代码实现
 
