@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Python & Jesse">
+    <meta name="keywords" content="HTML, CSS, XML, XHTML, JavaScript">
+    <title>Title</title>
+    <meta charset="UTF-8">
+    <title>left_menu</title>
+
+    <style>
+          .menu{
+              height: 500px;
+              width: 30%;
+              background-color: gainsboro;
+              float: left;
+          }
+          .content{
+              height: 500px;
+              width: 70%;
+              background-color: rebeccapurple;
+              float: left;
+          }
+         .title{
+             line-height: 50px;
+             background-color: #425a66;
+             color: forestgreen;}
+         .hide{
+             display: none;
+         }
+    </style>
+</head>
+
+<body>
+    <div class="outer">
+        <div class="menu">
+            <div class="item">
+                <div class="title" onclick="show(this);">菜单一</div>
+                <div class="con">
+                    <div>111</div>
+                    <div>111</div>
+                    <div>111</div>
+                </div>
+            </div>
+            <div class="item">
+                <div id= 'd1' class="title" onclick="show(this);">菜单二</div>
+                <div id = 'd2' class="con hide">
+                    <div>111</div>
+                    <div>222</div>
+                    <div>333</div>
+                </div>
+            </div>
+            <div class="item" name="jesse">
+                <div class="title" onclick="show(this);">菜单三</div>
+                <div class="con hide">
+                    <div>111</div>
+                    <div>222</div>
+                    <div>111</div>
+                </div>
+            </div>
+        </div>
+        <div class="content"></div>
+    </div>
+
+   <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script>
+          function show(self){
+              //console.log($(self).text())
+              $(self).next().removeClass("hide")
+              $(self).parent().siblings().children(".con").addClass("hide")
+          }
+          //查找d2标签下的所有div标签
+        $("#d2 div")
+
+        //查找d2标签下的所有div标签.索引为偶数的元素
+        $("#d2 div:even()")
+
+        //索引为奇数
+        $("#d2 div:odd()")
+
+        //索引为1
+        $("#d2 div:eq(1)")
+
+        //索引大于1的所有元素
+        $("#d2 div:gt(1)")
+
+        //索引小于3的所有元素
+        $("#d2 div:lt(3)")
+
+        //属性
+        $('[name]')
+        $('[name="jesse"]')
+
+    </script>
+</body>
+</html>

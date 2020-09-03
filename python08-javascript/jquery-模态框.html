@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Python & Jesse">
+    <meta name="keywords" content="HTML, CSS, XML, XHTML, JavaScript">
+    <title>模态框</title>
+    <style>
+        .cover {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background-color: green;
+        }
+
+        .modal {
+            height: 400px;
+            width: 600px;
+            background-color: white;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-left: -300px;
+            margin-top: -200px;
+
+
+        }
+
+        .hide{
+            display: none;
+        }
+
+    </style>
+</head>
+<body>
+    <input id="b1" type="button" value="点我" name="点我试试">
+    <div class="cover hide">
+        <div class="modal hide ">
+            <form>
+                <p>用户名:<input type="text" name="username"></p>
+                <p> 密码: <input type="password" name="password"></p>
+
+            <p>
+                <input type="button" id="b2" value="确定">
+                <input type="button" id="b3" value="取消">
+            </p>
+            </form>
+
+        </div>
+
+    </div>
+
+</body>
+<script src="jquery-3.2.1.js"></script>
+<script>
+    $("#b1").click(function(){
+        $(".cover").removeClass("hide");
+        $(".modal").removeClass("hide");
+
+    })
+
+    $("#b3").click(function(){
+        $(".cover").addClass("hide");
+        $(".modal").addClass("hide");
+    })
+</script>
+</html>
