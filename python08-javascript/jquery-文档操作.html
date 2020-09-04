@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Python & Jesse">
+    <meta name="keywords" content="HTML, CSS, XML, XHTML, JavaScript">
+    <title>文档操作</title>
+</head>
+<body>
+<input type="button" id="b1" value="新增一行列表">
+
+<div>
+    <table border="1" id="t1">
+    <thead>
+        <tr>
+            <td>#</td>
+            <td>姓名</td>
+            <td>职业</td>
+        </tr>
+    </thead>
+    <tbody id="tb1">
+        <tr>
+            <td>1</td>
+            <td>jesse</td>
+            <td>IT</td>
+        </tr>
+         <tr>
+            <td>2</td>
+            <td>Lyon</td>
+            <td>programmer</td>
+        </tr>
+    </tbody>
+
+    </table>
+</div>
+
+
+    <div>
+
+        -----分隔符-------
+    </div>
+
+    <div>
+
+        <table border="1" id="t2">
+    <thead>
+        <tr>
+            <td>#</td>
+            <td>姓名</td>
+            <td>职业</td>
+            <td>操作</td>
+        </tr>
+    </thead>
+    <tbody id="tb2">
+        <tr>
+            <td>1</td>
+            <td>jesse</td>
+            <td>IT</td>
+            <td><button>删除</button></td>
+        </tr>
+         <tr>
+            <td>2</td>
+            <td>Lyon</td>
+            <td>programmer</td>
+             <td><button>删除</button></td>
+        </tr>
+    </tbody>
+</table>
+
+    </div>
+
+
+
+<!--
+// 内部插入
+$("#c1").append("<b>hello</b>")    // 追加到内容后面
+$("p").appendTo("div")             // 追加到指定位置后面
+prepend()                          // 追加到内容前面
+prependTo()                        // 追加到指定位置前面
+// 外部插入
+before()                           // 插入到元素之前
+insertBefore()                     // 插入到指定元素之前
+after                              // 插入到元素之后
+insertAfter()                      // 插入到指定元素之后
+replaceWith()                      // 替换
+remove()                           // 删除
+empty()                            // 匹配空元素
+clone()                            // 克隆
+//
+
+-->
+</body>
+<script src="jquery-3.2.1.js"></script>
+<script>
+    //点击按钮新增一行列表
+    $("#b1").click(function(){
+        //获取当前tbody下的tr的数量也就是序号
+        var TrNum = $("#tb1").find("tr").length;
+
+        //下一行列表的序号
+        var NeTrNum = TrNum + 1;
+
+        //创建一个元素,jquery没有相关语法,用原生DOM操作
+        var TabElems = document.createElement("tr")
+
+        //给这个元素添加内容,生成序号
+        TabElems.innerHTML = "<td>" +
+                            NeTrNum +
+                            "</td>" +
+                            "<td></td><td></td>";
+
+        //将这个元素添加到列表最后一行
+        $("#t1").find("tbody").append(TabElems);
+    })
+
+
+    // 点击按钮删除一行列表
+
+    //找到td下的button,添加click的事件
+    $("td button").click(function(){
+        //删除父级元素(td)的父级元素(td),然后删除
+        $(this).parent().parent().remove();
+    })
+</script>
+
+
+</html>
