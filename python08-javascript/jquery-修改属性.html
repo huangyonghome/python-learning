@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Python & Jesse">
+    <meta name="keywords" content="HTML, CSS, XML, XHTML, JavaScript">
+    <title>修改属性</title>
+</head>
+
+<body>
+<img src="https://img1.doubanio.com/view/photo/l/public/p2375475329.webp"></img>
+
+<form>
+    <input type="button" id="b1" value="下一页">
+</form>
+</body>
+<script src="jquery-3.2.1.js"></script>
+<script>
+    //点击下一页按钮更换图片
+
+    //1.定义一张新图片的URL地址
+    var NewUrl = "https://img3.doubanio.com/view/photo/l/public/p2497925801.webp"
+
+    //2.给下一页按钮绑定点击事件
+    $("#b1").click(function(){
+        //3.找到img标签,定义一个变量
+        var $ImgEle = $("img");
+
+        //4.先找到当前的URL中的src属性的值.通过attr("属性名")可以获取属性值
+        OldUrl = $ImgEle.attr("src");
+
+        //5.设置属性值,$("").attr("属性名","新值")
+        $ImgEle.attr("src",NewUrl);
+
+        //5.将刚才的URL设置为新的URL
+        NewUrl = OldUrl;
+
+
+    })
+</script>
+</html>

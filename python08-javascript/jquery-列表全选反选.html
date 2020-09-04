@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Python & Jesse">
+    <meta name="keywords" content="HTML, CSS, XML, XHTML, JavaScript">
+    <title>列表全选反选</title>
+</head>
+<body>
+    <div>
+        <table border="1">
+            <thead>
+                <td>#</td>
+                <td>姓名</td>
+                <td>职业</td>
+            </thead>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>jesse</td>
+                <td>IT</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>David</td>
+                <td>sales</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>Lyon</td>
+                <td>programmer</td>
+            </tr>
+        </table>
+    </div>
+    <input type="button" id="b1" value="全选">
+     <input type="button" id="b2" value="取消">
+    <input type="button" id="b3" value="反选">
+</body>
+<script src="jquery-3.2.1.js"></script>
+<script>
+    var InElems = $("tr input"); //先将input标签找出来保存成一个变量,避免频繁去查找标签
+
+    $("#b1").click(function(){
+        InElems.prop("checked",true); //使用prop方法设置属性,将checked属性设置为True
+    })
+
+    $("#b2").click(function(){
+        InElems.prop("checked",false); //设置为False
+    })
+
+    $("#b3").click(funcion(){
+        for i,InElems.length
+
+        if InElems.prop("checked")
+    })
+</script>
+</html>
