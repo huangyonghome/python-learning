@@ -34,16 +34,16 @@
 
 
 <script>
-    var light = "False";
+    var light = false;
     console.log(light);
 
     function lighter() {
         var tag = document.getElementById('i1');
 
-        if ( light = "False" ) {
+        if ( ! light) {
             tag.classList.remove('dark');
             tag.classList.add('lighter');
-            var light = "True"
+            light = true;
             console.log(light);
 
         }
@@ -51,6 +51,8 @@
 
             tag.classList.remove('lighter');
             tag.classList.add('dark');
+            light = false;
+            console.log(light);
         }
     }
 </script>
