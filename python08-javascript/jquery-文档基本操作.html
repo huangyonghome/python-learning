@@ -1,0 +1,58 @@
+<!--
+@Time    : 2020-09-05 15:34
+@Author  : jesse
+@File    : jquery-文档基本操作.html
+-->
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>文档基本操作</title>
+</head>
+<body>
+    <div id="d1">我是div</div>
+    <div id="d2">
+        <p>我的d2下的p菜单</p>
+        <div id="d2-1">
+            我是d2下的div
+            <p>我是d2-1下的p</p>
+        </div>
+    </div>
+</body>
+
+
+<!--
+// 内部插入
+$("#c1").append("<b>hello</b>")    // 追加到内容后面
+$("p").appendTo("div")             // 追加到指定位置后面
+prepend()                          // 追加到内容前面
+prependTo()                        // 追加到指定位置前面
+// 外部插入
+before()                           // 插入到元素之前
+insertBefore()                     // 插入到指定元素之前
+after                              // 插入到元素之后
+insertAfter()                      // 插入到指定元素之后
+replaceWith()                      // 替换
+remove()                           // 删除
+empty()                            // 匹配空元素
+clone()                            // 克隆
+//
+
+
+-->
+
+<script src="jquery-3.2.1.js"></script>
+<script>
+    // eleElm="<p>我是新增的p标签</p>"
+
+    //$("#d1").append(eleElm); //在d1的内部的最末尾追加元素
+    //$("#d1").prepend(eleElm); //在d1的内部最前面添加元素
+
+    //$("#d1").before(eleElm); //在d1的外部的前面添加元素
+
+    //("#d2").after(eleElm); //在d2的外部追加元素
+
+</script>
+
+</html>

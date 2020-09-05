@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>周末作业分解</title>
+
+      <style>
+        .cover {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background-color: grey;
+        }
+
+        .modal {
+            height: 400px;
+            width: 600px;
+            background-color: white;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-left: -300px;
+            margin-top: -200px;
+
+
+        }
+
+        .hide{
+            display: none;
+        }
+
+    </style>
+</head>
+<body>
+
+<button id="add">新增</button>
+<table border="1">
+  <thead>
+  <tr>
+    <th>#</th>
+    <th>姓名</th>
+    <th>爱好</th>
+    <th>操作</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>1</td>
+    <td>Egon</td>
+    <td>街舞</td>
+    <td>
+      <button id="b1" class="edit-btn">编辑</button>
+      <button class="delete-btn">删除</button>
+    </td>
+  </tr>
+  <tr>
+    <td>2</td>
+    <td>Alex</td>
+    <td>烫头</td>
+    <td>
+      <button class="edit-btn">编辑</button>
+      <button class="delete-btn">删除</button>
+    </td>
+  </tr>
+  <tr>
+    <td>3</td>
+    <td>苑局</td>
+    <td>日天</td>
+    <td>
+      <button class="edit-btn">编辑</button>
+      <button class="delete-btn">删除</button>
+    </td>
+  </tr>
+  </tbody>
+</table>
+
+<div id="myCover" class="cover hide"></div>
+<div id="myModal" class="modal hide">
+  <div>
+    <p>
+      <label for="modal-name">姓名</label>
+      <input type="text" id="modal-name">
+    </p>
+    <p>
+      <label for="modal-habit">爱好</label>
+      <input type="text" id="modal-habit">
+    </p>
+    <p>
+      <button id="modal-submit">提交</button>
+      <button id="modal-cancel">取消</button>
+    </p>
+  </div>
+</div>
+<script src="jquery-3.2.1.js"></script>
+<script>
+
+    // 弹出模态框函数
+    function showmodal() {
+      $(".cover,.modal").removeClass("hide");
+
+    }
+
+
+    // 关闭模态框函数
+    function closemodal(){
+      // 每次关闭前都清空input框的值
+      $("#myModal").find("input").val("");
+        $(".cover,.modal").addClass("hide");
+
+    }
+
+    // 给新增按钮绑定事件
+    $("#add").on("click", function () {
+        // 把模态框弹出!,调用showmodal函数
+      showmodal();
+    });
+
+   /*
+    给编辑按钮绑定事件.使用全局委托事件.
+    如果是$(".edit-btn").on("click", function(){}函数,
+    则新增的表单的编辑按钮无法捕获事件.
+
+    */
+
+   //下面是委托事件,委托tbody元素,如果有edit-btn的class的标签点击事件就捕获到
+   $("tbody").on("click",".edit-btn",function(){
+        //获取当前姓名和爱好的值
+        var name_val = $($(this).parent().siblings()[1]).text();
+        var hobby_val = $($(this).parent().siblings()[2]).text();
+
+        //获取当前所在行的tr元素,保存成一个变量
+        $CurrentElem = $(this).parent().parent();
+
+        //将当前所在的整个tr元素保存成一个变量.使用data方法
+
+
+     $("#myModal").data("CurrentTr",$CurrentElem);
+
+        // 把模态框弹出!
+        showmodal();
+
+        //将当前的姓名和爱好的值设置到模态框
+        $("#modal-name").val(name_val);
+        $("#modal-habit").val(hobby_val);
+
+   })
+
+
+    // 模态框中的取消按钮绑定事件.
+
+    $("#modal-cancel").on("click", function () {
+        // 1. 清空模态框中的input
+        // 2. 隐藏模态框
+        // 调用closemodal函数
+      closemodal();
+
+    });
+
+    // 模态框中的提交按钮绑定事件
+    $("#modal-submit").on("click",function (){
+        // 1. 取到 用户 填写的 input框的值
+        var $username = $("#modal-name").val()
+        var $hobby = $("#modal-habit").val()
+
+         // 2. 根据是编辑 还是新增 做不同的操作
+        // 2.1 如果是新增操作,就生成一条新的tr,加到table的最后
+
+      //判断CurrentTr是否已经被data函数定义,如果有,则说明是编辑菜单,否则是新增
+      var $CurrentElem = $("#myModal");
+      var $CurrentTrEle = $CurrentElem.data("CurrentTr");
+
+        //判断该变量是否被定义
+        if ($CurrentTrEle === undefined) { //说明是新增按钮的提交
+             //获取当前tbody下的tr的数量也就是序号
+            var TrNum = $("tbody").find("tr").length;
+
+            //下一行列表的序号
+            var NeTrNum = TrNum + 1;
+
+            //创建一个元素,jquery没有相关语法,用原生DOM操作
+            var TabElems = document.createElement("tr")
+
+            // 创建一个编辑删除元素
+            var OpElem = "<td>\n" +
+                "      <button class=\"edit-btn\">编辑</button>\n" +
+                "      <button class=\"delete-btn\">删除</button>\n" +
+                "    </td>"
+
+            //给这个元素设置序号,姓名和爱好,以及编辑删除元素,拼接成一个完整元素
+            TabElems.innerHTML = "<td>" +
+                            NeTrNum +
+                            "</td>" +
+                            "<td>" +
+                             $username +
+                            "</td>" +
+                            "<td>" +
+                            $hobby +
+                            "</td>" +
+                            OpElem
+                            ;
+
+            //将这个元素添加到列表最后一行
+            $("tbody").append(TabElems);
+
+        }
+
+        // 如果是编辑菜单
+        else {
+            // 编辑按钮的行元素设置新的值
+            $CurrentTrEle.children().eq(1).text($username);
+            $CurrentTrEle.children().eq(2).text($hobby);
+
+            //清空$CurrentElem变量,否则,永远都是编辑状态
+            $CurrentElem.removeData();
+
+        }
+
+
+        //if条件结束,移除模态框
+        closemodal();
+
+    });
+
+    //删除按钮,同样也要使用委托事件
+    $("tbody").on("click",".delete-btn",function(){
+        //1.删除指定行的表格
+        $(this).parent().parent().remove();
+
+        //2.循环剩余的行,给序号进行排序
+
+        //2.1 将剩余所有的tr保存为一个变量
+        var $line = $("tbody tr");
+
+        //2.2 遍历每个tr,修改tr中的序号的值
+        for (var i=0;i<=$line.length;i++){
+
+            //2.3 拿到每个tr中第一个td标签,并且将这个标签元素保存为变量
+            var $TdElem = $($line[i]).find("td")[0];
+
+            //2.4 修改td元素中的值,由于是索引是0起步,所以序号加1
+            $($TdElem).text(i+1);
+        }
+
+    });
+
+
+
+
+
+</script>
+</body>
+</html>
