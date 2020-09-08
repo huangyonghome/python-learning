@@ -7,26 +7,18 @@ import requests
 from lxml import etree
 from requests.auth import HTTPBasicAuth
 
-# url = 'http://172.16.20.101:9200/_cat/health'
-# r=requests.get(url,auth=HTTPBasicAuth('elastic','Ld73vPze2c'))
-# print(r.status_code)
-# print(r.text)
-#
-# print(r.text.split())
+'''
+博客:
+https://www.pianshen.com/article/3077218787/
+'''
 
 
 url = 'https://accounts.douban.com/j/mobile/login/basic'
 
-#
-# r = requests.get(url,auth=HTTPBasicAuth('7865227@qq.com','xxxx'))
-#
-# print(r.status_code)
-# print(r.text)
-
 data = {
             "ck": "",
             "name": '7865227@qq.com',
-            "password": 'hyliqin1987',
+            "password": '',
             "remember": "false"
         }
 
@@ -39,14 +31,10 @@ headers = {
 
 }
 
-proxies = {
-            "http": "http://127.0.0.1:8080",
-            "https": "https://127.0.0.1:8080"
-        }
 
 session = requests.session()
 session.headers = headers
-# session.proxies = proxies
+
 
 r = session.post(url,data=data,headers=headers)
 
