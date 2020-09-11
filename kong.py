@@ -4,6 +4,17 @@
 # @Author  : jesse
 # @File    : kong.py
 
-import kong
+import requests,json
 
-print (dir(kong))
+url = 'http://10.0.0.101:8001/'
+
+data = {'name':'betaapi',"protocol":"http",'host':'m.devapi.haoshiqi.net'}
+
+#提交
+server_url = url + 'services'
+r = requests.post(server_url,data=data)
+response = json.loads(r.text)
+print(type(r.text))
+print(r.text)
+print(response)
+print(response.get("id"))
