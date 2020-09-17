@@ -1,0 +1,7 @@
+include flaskr/schema.sql
+graft flaskr/static
+graft flaskr/templates
+graft /Users/huangyong/Desktop/python-learning/instance
+include /Users/huangyong/Desktop/python-learning/instance/flaskr.sqlite
+global-exclude *.pyc
+

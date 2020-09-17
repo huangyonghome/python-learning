@@ -5233,7 +5233,7 @@ jQuery.event = {
 		if ( delegateCount &&
 
 			// Support: IE <=9
-			// Black-hole SVG <use> instance trees (trac-13180)
+			// Black-hole SVG <use> instance-bak1-bak trees (trac-13180)
 			cur.nodeType &&
 
 			// Support: Firefox <=42
@@ -8669,7 +8669,7 @@ function ajaxHandleResponses( s, jqXHR, responses ) {
 }
 
 /* Chain conversions given the request and the original response
- * Also sets the responseXXX fields on the jqXHR instance
+ * Also sets the responseXXX fields on the jqXHR instance-bak1-bak
  */
 function ajaxConvert( s, response, jqXHR, isSuccess ) {
 	var conv2, current, conv, tmp, prev,

@@ -6,16 +6,16 @@
 
 import requests,json,ast
 
-url = 'http://10.0.0.101:8001/'
+# url = 'http://10.0.0.101:8001/'
 
-data = {'name':'betaapi1','protocol':'http','host':'m.devapi.haoshiqi.net'}
-
-#提交
-server_url = url + 'services'
-r = requests.post(server_url,data=data)
-# # r = requests.get(server_url)
-print(r.status_code)
-print(r.text)
+# data = {'name':'betaapi1','protocol':'http','host':'m.devapi.haoshiqi.net'}
+#
+# #提交
+# server_url = url + 'services'
+# r = requests.post(server_url,data=data)
+# # # r = requests.get(server_url)
+# print(r.status_code)
+# print(r.text)
 # response = json.loads(r.text)
 
 # print(type(r.text))
@@ -65,3 +65,19 @@ print(r.text)
 # service = config['service']
 #
 # service_dic = config['service'].getdict('hsq_beta')
+
+data = {"name":"request-transformer","config.replace.uri":"/open/item/itemdetail","config.add.querystring":"id:\$(uri_captures.id)"}
+#
+url = 'http://10.0.0.101:8001/services/6234f088-14ed-4c6b-9784-c671d6895613/plugins'
+r = requests.post(url,data=data)
+print(r.status_code)
+print(r.text)
+#
+# url = 'http://10.0.0.101:8001/routes/'
+# res =requests.get(url)
+# response = json.loads(res.text)
+# data = response.get('data')
+# print(data)
+# for item in data:
+#     print(item.get('id'))
+
