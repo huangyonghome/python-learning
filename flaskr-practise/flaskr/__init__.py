@@ -9,8 +9,8 @@ import os
 
 from flask import Flask
 
-from . import auth, blog
-from . import db
+# from . import auth, blog
+# from . import db
 
 
 def create_app(test_config=None):
@@ -41,8 +41,9 @@ def create_app(test_config=None):
 
     @app.route('/hello')
     def hello():
-        return 'Hello World!'
+        return 'Hello, World!'
     return app
+
 
 
 # if __name__ == "__main__":
