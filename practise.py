@@ -219,6 +219,11 @@ b = [1,2,3,4,7,8,9,0]
 print(b[::-1])
 print(b)
 
+import os
+print(os.path.abspath(os.path.dirname(__file__)))
+print(os.path.dirname(__file__))
+print(__file__)
+
 
 
 

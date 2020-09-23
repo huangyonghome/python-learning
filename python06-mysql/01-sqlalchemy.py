@@ -8,7 +8,6 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import Column, Integer, String, Index, UniqueConstraint
 
 #创建引擎
- 876
 engine = create_engine('mysql+pymysql://root:Iamyourdaddy@172.16.20.1:3306/db1'
                        ,echo=True)
 
