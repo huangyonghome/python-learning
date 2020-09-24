@@ -6,10 +6,12 @@
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import Column, Integer, String, Index, UniqueConstraint
+from sqlalchemy.orm import sessionmaker
+
 
 #创建引擎
 engine = create_engine('mysql+pymysql://root:Iamyourdaddy@172.16.20.1:3306/db1'
-                       ,echo=True)
+                       )
 
 #声明基类
 
@@ -35,9 +37,22 @@ class Interests(Base):
 
     #类返回格式
 
-    def __repr__(self):
-        return "<User(id='%s',name='%s')>" %(self.id,self.name)
+    # def __repr__(self):
+    #     return "<User(id='%s',name='%s')>" %(self.id,self.name)
 
 
 #创建表
-Base.metadata.create_all(engine)
+# Base.metadata.create_all(engin)
+DBSession = sessionmaker(bind=engine)
+session = DBSession()
+
+
+# run_interest = Interests(name="jesse",interest="run")
+# session.add(run_interest)
+# session.commit()
+# session.close()
+
+inte = session.query(Interests).filter(Interests.id==1).one()
+print(type(inte))
+print(inte.name,inte.interest)
+session.close()

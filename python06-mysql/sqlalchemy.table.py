@@ -64,8 +64,8 @@ if __name__ == '__main__':
     #2.用filter将找到结果过滤,filter(指定where条件,类名.字段名 == 值)
     #3.将找到结果用delete()方法删除
     #4.commit提交
-    Session.query(Income).filter(Income.incomes==3000).delete()
-    Session.commit()
+    # Session.query(Income).filter(Income.incomes==3000).delete()
+    # Session.commit()
 
     #修改数据(方法1)
     #1.先用query查找类名
@@ -85,49 +85,49 @@ if __name__ == '__main__':
 
     #查询
     #1.all()方法查询所有字段
-    res = Session.query(Income).all()
-
-    #2.查询指定字段,从所有字段中查询指定字段
-    res = Session.query(Income.incomes).all()
-    print(res)
-
-    #3.查询指定字段,并且按照id排序
-    res = Session.query(Address.city).order_by(Address.id).all()
-    print(res)
-
-    #4.使用filter过滤查询
-    res = Session.query(Address).filter(Address.city == "ShangHai")
-    print(type(res))
-    print([(row.id,row.city,row.street) for row in res])
-
-    ##使用filter_by查询
-    res = Session.query(Address).filter_by(city = 'ShangHai').first()
-    print(res.city,res.street)
-
-    #and多条件查询
-    res = Session.query(Address).filter\
-        (Address.id > 5,Address.city == "ShangHai").all()
-    print(res)
-
-    #in查询
-    res = Session.query(Income).\
-        filter(Income.incomes.between(2000,3000)).first()
-
-    print(res)
-
-    res = Session.query(Income).filter \
-        (Income.incomes.in_([2000,3000])).first()
-    print(res)
-
-    #like查询
-    res = Session.query(Address).filter(Address.city. \
-          like('%bei%')).all()
-    print(res)
-
-    #limit限制
-    res = Session.query(Address).filter(Address.city == 'ShangHai')[1:4]
-    print(res)
-
-    #排序
-    res = Session.query(Address).order_by(Address.city.desc()).all()
-    print(res)
+    # res = Session.query(Income).all()
+    #
+    # #2.查询指定字段,从所有字段中查询指定字段
+    # res = Session.query(Income.incomes).all()
+    # print(res)
+    #
+    # #3.查询指定字段,并且按照id排序
+    # res = Session.query(Address.city).order_by(Address.id).all()
+    # print(res)
+    #
+    # #4.使用filter过滤查询
+    # res = Session.query(Address).filter(Address.city == "ShangHai")
+    # print(type(res))
+    # print([(row.id,row.city,row.street) for row in res])
+    #
+    # ##使用filter_by查询
+    # res = Session.query(Address).filter_by(city = 'ShangHai').first()
+    # print(res.city,res.street)
+    #
+    # #and多条件查询
+    # res = Session.query(Address).filter\
+    #     (Address.id > 5,Address.city == "ShangHai").all()
+    # print(res)
+    #
+    # #in查询
+    # res = Session.query(Income).\
+    #     filter(Income.incomes.between(2000,3000)).first()
+    #
+    # print(res)
+    #
+    # res = Session.query(Income).filter \
+    #     (Income.incomes.in_([2000,3000])).first()
+    # print(res)
+    #
+    # #like查询
+    # res = Session.query(Address).filter(Address.city. \
+    #       like('%bei%')).all()
+    # print(res)
+    #
+    # #limit限制
+    # res = Session.query(Address).filter(Address.city == 'ShangHai')[1:4]
+    # print(res)
+    #
+    # #排序
+    # res = Session.query(Address).order_by(Address.city.desc()).all()
+    # print(res)
