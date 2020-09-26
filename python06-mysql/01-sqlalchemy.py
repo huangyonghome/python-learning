@@ -10,7 +10,7 @@ from sqlalchemy.orm import sessionmaker
 
 
 #创建引擎
-engine = create_engine('mysql+pymysql://root:Iamyourdaddy@172.16.20.1:3306/db1'
+engine = create_engine('mysql+pymysql://root:Iamyourdaddy@172.16.20.1:3306/db1',encoding='utf-8'
                        )
 
 #声明基类
