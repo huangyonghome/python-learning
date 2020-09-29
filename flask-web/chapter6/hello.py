@@ -16,7 +16,7 @@ mail = Mail(app)
 manager = Manager(app)
 
 app.config['MAIL_SERVER'] = 'smtphz.qiye.163.com'
-app.config['MAIL_PORT'] = 25
+app.config['MAIL_PORT'] = 465
 app.config['MAIL_USE_TLS'] = True
 app.config['MAIL_USERNAME'] = 'devops@doweidu.com'
 app.config['MAIL_PASSWORD'] = 'DWDduoweidu@2018'
@@ -32,7 +32,7 @@ def index():
 
 @app.route('/send_mail')
 def send_mail():
-    message = Message('我是邮件的主题', ['devops@doweidu.com'])
+    message = Message('我是邮件的主题', sender='devops@doweidu.com',recipients=['huangyong@doweidu.com'])
     # message.body = '我是内容'
     message.html = '<h1>我也是内容<h1/>'
     mail.send(message)
