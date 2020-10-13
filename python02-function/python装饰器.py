@@ -135,27 +135,27 @@
 
 #需求3.不能修改func1,func2函数本身,也不能修改调用方式
 
-import time
-def func1():
-    time.sleep(0.5)
-    print("i am func1")
-
-
-def func2():
-    time.sleep(1)
-    print("i am func2")
-
-def timer(f):
-    def inner():
-        start_time = time.time()
-        f()
-        end_time = time.time()
-        print("it costs time: %f" % (end_time - start_time))
-    return inner
-
-
-
-func1()
+# import time
+# def func1():
+#     time.sleep(0.5)
+#     print("i am func1")
+#
+#
+# def func2():
+#     time.sleep(1)
+#     print("i am func2")
+#
+# def timer(f):
+#     def inner():
+#         start_time = time.time()
+#         f()
+#         end_time = time.time()
+#         print("it costs time: %f" % (end_time - start_time))
+#     return inner
+#
+#
+#
+# func1()
 
 
 
@@ -353,3 +353,22 @@ func1()
 #
 #
 # func() #这里的func实际上是@wrapper1装饰器的inner1函数. 也就是inner1(inner2).
+
+
+### 装饰器参数
+
+def times(length=1):
+    def bread(func):
+        def wrapper(*args,**kwargs):
+            for i in range(length):
+                func(*args,**kwargs)
+        return wrapper
+    return bread
+
+
+@times(5)   #sandwich = times(sandwich)
+def sandwich(name):
+    print(name)
+
+
+sandwich('hello,world')

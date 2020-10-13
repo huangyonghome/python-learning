@@ -213,18 +213,33 @@
 # #    elif project == "mg":
 # #         at_list = ["18616990553"]
 
-a= [[1,2,3],[4,5,6]]
-b = [1,2,3,4,7,8,9,0]
-# print(a[::-1])
-print(b[::-1])
+# a= [[1,2,3],[4,5,6]]
+# b = [1,2,3,4,7,8,9,0]
+# # print(a[::-1])
+# print(b[::-1])
+# print(b)
+#®®
+# import os
+# print(os.path.abspath(os.path.dirname(__file__)))
+# print(os.path.dirname(__file__))
+# print(__file__)
+
+
+# fruits = ['orange','apple','banana','pear']
+#
+# statement=fruits[0]
+#
+# for item in fruits[1:]:
+#     statement = statement + ',' + item
+#
+#
+# print(statement)
+
+# print(",".join(fruits))
+
+a = 'Hello,World'
+
+print
+
+b = ''.join(reversed(a))
 print(b)
-
-import os
-print(os.path.abspath(os.path.dirname(__file__)))
-print(os.path.dirname(__file__))
-print(__file__)
-
-
-
-
-

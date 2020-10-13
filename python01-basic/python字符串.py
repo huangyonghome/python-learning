@@ -15,7 +15,7 @@ b = 'jesse'
 
 # print(a+b)
 
-#第二个方法是用Join方法,例如
+#第二个方法是用Join方法,join方法可以将一切可迭代对象拼接成一个大的字符串.例如
 # print(a.join(b)) #jhello  ehello shello shello .... 用a将字符串b的每个元素进行拼接
 #
 # print("".join(b))
@@ -115,6 +115,7 @@ b = 'jesse'
 # print(b.lower())
 
 #### 6.split()
+#split函数和Join函数完全相反,用于将一个较大的字符串拆分成字符串列表
 
 # b = 'jeese hello world'
 # print(b.split())
@@ -134,6 +135,16 @@ b = 'jesse'
 # b = 'jesse'
 # print(b.replace('s','a'))
 
+
+#### 8 翻转
+
+#1.用切片
+a = 'hello,world'
+
+print(a[::-1])
+
+#2.用reversed函数
+print(''.join(reversed(a)))
 
 #练习:
 

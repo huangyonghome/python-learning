@@ -109,44 +109,44 @@ dic = {"name":"jesse","age":33,"job":"it","sex":"male"}
 '''
 字典嵌套
 '''
-dics = {
-    'name':{
-        'jesse':{
-            'age':22,
-            'job':'it',
-            'sex':'male'
-        },
-        'jerry':{
-            'age':23,
-            'job':'it',
-            'sex':'female'
-        },
-
-    },
-    'home': {
-        'jesse':{
-            'live':'shanghai',
-            'hometown':'jiangxi'
-        },
-        'jerry':{
-            'live':'beijing',
-            'hometown':'wuhan'
-        }
-    },
-    'company':{
-        'jesse':{
-            'name':'dwd',
-            'industry': 'internet'
-        },
-        'jerry':{
-            'name': 'bat',
-            'industry': 'internet'
-        }
-    }
-}
+# dics = {
+#     'name':{
+#         'jesse':{
+#             'age':22,
+#             'job':'it',
+#             'sex':'male'
+#         },
+#         'jerry':{
+#             'age':23,
+#             'job':'it',
+#             'sex':'female'
+#         },
 #
-dics['name']['jesse']['age'] = 33
-print(dics['name']['jesse'])
+#     },
+#     'home': {
+#         'jesse':{
+#             'live':'shanghai',
+#             'hometown':'jiangxi'
+#         },
+#         'jerry':{
+#             'live':'beijing',
+#             'hometown':'wuhan'
+#         }
+#     },
+#     'company':{
+#         'jesse':{
+#             'name':'dwd',
+#             'industry': 'internet'
+#         },
+#         'jerry':{
+#             'name': 'bat',
+#             'industry': 'internet'
+#         }
+#     }
+# }
+# #
+# dics['name']['jesse']['age'] = 33
+# print(dics['name']['jesse'])
 # #
 # # dict
 #
@@ -192,6 +192,19 @@ print(dics['name']['jesse'])
 #
 #
 # print(dic.keys())
+
+#字典推导
+
+name = {str(item)*2: item + 1 for item in range(10)}
+
+
+result = sorted(name.items(), key = lambda x: x[1],reverse = True)[:10]
+
+
+for i, t in enumerate(result, 1):
+    print(i, t[0], t[1])
+
+
 
 
 #作业
@@ -260,3 +273,7 @@ print(dics['name']['jesse'])
 # print(l1)
 #
 
+
+dic3 = {'name':'jesse'}
+
+print(dic3.get('age',default=22))

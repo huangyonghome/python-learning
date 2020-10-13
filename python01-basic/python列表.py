@@ -261,7 +261,20 @@ name = ['jesse','Lyon','alex','jerry',[1,'tony']]
 # f(3,[3,2,1])
 # f(3)
 
+# 列表推导式
 
+l1 = ('a','b','c')
+l2 = (22,80)
+
+l3 = [(x,y) for x in l1 for y in l2]
+print(l3)
+
+
+# 用product函数推导
+from itertools import product
+l4 = list(product(l1,l2))
+
+print(l4)
 '''
 练习题
 '''
@@ -359,7 +372,7 @@ l1 = [x for x in range(10)]
 #
 # print(l2)
 
-l1.remove(3)
-l1.remove(4)
-
-print(l1)
+# l1.remove(3)
+# l1.remove(4)
+#
+# print(l1)
