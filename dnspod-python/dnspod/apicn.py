@@ -15,22 +15,19 @@ class DNSPodApiException(Exception):
 
 
 class ApiCn:
-    def __init__(self, email=None, password=None, login_token=None, **kw):
+    def __init__(self,login_token=None, **kw):
         self.base_url = "dnsapi.cn"
-
         if login_token:
             self.params = dict(
                 login_token=login_token,
                 format="json",
             )
         else:
-            self.params = dict(
-                login_email=email,
-                login_password=password,
-                format="json",
-            )
+            raise AttributeError ("login token is required")
         self.params.update(kw)
         self.path = None
+        print(self.params)
+
 
     def request(self, **kw):
         self.params.update(kw)
@@ -38,15 +35,18 @@ class ApiCn:
             """Class UserInfo will auto request path /User.Info."""
             name = re.sub(r'([A-Z])', r'.\1', self.__class__.__name__)
             self.path = "/" + name[1:]
+
         headers = {
             "Content-type": "application/x-www-form-urlencoded",
             "Accept": "text/json",
-            "User-Agent": "dnspod-python/0.01 (im@chuangbo.li; DNSPod.CN API v2.8)"
+            "User-Agent": "dnspod-python/0.01 (jessehuang; DNSPod.CN API v2.8)"
         }
         url = "https://" + self.base_url + self.path
+
         response = requests.post(url, data=self.params, headers=headers)
         data = response.text
         ret = json.loads(data)
+        print(ret)
         if ret.get("status", {}).get("code") == "1":
             return ret
         else:
@@ -74,14 +74,14 @@ class UserLog(ApiCn):
 class DomainCreate(ApiCn):
     def __init__(self, domain, **kw):
         kw.update(dict(domain=domain))
-        ApiCn.__init__(self, **kw)
+        super().__init__(**kw)
+        # ApiCn.__init__(self, **kw)
 
 
 class DomainId(ApiCn):
     def __init__(self, domain, **kw):
         kw.update(dict(domain=domain))
-        ApiCn.__init__(self, **kw)
-
+        super().__init__(**kw)
 
 class DomainList(ApiCn):
     pass
@@ -90,8 +90,7 @@ class DomainList(ApiCn):
 class _DomainApiBase(ApiCn):
     def __init__(self, domain_id, **kw):
         kw.update(dict(domain_id=domain_id))
-        ApiCn.__init__(self, **kw)
-
+        super().__init__(**kw)
 
 class DomainRemove(_DomainApiBase):
     pass
@@ -100,7 +99,7 @@ class DomainRemove(_DomainApiBase):
 class DomainStatus(_DomainApiBase):
     def __init__(self, status, **kw):
         kw.update(dict(status=status))
-        _DomainApiBase.__init__(self, **kw)
+        super().__init__(**kw)
 
 
 class DomainInfo(_DomainApiBase):
@@ -114,13 +113,13 @@ class DomainLog(_DomainApiBase):
 class RecordType(ApiCn):
     def __init__(self, domain_grade, **kw):
         kw.update(dict(domain_grade=domain_grade))
-        ApiCn.__init__(self, **kw)
+        super().__init__(**kw)
 
 
 class RecordLine(ApiCn):
     def __init__(self, domain_grade, **kw):
         kw.update(dict(domain_grade=domain_grade))
-        ApiCn.__init__(self, **kw)
+        super().__init__(**kw)
 
 
 class RecordCreate(_DomainApiBase):
@@ -137,10 +136,9 @@ class RecordCreate(_DomainApiBase):
         _DomainApiBase.__init__(self, **kw)
 
 
-class RecordModify(RecordCreate):
-    def __init__(self, record_id, **kw):
-        kw.update(dict(record_id=record_id))
-        RecordCreate.__init__(self, **kw)
+class RecordModify(ApiCn):
+    def __init__(self,**kwargs):
+        super().__init__(**kwargs)
 
 
 class RecordList(_DomainApiBase):
