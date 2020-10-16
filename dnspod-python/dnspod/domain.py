@@ -5,20 +5,22 @@
 # @File    : domain.py
 
 
-from apicn import ApiCn
 from handle_request import submit
 
+class DNSPodApiException(Exception):
+    pass
 
-class Domain(ApiCn):
-    def __init__(self,domain=None,url=None,domain_id=None,domain_status=None):
+
+# dnspod域名相关
+class Domain():
+    def __init__(self,domain=None,domain_id=None,domain_status=None,):
         self.domain = domain
-        self.url = url
         self.domain_id = domain_id
         self.domain_status = domain_status
-        # super
 
 
-    def DomainList(self):
+    # 获取所有域名列表信息. 暂时还没使用该方法
+    def domain_list(self):
         response = submit("Domain.List")
         domain_info = response.get('domains')
         for item in domain_info:
@@ -28,31 +30,52 @@ class Domain(ApiCn):
         else:
             self.domain_id = None
 
+    # 查看单个域名信息
+    def domain_info(self):
+        '''
+        域名信息中包含很多信息.本方法只获取2个关键域名信息:域名状态,域名id.
+        :return:
+        '''
 
-    def DomainInfo(self):
         response = submit("Domain.Info",domain = self.domain)
+        print(response)
         self.domain_id = response.get('domain').get('id')
         self.domain_status = response.get('domain').get('status')
 
-
-    def DomainCreate(self):
-        self.DomainList()
+    # 创建个域名绑定
+    def domain_create(self):
+        '''
+        参数: domain域名
+        :return:
+        '''
+        # 先判断域名是否已经创建
+        self.domain_list()
         if not self.domain_id:
             response = submit("Domain.Create",domain = self.domain)
-            print("domain:{}.已经存在".format(self.domain))
+            print("域名:{}.已成功创建".format(self.domain))
         else:
-            print("domain:{}.已经存在".format(self.domain))
+            print("域名:{}.已经存在".format(self.domain))
 
 
-    def DomainStatus(self):
+    # 修改域名状态:
+    def domain_status(self):
+        '''
+        需要2个参数
+        domain或者domain_id: 域名或者域名id
+        status: 状态
+        :return:
+        '''
+        response = submit("Domain.Status", domain=self.domain,status=self.domain_status)
+        print("域名:{}状态已经变更.当前状态为:{}.".format(self.domain,self.domain_status))
 
 
 
+if __name__ == '__main__':
 
-domain = Domain(domain="iqg.net")
-# domain.DomainList()
-# print(domain.domain_id)
-# domain.DomainCreate()
-domain.DomainInfo()
-print(domain.domain_id)
-
+    domain = Domain(domain="haoshiqi.net")
+    # domain.domain_list()
+    # print(domain.domain_id)
+    # domain.domain_create()
+    # domain.domain_info()
+    # print(domain.domain_id)
+    domain.domain_info()

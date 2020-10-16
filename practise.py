@@ -237,9 +237,15 @@
 
 # print(",".join(fruits))
 
-a = 'Hello,World'
+# a = 'Hello,World'
+#
+# print
+#
+# b = ''.join(reversed(a))
+# print(b)
 
-print
+ttl = "600"
 
-b = ''.join(reversed(a))
-print(b)
+ttl_str = ttl
+
+print(ttl.is)

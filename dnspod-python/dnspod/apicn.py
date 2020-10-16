@@ -46,7 +46,6 @@ class ApiCn:
         response = requests.post(url, data=self.params, headers=headers)
         data = response.text
         ret = json.loads(data)
-        print(ret)
         if ret.get("status", {}).get("code") == "1":
             return ret
         else:
@@ -88,8 +87,8 @@ class DomainList(ApiCn):
 
 
 class _DomainApiBase(ApiCn):
-    def __init__(self, domain_id, **kw):
-        kw.update(dict(domain_id=domain_id))
+    def __init__(self, domain, **kw):
+        kw.update(dict(domain=domain))
         super().__init__(**kw)
 
 class DomainRemove(_DomainApiBase):

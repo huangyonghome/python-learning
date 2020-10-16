@@ -190,3 +190,4 @@ print(''.join(reversed(a)))
 # print(isinstance(a,str))
 
 print("hsq-*".endswith("*"))
+print(len("naha"))
