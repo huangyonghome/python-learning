@@ -2,3 +2,4 @@
 flask-web/flasky
 venv
 dnspod-python/dnspod/auth.py
+*.pyc
