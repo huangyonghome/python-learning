@@ -35,7 +35,6 @@ class HandleRecord(Record):
         :param mx:
         :return:
         '''
-        print(self.record_type.upper())
         # 判断解析记录类型
         if not self.record_type:
             # 默认为A记录

@@ -244,8 +244,14 @@
 # b = ''.join(reversed(a))
 # print(b)
 
-ttl = "600"
+# ttl = "600"
+#
+# ttl_str = ttl
+#
+# print(ttl.is)
 
-ttl_str = ttl
+a = "b"
 
-print(ttl.is)
+a = "b" if a == "a" else "c"
+
+print(a)
