@@ -5,6 +5,7 @@
 # @File    : handle_record.py
 
 import re
+import sys
 from record import Record
 from domain import DNSPodApiException
 
@@ -89,8 +90,6 @@ class HandleRecord(Record):
         :return:
         '''
         parameter_info = {}
-        # # 获取域名
-        # domain = input("请输入要配置的域名:>>>").strip()
 
         # 获取子域名(sub_domain)
         if not self.sub_domain:
@@ -99,7 +98,6 @@ class HandleRecord(Record):
         # 如果不传入参数,说明只需读取列表,此时只需要域名和子域名前缀即可
         if not paras:
             return self.sub_domain
-            # parameter_info = dict(domain=domain,sub_domain=sub_domain)
 
         # 如果是添加或者修改一条记录
         else:
@@ -112,12 +110,12 @@ class HandleRecord(Record):
             self.auth_paras()
 
 
-    def get_record_id(self):
+    def get_record_info(self):
         '''
-        获取record_Id
+        获取某条DNS解析记录的信息,包含DNS解析记录名,类型,值,状态等
         :return:
         '''
-        # 清空sub_domain和self.params的信息
+        # 清空sub_domain
         self.sub_domain = None
 
 
@@ -127,7 +125,7 @@ class HandleRecord(Record):
         # 判断解析记录条目.
         if not self.sub_domain_record_list:
             # 如果没有个子域名的解析记录,则提醒返回
-            print("当前域名下没有改子域名:{}的dns解析记录".format(self.sub_domain))
+            print("当前域名下没有该子域名:{}的dns解析记录".format(self.sub_domain))
             return
         elif len(self.sub_domain_record_list) == 1:
             # 如果只有一条记录,则提示是否需要修改
@@ -156,11 +154,11 @@ class HandleRecord(Record):
                     choise = int(choise)
                     break
 
-        # 获取record_id
+        # 获取DNS解析记录的信息,包含记录id和解析记录状态
         if choise is not None:
-            self.record_id = self.sub_domain_record_list[choise].get("record_id")
+            self.record_info = self.sub_domain_record_list[choise]
         else:
-            self.record_id = None
+            self.record_info = None
     
     def check_record(self):
 
@@ -184,8 +182,12 @@ class HandleRecord(Record):
             if not self.domain:
                 # 获取域名
                 self.domain = input("请输入要配置的域名:>>>").strip()
-                # 检查域名是否存在,如果不存在直接报错,不管后面要进行什么操作.如果存在,则会获取域名的Id:domain_id
+                # 检查域名是否存在,如果不存在,直接退出.
                 self.is_domain_avaliable()
+                if self.response.get("status", {}).get("code") == "1":
+                    print("域名不存在!请重新输入.")
+                    sys.exit(1)
+
             f(self,*args,**kwargs)
         return inner
     
@@ -222,12 +224,10 @@ class HandleRecord(Record):
 
         # 如果子域名解析记录存在,则询问是否需要继续添加
         if self.sub_domain_record_list:
-            while True:
-                ack = input("当前已经存在以上解析记录,是否仍然需要继续添加{}的解析记录.yes or no:>>>".format(self.sub_domain)).strip()
-                if ack.upper() == "YES":
-                    break
-                else:
-                    return
+            ack = input("当前已经存在以上解析记录,是否仍然需要继续添加{}的解析记录.yes or no:>>>".format(self.sub_domain)).strip()
+            if ack.upper() != "YES":
+                print("操作取消,返回主界面")
+                return
 
         # 如果不存在,直接添加
 
@@ -236,6 +236,11 @@ class HandleRecord(Record):
 
         #创建DNS解析记录
         self.record_create()
+        if self.response.get("status", {}).get("code") == "1":
+            print("DNS解析记录创建成功.")
+        else:
+            print("DNS解析记录失败.")
+            print(self.response)
 
     @check_domain
     def modify(self):
@@ -250,19 +255,25 @@ class HandleRecord(Record):
             可选参数: 解析记录状态,ttl缓存时间,mx优先级,解析名
         :return:
         '''
-        #获取record_id
-        self.get_record_id()
+        #获取record_ionfo
+        self.get_record_info()
 
-        # 拿到解析记录的record_id
-        if self.record_id:
+        # 拿到解析记录的record_info
+        if self.record_info:
             # 获取多个参数.
             self.params = []
             self.get_paras(paras="modify")
             # 加上record_id参数
-            self.params.update(dict(record_id=self.record_id))
+            self.params.update(dict(record_id=self.record_info.get("record_id")))
 
-            #发起请求
+            #发起请求.返回修改后的DNS解析记录
             self.record_modify()
+            if self.response.get("status", {}).get("code") == "1":
+                print("DNS记录修改成功,以下是最新的DNS解析记录:")
+                self.check_record()
+            else:
+                print(self.response)
+
         else:
             print("子域名{}解析记录,并不存在.请您重新检查".format(self.sub_domain))
 
@@ -277,6 +288,12 @@ class HandleRecord(Record):
         # 获取record_id
         self.get_record_id()
         if self.record_id:
+            # 由于status只有2种结果,所以可以使用三元运算获取当前状态的相反状态
+            status_oppsite = "disable" if self.sub_domain_record_list == "enable" else "enable"
+
+            print("域名状态关闭会导致整个域名的所有解析不可用,请谨慎操作.")
+            ack = input("当前域名状态为:{},请确认是否需要更改为:{}? yes or no:>>>".
+                        format(self.status, status_oppsite)).strip()
             # 获取参数
             status = input("请输入enable或者disable:>>>").strip()
             if status.lower() == "enable" or status.lower() == "disable":
@@ -293,6 +310,12 @@ class HandleRecord(Record):
 
         #发起调用
         self.record_status()
+        if self.response.get("status", {}).get("code") == "1":
+            print("DNS记录状态修改成功,以下是最新的DNS解析记录状态:")
+            self.check_record()
+        else:
+            print("DNS记录状态修改失败")
+            print(self.response)
 
     @check_domain
     def delete(self):

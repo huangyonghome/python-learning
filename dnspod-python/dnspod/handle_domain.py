@@ -27,13 +27,13 @@ class HandleDomain(Domain):
         :return:
         '''
         #发起调用
-        response = self.domain_info()
-        if response:
+        self.domain_info()
+        if self.response.get("status", {}).get("code") == "1":
             print("域名信息如下:")
             print("域名:{}    域名解析套餐规格:{}     域名状态:{}".
                   format(self.domain,self.grade_title,self.status))
         else:
-            print("当前域名信息不存在")
+            print("域名不存在")
 
     @get_domain
     def create(self):
@@ -43,15 +43,16 @@ class HandleDomain(Domain):
         :return:
         '''
         #查询域名是否存在
-        response = self.domain_info()
+        self.domain_info()
 
-        if not response:
+        #判断域名Id是否存在,如果不存在则说明没有该域名
+        if not self.domain_id:
             print("开始创建信息")
             self.domain_create()
             print("域名:{}.已成功创建".format(self.domain))
 
         else:
-            print("域名:{}.已经存在".format(self.domain))
+            print("域名已经存在,无需创建")
 
 
     @get_domain
@@ -62,9 +63,10 @@ class HandleDomain(Domain):
         :return:
         '''
         # 查询域名是否存在
-        response = self.domain_info()
+        self.domain_info()
 
-        if response:
+        #判断是否拿到域名id
+        if self.domain_id:
             #由于status只有2种结果,所以可以使用三元运算获取当前状态的相反状态
             status_oppsite = "disable" if self.status == "enable" else "enable"
 
@@ -77,7 +79,10 @@ class HandleDomain(Domain):
                 self.params=dict(domain=self.domain,status=status_oppsite)
                 # 发起调用
                 self.domain_status()
-                print("域名:{}状态已经变更.当前状态为:{}.".format(self.domain,status_oppsite))
+                if self.response.get("status", {}).get("code") == "1":
+                    print("域名:{}状态已经变更.当前状态为:{}.".format(self.domain,status_oppsite))
+                else:
+                    print(self.response)
 
             else:
                 print("域名状态变更操作取消.返回主界面")

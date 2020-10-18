@@ -44,25 +44,30 @@ class Record():
         获取某个域名下的解析记录列表
         :return:
         '''
-        # 调用request参数获取域名列表
-        self.record_list = submit("Record.List",domain=self.domain).get("records")
+        # 调用self.response参数获取域名列表
+        self.response = submit("Record.List",domain=self.domain)
+        if self.response.get("status", {}).get("code") == "1":
+            self.record_list = self.response.get("records")
+        else:
+            self.record_list = None
 
 
     def is_domain_avaliable(self):
         '''
-        检查域名是否已经存在.如果存在则会拿到domain_id
+        检查域名是否已经存在
         :return:
         '''
         if not self.domain:
             raise DNSPodApiException("请指定解析的域名名称")
         else:
-            submit("Domain.Info", domain=self.domain)
+            self.response = submit("Domain.Info", domain=self.domain)
 
 
 
     def is_record_exists(self):
         '''
-        检查要配置的子域名是否已经存在解析记录.如果存在,则保存解析记录的子域名,解析类型和值
+        检查要配置的子域名是否已经存在解析记录.如果存在,则保存解析记录的子域名,解析类型和值.
+        如果不存在 self.sub_domain_record_list列表为空
         :return:
         '''
 
@@ -72,10 +77,13 @@ class Record():
         #获取DNS记录列表
         self.list_record()
 
-        for item in self.record_list:
-            if item.get("name") == self.sub_domain:
-                record_dict = dict(record_id=item.get("id"),record_type=item.get('type'), record_value=item.get('value'),status=item.get('status'))
-                self.sub_domain_record_list.append(record_dict)
+        if self.record_list:
+            for item in self.record_list:
+                if item.get("name") == self.sub_domain:
+                    record_dict = dict(record_id=item.get("id"),record_type=item.get('type'), record_value=item.get('value'),status=item.get('status'))
+                    self.sub_domain_record_list.append(record_dict)
+
+
 
 
     def record_modify(self):
@@ -86,8 +94,7 @@ class Record():
         可选参数: 解析记录状态,ttl缓存时间,mx优先级,解析名
         :return:
         '''
-        request = submit("Record.Modify",**self.params)
-        print("DNS记录修改成功:记录名:{},值:{},解析类型:{}".format(self.sub_domain,self.value,self.record_type))
+        self.response = submit("Record.Modify",**self.params)
 
 
     def record_remove(self):
@@ -96,8 +103,7 @@ class Record():
         提供必要的参数: 域名(或者域名id),解析记录的Id
         :return:
         '''
-        request = submit("Record.Remove",domain=self.domain,record_id=self.record_id)
-        print("DNS记录删除成功")
+        self.response = submit("Record.Remove",domain=self.domain,record_id=self.record_id)
 
     def record_status(self):
         '''
@@ -105,8 +111,7 @@ class Record():
         提供必要的参数: 域名(或者域名id),解析记录的Id,status:{enable|disable}
         :return:
         '''
-        request = submit("Record.Status",**self.params)
-        print("DNS解析记录状态设置成功.当前解析子域名{}的状态为:{}".format(self.sub_domain,self.status))
+        self.response = submit("Record.Status",**self.params)
 
 
 
@@ -114,8 +119,7 @@ class Record():
         '''
         :return:
         '''
-        request = submit("Record.Create",**self.params)
-        print("DNS记录添加成功:记录名:{},值:{},解析类型:{}".format(self.sub_domain,self.value,self.record_type))
+        self.response = submit("Record.Create",**self.params)
 
 
 
@@ -156,3 +160,10 @@ class Record():
 #                         print("您输入不对,请重新输入")
 #
 #             # 没有同名的子域名记录存在,开始创建DNS解析
+
+
+if __name__ == '__main__':
+    record_ins = Record(domain='jesse.haha')
+    record_ins.is_domain_avaliable()
+    print(record_ins.response)
+    # print(record_ins.record_list)

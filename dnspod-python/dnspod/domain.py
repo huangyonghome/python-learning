@@ -25,8 +25,8 @@ class Domain():
 
     # 获取所有域名列表信息. 暂时还没使用该方法
     def domain_list(self):
-        response = submit("Domain.List")
-        domain_info = response.get('domains')
+        self.response = submit("Domain.List")
+        domain_info = self.response.get('domains')
         for item in domain_info:
             if item.get("name") == self.domain:
                 self.domain_id = item.get("id")
@@ -42,16 +42,22 @@ class Domain():
         :return:
         '''
 
-        response = submit("Domain.Info",domain = self.domain)
-        if response:
-            response = response.get('domain')
-            self.grade_title = response.get('grade_title')
-            self.domain_id = response.get('id')
-            self.status = response.get('status')
-        else:
-            response = None
+        self.response = submit("Domain.Info",domain = self.domain)
+        if self.response.get("status", {}).get("code") == "1":
+            self.grade_title = self.response.get('domain').get('grade_title')
+            self.domain_id = self.response.get('domain').get('id')
+            self.status = self.response.get('domain').get('status')
 
-        return response
+        else:
+            self.domain_id = None
+            self.status = None
+            self.grade_title = None
+
+
+
+
+
+
 
     # 创建个域名绑定
     def domain_create(self):
@@ -59,8 +65,7 @@ class Domain():
         参数: domain域名
         :return:
         '''
-        response = submit("Domain.Create",domain = self.domain)
-        print(response)
+        self.response = submit("Domain.Create",domain = self.domain)
 
     # 修改域名状态:
     def domain_status(self):
@@ -70,7 +75,7 @@ class Domain():
         status: 状态
         :return:
         '''
-        response = submit("Domain.Status",**self.params)
+        self.response = submit("Domain.Status",**self.params)
 
 
 

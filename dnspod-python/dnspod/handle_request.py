@@ -24,16 +24,14 @@ def submit(path,**kwargs):
     }
     url = "https://" + base_url + path
 
-    # 之所以用try,是因为请求查询一个域名解析绑定时,允许域名不存在的情况.而不会程序报错中断.
-    # 在提交非法参数,或执行报错时,仍然会中断程序
-    try:
-        response = requests.post(url, data=data_dict, headers=headers)
-        data = response.text
-        ret = json.loads(data)
-        if ret.get("status", {}).get("code") == "1":
-            return ret
-        else:
-            raise  DNSPodApiException(ret)
-    except DNSPodApiException as e:
-        print(e)
+    # 因为请求查询一个域名解析绑定时,允许域名不存在的情况.而不会程序报错中断.
+    # 在提交非法参数,或执行报错时,返回具体报错原因
+
+    response = requests.post(url, data=data_dict, headers=headers)
+    data = response.text
+    ret = json.loads(data)
+    return ret
+    if ret.get("status", {}).get("code") == "1":
         return None
+    else:
+        return ret
